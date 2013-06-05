@@ -13,6 +13,21 @@ public final class R {
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
+    public static final class id {
+        public static final int login_login_btn=0x7f060006;
+        public static final int login_modify_password_tv=0x7f060004;
+        public static final int login_password_edt=0x7f060001;
+        public static final int login_save_password_cb=0x7f060003;
+        public static final int login_save_username_cb=0x7f060002;
+        public static final int login_server_sp=0x7f060005;
+        public static final int login_username_edt=0x7f060000;
+        public static final int modify_pass_cancel_btn=0x7f06000c;
+        public static final int modify_pass_confirm_btn=0x7f06000b;
+        public static final int modify_pass_confirm_pass_edt=0x7f06000a;
+        public static final int modify_pass_new_pass_edt=0x7f060009;
+        public static final int modify_pass_old_pass_edt=0x7f060008;
+        public static final int modify_pass_username_edt=0x7f060007;
+    }
     public static final class layout {
         public static final int login=0x7f030000;
         public static final int modify_pasword=0x7f030001;
@@ -24,6 +39,29 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        /** mission list
+         */
+        public static final int list_detial=0x7f040010;
+        public static final int list_print=0x7f040011;
+        public static final int login=0x7f040009;
+        public static final int login_password=0x7f040004;
+        public static final int login_password_hint=0x7f040005;
+        /** login 
+         */
+        public static final int login_system_name=0x7f040001;
+        public static final int login_user_name=0x7f040002;
+        public static final int login_user_name_hint=0x7f040003;
+        public static final int modify_password=0x7f040008;
+        public static final int modifypass_cancel=0x7f04000f;
+        public static final int modifypass_confirm=0x7f04000e;
+        public static final int modifypass_confirm_password=0x7f04000d;
+        public static final int modifypass_new_password=0x7f04000c;
+        public static final int modifypass_old_password=0x7f04000b;
+        /** modify password
+         */
+        public static final int modifypass_user_name=0x7f04000a;
+        public static final int save_password=0x7f040007;
+        public static final int save_username=0x7f040006;
     }
     public static final class style {
         /** 

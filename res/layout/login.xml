@@ -1,7 +1,74 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".MainActivity"
     android:background="#8d8d8d"
-    tools:context=".MainActivity" >
-</RelativeLayout>
+    android:orientation="vertical" >
+    <!-- title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#A14CC6">
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_system_name"/>
+    </LinearLayout>
+    <!-- login  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#A123A6"
+        android:orientation="vertical">
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_user_name"/>
+        <EditText 
+            android:id="@+id/login_username_edt"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:hint="@string/login_user_name_hint"/>
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_password"/>
+        <EditText 
+            android:id="@+id/login_password_edt"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:inputType="textPassword"
+        	android:hint="@string/login_password_hint"/>
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox 
+                android:id="@+id/login_save_username_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_username"/>
+            <CheckBox 
+                android:id="@+id/login_save_password_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_password"/>
+            <TextView 
+                android:id="@+id/login_modify_password_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modify_password"/>
+        </LinearLayout>
+        <Spinner 
+            android:id="@+id/login_server_sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button 
+            android:id="@+id/login_login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login"/>
+    </LinearLayout>
+    
+</LinearLayout>
