@@ -1,25 +1,26 @@
 package com.allrun.jdtecmanagesystem.model;
 
 public class MissionInfo {
-
-	private String GUID;//任务GUID						
-	private String MISSIONTYPE;//任务类型				
-	private String MISSIONTYPECODE;//任务类型Code		
-	private String BUSINESSTYPE;//经营类型				
-	private String MISSIONDATE;//任务日期				
-	private String EXPRATIONDATE;//到期日期				
-	private String DIRVER;//驾驶员姓名					
-	private String PLATENO;//车牌号						
-	private String DEVICEMANUFACTURE;//设备厂家			
-	private String DEVICETYPE;//设备型号					
-	private String COMMUNICTIONCARD;//通信卡号			
-	private String DEVICENUMBER;//设备编号				
-	private String ALLOCATENOTE;//分配说明				
-	private String MISSIONNO;//任务编号					
-	private String MISSIONNOTE;//任务说明				
-	private String PRINTDATE;//打印日期					
-	private String VEHICLEGUID;//车辆GUID				
-	private String COST;//费用		
+	private String GUID;//任务GUID						String
+	private String MISSIONTYPE;//任务类型				String
+	private String MISSIONTYPECODE;//任务类型Code		String
+	private String BUSINESSTYPE;//经营类型				String
+	private String MISSIONDATE;//任务日期				String
+	private String EXPRATIONDATE;//到期日期				String
+	private String DIRVER;//驾驶员姓名				String
+	private String PLATENO;//车牌号					String
+	private String DEVICEMANUFACTURE;//设备厂家			String
+	private String DEVICETYPE;//设备型号				String
+	private String COMMUNICTIONCARD;//通信卡号			String
+	private String DEVICENUMBER;//设备编号				String
+	private String ALLOCATENOTE;//分配说明				String
+	private String MISSIONNO;//任务编号				String
+	private String MISSIONNOTE;//任务说明				String
+	private String PRINTDATE;//打印日期				String
+	private String VEHICLEGUID;//车辆GUID				String
+	private String COST;//费用					String
+	private String VEHICLEDEVICENUMBER;//原车设备编号		String
+	private String VEHICLECOMMUNICTIONCARD;//原车通信卡号		String
 	public String getGUID() {
 		return GUID;
 	}
@@ -128,6 +129,19 @@ public class MissionInfo {
 	public void setCOST(String cOST) {
 		COST = cOST;
 	}
+	public String getVEHICLEDEVICENUMBER() {
+		return VEHICLEDEVICENUMBER;
+	}
+	public void setVEHICLEDEVICENUMBER(String vEHICLEDEVICENUMBER) {
+		VEHICLEDEVICENUMBER = vEHICLEDEVICENUMBER;
+	}
+	public String getVEHICLECOMMUNICTIONCARD() {
+		return VEHICLECOMMUNICTIONCARD;
+	}
+	public void setVEHICLECOMMUNICTIONCARD(String vEHICLECOMMUNICTIONCARD) {
+		VEHICLECOMMUNICTIONCARD = vEHICLECOMMUNICTIONCARD;
+	}
 	
 	
+
 }

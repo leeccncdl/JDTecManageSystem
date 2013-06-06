@@ -2,65 +2,79 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EEEEEE"
     android:orientation="vertical" >
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
         <TextView 
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="sadfsaf"/>
+			style="@style/task_list_tag"
+            android:text="@string/list_mission_number"/>
         <TextView 
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="sadfsaf"/>
+            android:id="@+id/task_list_mission_number_tv"
+			style="@style/task_list_content"/>
+        <TextView 
+			style="@style/task_list_tag"
+            android:text="@string/list_car_number"/>
+        <TextView 
+            android:id="@+id/task_list_car_number_tv"
+			style="@style/task_list_content"/>
     </LinearLayout>
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
         <TextView 
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="sadfsaf"/>
+			style="@style/task_list_tag"
+            android:text="@string/list_task_type"/>
         <TextView 
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="sadfsaf"/>
+            android:id="@+id/task_list_task_type_tv"
+			style="@style/task_list_content"/>
+        <TextView 
+			style="@style/task_list_tag"
+            android:text="@string/list_device_number"/>
+        <TextView 
+            android:id="@+id/task_list_device_number_tv"
+			style="@style/task_list_content"/>
     </LinearLayout>
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
         <TextView 
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="sadfsaf"/>
+			style="@style/task_list_tag"
+            android:text="@string/list_task_date"/>
         <TextView 
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="sadfsaf"/>
+            android:id="@+id/task_list_task_date_tv"
+			style="@style/task_list_content"/>
+        <TextView 
+			style="@style/task_list_tag"
+            android:text="@string/list_print_date"/>
+        <TextView 
+            android:id="@+id/task_list_print_date_tv"
+			style="@style/task_list_content"/>
     </LinearLayout>
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:gravity="right"
-        android:background="#8d8d8d"
+        android:gravity="right|center_vertical"
+        android:background="@drawable/list_bar_back"
         android:orientation="horizontal">
         <Button 
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:id="@+id/task_list_detial_btn"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="8dp"
+            android:textSize="12sp"
+            android:background="@drawable/btndarkblue_sel"
             android:text="@string/list_detial"/>
         <Button 
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:id="@+id/task_list_print_btn"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:background="@drawable/btnblue_sel"
+            android:textSize="12sp"
             android:text="@string/list_print"/>
     </LinearLayout>
 

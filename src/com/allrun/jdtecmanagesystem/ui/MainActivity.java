@@ -3,7 +3,9 @@ package com.allrun.jdtecmanagesystem.ui;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,16 +14,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.allrun.jdtecmanagesystem.AppLogger;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
-import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.Mission;
 
 public class MainActivity extends Activity implements OnClickListener {
 	
-	private AppLogger log = AppLogger.getLogger(MainActivity.class);
+//	private AppLogger log = AppLogger.getLogger(MainActivity.class);
+	
+	private ProgressDialog mProgress;
 	
 	private Button mLoginBtn;
 	private EditText mUsernameEdt;
@@ -37,8 +41,16 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+		
+		
 		findViewById();
 		addlistener();
+		initView();
+		
+		//For test
+//			float scale = MainActivity.this.getResources().getDisplayMetrics().density;
+//			int p = (int) (48 * scale + 0.5f);
+//			System.out.println("pppppppppppppp:" +p); 72px
 		//测试输出手机的屏幕信息
 /*		DisplayMetrics dm = new DisplayMetrics();  
 		dm = getResources().getDisplayMetrics();  
@@ -54,19 +66,19 @@ public class MainActivity extends Activity implements OnClickListener {
 			log.debug("density=" + density + "; densityDPI=" + densityDPI);  
 			log.debug("screenWidth=" + screenWidth + "; screenHeight=" + screenHeight);
 		}*/
-		new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				// {"USERCODE":"74df9594c76f4245b918ffa9b97c1188", "LOGIN":"SUCCESS"}
-//				SlaughterWs.checkLogin("abc", "123");
-//				SlaughterWs.updateUserPassword("admin", "123456", "654321");
-				BaseResult result = SlaughterWs.getMissionList("74df9594c76f4245b918ffa9b97c1188");
-//				SlaughterWs.getMissionInfo("sfs", "sfaf");
-//				SlaughterWs.printMissionInfoByAdd("safsa", "sfasf");
-				mCompanies = result.getMISSIONLIST();
-			}
-		}).start();
+//		new Thread(new Runnable() {
+//			
+//			@Override
+//			public void run() {
+//				// {"USERCODE":"74df9594c76f4245b918ffa9b97c1188", "LOGIN":"SUCCESS"}
+////				SlaughterWs.checkLogin("abc", "123");
+////				SlaughterWs.updateUserPassword("admin", "123456", "654321");
+//				BaseResult result = SlaughterWs.getMissionList("74df9594c76f4245b918ffa9b97c1188");
+////				SlaughterWs.getMissionInfo("sfs", "sfaf");
+////				SlaughterWs.printMissionInfoByAdd("safsa", "sfasf");
+//				mCompanies = result.getMISSIONLIST();
+//			}
+//		}).start();
 		
 		  
 	}
@@ -78,7 +90,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		mModifyPassword = (TextView) findViewById(R.id.login_modify_password_tv);
 		mSaveUsernameCb = (CheckBox) findViewById(R.id.login_save_username_cb);
 		mSavePasswordCb = (CheckBox) findViewById(R.id.login_save_password_cb);
-		mServerSp = (Spinner) findViewById(R.id.login_server_sp);
+//		mServerSp = (Spinner) findViewById(R.id.login_server_sp);
 	}
 
 	private void addlistener() {
@@ -90,9 +102,11 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		//TODO 登陆
+
 		case R.id.login_login_btn:
-			
+			if(checkLoginInput()) {
+				new LoginTask().execute("");
+			}
 			break;
 		//TODO 跳转到修改密码页面
 		case R.id.login_modify_password_tv:
@@ -113,7 +127,16 @@ public class MainActivity extends Activity implements OnClickListener {
 	* @throws 
 	*/
 	private boolean checkLoginInput(){
-		return false;
+		if(mUsernameEdt.getText().toString() == null || mUsernameEdt.getText().toString().equals("")) {
+			Toast.makeText(MainActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+			return false;
+		} 
+		if(mPasswordEdt.getText().toString() == null || mPasswordEdt.getText().toString().equals("")) {
+			Toast.makeText(MainActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		
+		return true;
 	}
 	
 	/** 
@@ -124,7 +147,53 @@ public class MainActivity extends Activity implements OnClickListener {
 	* @throws 
 	*/
 	private void saveLoginInformation() {
+		if(mSaveUsernameCb.isChecked()) {
+			//保存用户名
+		}
+		if(mSavePasswordCb.isChecked()) {
+			//保存密码
+		}
 		
+		
+	}
+	
+	/** 
+	* @Title: initView 
+	* @Description: 初始化页面显示，是否保存用户名密码，是否有已经保存的Ip地址
+	* @param     设定文件 
+	* @return void    返回类型 
+	* @throws 
+	*/
+	private void initView() {
+		
+	}
+	
+	private class LoginTask extends AsyncTask<String, Integer, String> {
+		
+		@Override
+		protected void onPreExecute() {
+			mProgress = ProgressDialog.show(MainActivity.this,
+					"正在登陆", "请稍候...", true, false);
+			super.onPreExecute();
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			return SlaughterWs.checkLogin("abc", "123");
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			mProgress.dismiss();
+			super.onPostExecute(result);
+			if(result.equals("SUCCESS")) {
+				Intent intent = new Intent(MainActivity.this,MissionList.class);
+				finish();
+				startActivity(intent);
+			} else {
+				Toast.makeText(MainActivity.this, "登陆失败", Toast.LENGTH_LONG).show();
+			}
+		}
 	}
 	
 }

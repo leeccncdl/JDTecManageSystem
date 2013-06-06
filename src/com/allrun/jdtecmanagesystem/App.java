@@ -28,9 +28,14 @@ public class App extends Application {
 //	public static final String HTTPS_PREFIX = "https://";
 	
 	public static User CURR_USER = null;
+	
+	public static App app;
+	
+	public static String UserCode = "";
 
 	@Override
 	public void onCreate() {
+		app = this;
 		super.onCreate();
 		AppLogger.config(getApplicationContext());
 	}

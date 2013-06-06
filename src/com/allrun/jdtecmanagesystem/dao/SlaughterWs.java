@@ -39,6 +39,7 @@ public class SlaughterWs extends BaseWs {
 //			}
 
 			result = loginResult.getLOGIN();
+			App.UserCode = loginResult.getUSERCODE();
 			
 		} catch (Exception e) {
 			EasyLogger.e("CheckLoginUser", "exception", e);

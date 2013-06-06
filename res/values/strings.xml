@@ -12,15 +12,39 @@
     <string name="modify_password">修改密码</string>
     <string name="login">登陆</string>
     <!--modify password-->
-    <string name="modifypass_user_name">用户名</string>
-    <string name="modifypass_old_password">旧密码</string>
-    <string name="modifypass_new_password">新密码</string>
-    <string name="modifypass_confirm_password">确认新密码</string>
+    <string name="modifypass_user_name">用户名:</string>
+    <string name="modifypass_old_password">旧密码:</string>
+    <string name="modifypass_new_password">新密码:</string>
+    <string name="modifypass_confirm_password">确认新密码:</string>
     <string name="modifypass_confirm">确认</string>
     <string name="modifypass_cancel">取消</string>
-    
     <!--mission list-->
     <string name="list_detial">查看</string>
     <string name="list_print">打印</string>
-    
+    <string name="list_mission_number">任务编号：</string>
+    <string name="list_car_number">车牌号：</string>
+    <string name="list_task_type">任务类型：</string>
+    <string name="list_device_number">设备编号：</string>
+    <string name="list_task_date">任务日期：</string>
+    <string name="list_print_date">打印日期：</string>
+    <!--mission detail-->
+    <string name="mission_task_num">任务编号：</string>
+    <string name="mission_car_num">车牌号：</string>
+    <string name="mission_work_type">经营类型：</string>
+    <string name="mission_driver_name">驾驶员姓名：</string>
+    <string name="mission_task_type">任务类型：</string>
+    <string name="mission_driver_telephone">驾驶员电话：</string>
+    <string name="mission_car_device_num">原车设备编号：</string>
+    <string name="mission_car_card_num">原车通信卡号：</string>
+    <string name="mission_end_date">到期日期：</string>
+    <string name="mission_task_date">任务日期：</string>
+    <string name="mission_task_description">任务说明：</string>
+    <string name="mission_device_company">设备厂家：</string>
+    <string name="mission_device_type">设备型号：</string>
+    <string name="mission_device_num">设备编号：</string>
+    <string name="mission_card_num">通信卡号：</string>
+    <string name="mission_distribute_description">分配说明：</string>
+
+
+    <string name="back">返回</string>
 </resources>

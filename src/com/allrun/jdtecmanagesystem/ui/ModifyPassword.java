@@ -44,10 +44,12 @@ public class ModifyPassword extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.modify_pass_confirm_btn:
-			
+			if(checkModifyPassInput()) {
+				//TODO 
+			}
 			break;
 		case R.id.modify_pass_cancel_btn:
-			
+			finish();
 			break;
 
 		default:

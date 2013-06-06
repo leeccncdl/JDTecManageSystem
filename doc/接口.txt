@@ -1,0 +1,106 @@
+CheckLoginUser
+
+登录验证 //参数{strUserName:用户名，strPassWord:密码}
+成功
+{"USERCODE":"74df9594c76f4245b918ffa9b97c1188", "LOGIN":"SUCCESS"}
+失败
+{"USERCODE":"null", "LOGIN":"FAILURE"}
+
+LOGIN：登录验证执行状态
+USERCODE：用户GUID
+
+UpdateUserPassword
+
+更新密码 //参数{strUserName:用户名，strOldPassWord:旧密码，strNewPassWord：新密码}
+成功
+{"MESSAGE":"修改成功！", "UPDATEPASSWORD":"SUCCESS"}
+失败
+{"MESSAGE":"修改失败，用户名或密码错误！", "UPDATEPASSWORD":"FAILURE"}
+
+UPDATEPASSWORD：更新密码执行状态
+MESSAGE：操作提示信息
+
+
+getMissionList
+
+任务列表 //参数{strUserCode:用户GUID}
+成功
+{"MISSIONLIST":[{"MISSIONTYPE":"维修", "MISSIONNO":"W201306040001", "PLATENO":"车牌号车牌号车牌号车牌号车牌号车牌号车牌号车牌号车牌号车牌号车牌", "GUID":"28b9bbbf018844fb824fcd58d7ccd016", "MISSIONDATE":"2013-06-05", "MISSIONTYPECODE":1, "VEHICLEGUID":"e3b3c9dee51d4f898430f41be021d0b3", "PRINTDATE":"null"}, {"MISSIONTYPE":"安装", "MISSIONNO":"A201306040001", "PLATENO":"车牌号车牌号车牌号车牌号车牌号车牌号车牌号车牌号车牌号车牌号车牌", "GUID":"5106df75aca34a09a5d2a175009f46ca", "MISSIONDATE":"2013-06-05", "MISSIONTYPECODE":0, "VEHICLEGUID":"e3b3c9dee51d4f898430f41be021d0b3", "PRINTDATE":"null"}], "GETMISSIONLIST":"SUCCESS"}
+
+失败
+{"MISSIONLIST":"null", "GETMISSIONLIST":"FAILURE"}
+
+GETMISSIONLIST：执行状态			String
+
+MISSIONLIST：任务列表信息    		List
+
+VEHICLEGUID：车辆GUID				String
+MISSIONTYPE：任务类型				String
+MISSIONTYPECODE：任务类型Code		String
+MISSIONNO：任务编号					String
+PLATENO：车牌号						String
+GUID：任务GUID						String
+MISSIONDATE：任务日期				String	
+PRINTDATE：打印日期					String
+
+
+getMissionInfo
+
+获取任务信息 //参数{strMissionGuid：任务GUID，strUserCode:用户GUID}
+
+成功
+{"GETMISSIONINFO":"SUCCESS", "MISSIONINFO":[{"MISSIONTYPE":"安装", "BUSINESSTYPE":"", "MISSIONTYPECODE":0, "MISSIONDATE":"2013-06-05", "EXPRATIONDATE":"null", "DIRVER":"驾驶员姓名", "PLATENO":"车牌号", "DEVICENUMBER":"设备编号","DEVICETYPE":"设备型号","COMMUNICTIONCARD":"通信卡号", "ALLOCATENOTE":"", "MISSIONNO":"A201306040001", "GUID":"5106df75aca34a09a5d2a175009f46ca", "MISSIONNOTE":"", "DEVICEMANUFACTURE":"设备厂家", "VEHICLEGUID":"e3b3c9dee51d4f898430f41be021d0b3"}]}
+
+失败
+{"GETMISSIONINFO":"FAILURE", "MISSIONINFO":"null"}
+GETMISSIONINFO：获取任务信息执行状态   	String
+MISSIONINFO：	任务信息				List
+
+GUID：任务GUID						String
+MISSIONTYPE：任务类型				String
+MISSIONTYPECODE：任务类型Code		String
+BUSINESSTYPE：经营类型				String
+MISSIONDATE：任务日期				String
+EXPRATIONDATE：到期日期				String
+DIRVER：驾驶员姓名				String
+PLATENO：车牌号					String
+DEVICEMANUFACTURE：设备厂家			String
+DEVICETYPE:设备型号				String
+COMMUNICTIONCARD：通信卡号			String
+DEVICENUMBER：设备编号				String
+ALLOCATENOTE：分配说明				String
+MISSIONNO：任务编号				String
+MISSIONNOTE：任务说明				String
+PRINTDATE：打印日期				String
+VEHICLEGUID：车辆GUID				String
+COST:费用					String
+VEHICLEDEVICENUMBER:原车设备编号		String
+VEHICLECOMMUNICTIONCARD：原车通信卡号		String
+
+printMissionInfoByAdd
+
+安装打印 //参数{strMissionGuid：任务GUID，strUserCode:用户GUID}
+成功
+{"PRINTBYADD":"SUCCESS", "MESSAGE":"修改成功！"}
+失败
+{"PRINTBYADD":"FAILURE", "MESSAGE":"修改失败！"}
+
+
+printMissionInfoByCharge
+
+缴费打印 //参数{strMissionGuid：任务GUID，strUserCode:用户GUID,strExprationDate:到期日期，dCost：费用}
+成功
+{"PRINTBYCHARGE":"SUCCESS", "MESSAGE":"修改成功！"}
+失败
+{"PRINTBYCHARGE":"FAILURE", "MESSAGE":"修改失败！"}
+
+
+
+
+printMissionInfoByModify
+
+维修打印 //参数{strMissionGuid：任务GUID，strUserCode:用户GUID,strDeviceManufacture:设备厂家，strDeviceType：设备型号，strDeviceNumber：设备编号，strCommunictionCard：通信卡号}
+成功
+{"PRINTBYMODIFY":"SUCCESS", "MESSAGE":"修改成功！"}
+失败
+{"PRINTBYMODIFY":"FAILURE", "MESSAGE":"修改失败！"}

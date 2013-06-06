@@ -27,6 +27,16 @@
             android:screenOrientation="nosensor">
             
         </activity>
+        <activity 
+            android:name=".ui.MissionList"
+            android:screenOrientation="nosensor">
+            
+        </activity>
+        <activity 
+            android:name=".ui.MissionDetail"
+            android:screenOrientation="nosensor">
+            
+        </activity>
     </application>
 
 </manifest>

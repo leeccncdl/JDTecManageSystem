@@ -2,72 +2,82 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login"
     android:orientation="vertical" >
-    <!-- title -->
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#A14CC6">
-        <TextView 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_system_name"/>
-    </LinearLayout>
-    <!--modify password -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="#A123A6"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="340dp"
+        android:background="@drawable/logininputframe"
         android:orientation="vertical">
         <TextView 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#000000"
             android:text="@string/modifypass_user_name"/>
         <EditText
             android:id="@+id/modify_pass_username_edt"
+            android:background="@drawable/edittextback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=""/>
         <TextView 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
             android:text="@string/modifypass_old_password"/>
         <EditText
             android:id="@+id/modify_pass_old_pass_edt"
+            android:background="@drawable/edittextback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=""/>
         <TextView 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
             android:text="@string/modifypass_new_password"/>
         <EditText
             android:id="@+id/modify_pass_new_pass_edt"
+            android:background="@drawable/edittextback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=""/>
         <TextView 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
             android:text="@string/modifypass_confirm_password"/>
         <EditText
             android:id="@+id/modify_pass_confirm_pass_edt"
+            android:background="@drawable/edittextback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=""/>
         <LinearLayout 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="horizontal">
             <Button 
                 android:id="@+id/modify_pass_confirm_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/btndarkblue_sel"
                 android:text="@string/modifypass_confirm"/>
             <Button 
                 android:id="@+id/modify_pass_cancel_btn"
+                android:background="@drawable/btnblue_sel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
                 android:text="@string/modifypass_cancel"/>
         </LinearLayout>
      </LinearLayout>

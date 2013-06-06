@@ -6,6 +6,7 @@ import java.util.List;
 public class BaseResult {
 
 	private String LOGIN; 
+	private String USERCODE; 
 	private String UPDATEPASSWORD; 
 	private String PRINTBYADD; 
 	private String PRINTBYMODIFY; 
@@ -54,6 +55,12 @@ public class BaseResult {
 	}
 	public void setMISSIONINFO(List<MissionInfo> mISSIONINFO) {
 		MISSIONINFO = mISSIONINFO;
+	}
+	public String getUSERCODE() {
+		return USERCODE;
+	}
+	public void setUSERCODE(String uSERCODE) {
+		USERCODE = uSERCODE;
 	}
 	
 	

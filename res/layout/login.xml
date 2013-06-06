@@ -3,41 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#8d8d8d"
+    android:background="@drawable/login"
     android:orientation="vertical" >
-    <!-- title -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#A14CC6">
-        <TextView 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_system_name"/>
-    </LinearLayout>
+
     <!-- login  -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="#A123A6"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/logininputframe"
         android:orientation="vertical">
         <TextView 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#000000"
             android:text="@string/login_user_name"/>
         <EditText 
             android:id="@+id/login_username_edt"
+            android:background="@drawable/edittextback"
         	android:layout_width="match_parent"
         	android:layout_height="wrap_content"
         	android:hint="@string/login_user_name_hint"/>
         <TextView 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
             android:text="@string/login_password"/>
         <EditText 
             android:id="@+id/login_password_edt"
         	android:layout_width="match_parent"
         	android:layout_height="wrap_content"
+        	android:background="@drawable/edittextback"
         	android:inputType="textPassword"
         	android:hint="@string/login_password_hint"/>
         <LinearLayout 
@@ -48,26 +47,44 @@
                 android:id="@+id/login_save_username_cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:button="@drawable/checkbox_sel"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:paddingLeft="18dp"
                 android:text="@string/save_username"/>
             <CheckBox 
                 android:id="@+id/login_save_password_cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:paddingLeft="18dp"
+                android:button="@drawable/checkbox_sel"
                 android:text="@string/save_password"/>
             <TextView 
                 android:id="@+id/login_modify_password_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#000000"
+                android:gravity="right"
+                android:textSize="14sp"
                 android:text="@string/modify_password"/>
         </LinearLayout>
+        <!-- 
         <Spinner 
             android:id="@+id/login_server_sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        -->
         <Button 
             android:id="@+id/login_login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btndarkblue_sel"
             android:text="@string/login"/>
     </LinearLayout>
     
