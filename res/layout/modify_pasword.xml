@@ -33,6 +33,7 @@
         <EditText
             android:id="@+id/modify_pass_old_pass_edt"
             android:background="@drawable/edittextback"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=""/>
@@ -45,6 +46,7 @@
         <EditText
             android:id="@+id/modify_pass_new_pass_edt"
             android:background="@drawable/edittextback"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=""/>
@@ -57,6 +59,7 @@
         <EditText
             android:id="@+id/modify_pass_confirm_pass_edt"
             android:background="@drawable/edittextback"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=""/>

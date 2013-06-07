@@ -29,13 +29,13 @@
                 style="@style/task_list_tag"
                 android:text="@string/mission_task_num"/>
             <TextView 
-                android:id="@+id/mission_task_num_tv"
+                android:id="@+id/mission_mantenance_task_num_tv"
                 style="@style/task_list_content"/>
             <TextView 
                 style="@style/task_list_tag"
                 android:text="@string/mission_car_num"/>
             <TextView 
-                android:id="@+id/mission_car_num_tv"
+                android:id="@+id/mission_mantenance_car_num_tv"
                 style="@style/task_list_content"/>
         </LinearLayout>
         <LinearLayout 
@@ -46,13 +46,13 @@
                 style="@style/task_list_tag"
                 android:text="@string/mission_work_type"/>
             <TextView 
-                android:id="@+id/mission_work_type_tv"
+                android:id="@+id/mission_mantenance_work_type_tv"
                 style="@style/task_list_content"/>
             <TextView 
                 style="@style/task_list_tag"
                 android:text="@string/mission_driver_name"/>
             <TextView 
-                android:id="@+id/mission_driver_name_tv"
+                android:id="@+id/mission_mantenance_driver_name_tv"
                 style="@style/task_list_content"/>
         </LinearLayout>
         <LinearLayout 
@@ -63,13 +63,13 @@
                 style="@style/task_list_tag"
                 android:text="@string/mission_task_type"/>
             <TextView 
-                android:id="@+id/mission_task_type_tv"
+                android:id="@+id/mission_mantenance_task_type_tv"
                 style="@style/task_list_content"/>            
             <TextView 
                 style="@style/task_list_tag"
                 android:text="@string/mission_driver_telephone"/>
             <TextView 
-                android:id="@+id/mission_driver_telephone_tv"
+                android:id="@+id/mission_mantenance_driver_telephone_tv"
                 style="@style/task_list_content"/>            
         </LinearLayout>
         <LinearLayout
@@ -80,13 +80,13 @@
                 style="@style/task_list_tag"
                 android:text="@string/mission_car_device_num"/>
             <TextView 
-                android:id="@+id/mission_car_device_num_tv"
+                android:id="@+id/mission_mantenance_car_device_num_tv"
                 style="@style/task_list_content"/>            
             <TextView 
                 style="@style/task_list_tag"
                 android:text="@string/mission_car_card_num"/>
             <TextView 
-                android:id="@+id/mission_car_card_num_tv"
+                android:id="@+id/mission_mantenance_car_card_num_tv"
                 style="@style/task_list_content"/>            
         </LinearLayout>
         <LinearLayout
@@ -97,13 +97,13 @@
                 style="@style/task_list_tag"
                 android:text="@string/mission_end_date"/>
             <TextView 
-                android:id="@+id/mission_end_date_tv"
+                android:id="@+id/mission_mantenance_end_date_tv"
                 style="@style/task_list_content"/>            
             <TextView 
                 style="@style/task_list_tag"
                 android:text="@string/mission_task_date"/>
             <TextView 
-                android:id="@+id/mission_task_date_tv"
+                android:id="@+id/mission_mantenance_task_date_tv"
                 style="@style/task_list_content"/>            
         </LinearLayout>
         <LinearLayout
@@ -118,7 +118,7 @@
                 android:textStyle="bold"
                 android:text="@string/mission_task_description"/>
             <TextView 
-                android:id="@+id/mission_task_description_tv"
+                android:id="@+id/mission_mantenance_task_description_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -133,13 +133,13 @@
                 style="@style/task_list_tag"
                 android:text="@string/mission_device_company"/>
             <TextView 
-                android:id="@+id/mission_device_company_tv"
+                android:id="@+id/mission_mantenance_device_company_tv"
                 style="@style/task_list_content"/>            
             <TextView 
                 style="@style/task_list_tag"
                 android:text="@string/mission_device_type"/>
             <TextView 
-                android:id="@+id/mission_device_type_tv"
+                android:id="@+id/mission_mantenance_device_type_tv"
                 style="@style/task_list_content"/>            
         </LinearLayout>
         <LinearLayout
@@ -151,13 +151,13 @@
                 style="@style/task_list_tag"
                 android:text="@string/mission_device_num"/>
             <TextView 
-                android:id="@+id/mission_device_num_tv"
+                android:id="@+id/mission_mantenance_device_num_tv"
                 style="@style/task_list_content"/>            
             <TextView 
                 style="@style/task_list_tag"
                 android:text="@string/mission_card_num"/>
             <TextView 
-                android:id="@+id/mission_card_num_tv"
+                android:id="@+id/mission_mantenance_card_num_tv"
                 style="@style/task_list_content"/>            
         </LinearLayout>
         <LinearLayout
@@ -172,7 +172,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="@string/mission_distribute_description"/>
             <TextView 
-                android:id="@+id/mission_distribute_description_tv"
+                android:id="@+id/mission_mantenance_distribute_description_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
@@ -182,7 +182,7 @@
 </ScrollView>
 </LinearLayout>
 <LinearLayout 
-    android:id="@+id/task_detail_back_ll"
+    android:id="@+id/task_mantenance_print_ll"
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:background="#dddddd"
@@ -192,6 +192,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textColor="#000000"
-        android:text="@string/back"/>
+        android:text="@string/list_print" />
 </LinearLayout>
 </FrameLayout>

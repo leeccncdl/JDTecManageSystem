@@ -19,10 +19,8 @@ import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.MissionInfo;
 
-public class MissionDetail extends Activity implements OnClickListener {
-	
-	public static final String MISSIONGUID = "com.allrun.jdtecmanagesystem.missionGuid";
-	
+public class MissionMantenance extends Activity implements OnClickListener {
+
 	private String mMissionGuid;
 	
 	private TextView mTaskNumTv;
@@ -33,6 +31,7 @@ public class MissionDetail extends Activity implements OnClickListener {
 	private TextView mDriverTelephoneTv;
 	private TextView mCarDevideNumTv;
 	private TextView mCarCardNumTv;
+	
 	private TextView mEndDateTv;
 	private TextView mTaskDateTv;
 	private TextView mTaskDescriptionTv;
@@ -42,90 +41,75 @@ public class MissionDetail extends Activity implements OnClickListener {
 	private TextView mCardNumTv;
 	private TextView mDistributeDescriptionTv;
 	
-	private LinearLayout mContentRow1Ll;
-	private LinearLayout mContentRow2Ll;
-	
-	private LinearLayout mBackLl;
+	private LinearLayout mPrintLl;
 	
 	private ProgressDialog mProgress;
 	
 	private List<MissionInfo> mMissionInfoList = new ArrayList<MissionInfo>();
 	
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.task_detail);
-		
+		setContentView(R.layout.task_mantenance);
+
 		findViewById();
 		addListener();
-		
-		mMissionGuid = getIntent().getStringExtra(MISSIONGUID);
-		
+
+		mMissionGuid = getIntent().getStringExtra(MissionDetail.MISSIONGUID);
+
 		new QueryMissionDetailTask().execute("");
 	}
 
 	private void addListener() {
-		mBackLl.setOnClickListener(this);
-		
+		mPrintLl.setOnClickListener(this);
 	}
 
 	private void findViewById() {
-		mTaskNumTv = (TextView) findViewById(R.id.mission_task_num_tv);
-		mCarNumTv = (TextView) findViewById(R.id.mission_car_num_tv);
-		mWorkTypeTv = (TextView) findViewById(R.id.mission_work_type_tv);
-		mDriverNameTv = (TextView) findViewById(R.id.mission_driver_name_tv);
-		mTaskTypeTv = (TextView) findViewById(R.id.mission_task_type_tv);
-		mDriverTelephoneTv = (TextView) findViewById(R.id.mission_driver_telephone_tv);
-		mCarDevideNumTv = (TextView) findViewById(R.id.mission_car_device_num_tv);
-		mCarCardNumTv = (TextView) findViewById(R.id.mission_car_card_num_tv);
-		mEndDateTv = (TextView) findViewById(R.id.mission_end_date_tv);
-		mTaskDateTv = (TextView) findViewById(R.id.mission_task_date_tv);
-		mTaskDescriptionTv = (TextView) findViewById(R.id.mission_task_description_tv);
-		mDeviceCompanyTv = (TextView) findViewById(R.id.mission_device_company_tv);
-		mDeviceTypeTv = (TextView) findViewById(R.id.mission_device_type_tv);
-		mDeviceNumTv = (TextView) findViewById(R.id.mission_device_num_tv);
-		mCardNumTv = (TextView) findViewById(R.id.mission_car_num_tv);
-		mDistributeDescriptionTv = (TextView) findViewById(R.id.mission_distribute_description_tv);
-		mContentRow1Ll = (LinearLayout) findViewById(R.id.mission_row_1_ll);
-		mContentRow2Ll = (LinearLayout) findViewById(R.id.mission_row_2_ll);
+		mTaskNumTv = (TextView) findViewById(R.id.mission_mantenance_task_num_tv);
+		mCarNumTv = (TextView) findViewById(R.id.mission_mantenance_car_num_tv);
+		mWorkTypeTv = (TextView) findViewById(R.id.mission_mantenance_work_type_tv);
+		mDriverNameTv = (TextView) findViewById(R.id.mission_mantenance_driver_name_tv);
+		mTaskTypeTv = (TextView) findViewById(R.id.mission_mantenance_task_type_tv);
+		mDriverTelephoneTv = (TextView) findViewById(R.id.mission_mantenance_driver_telephone_tv);
+		mCarDevideNumTv = (TextView) findViewById(R.id.mission_mantenance_car_device_num_tv);
+		mCarCardNumTv = (TextView) findViewById(R.id.mission_mantenance_car_card_num_tv);
+		mEndDateTv = (TextView) findViewById(R.id.mission_mantenance_end_date_tv);
+		mTaskDateTv = (TextView) findViewById(R.id.mission_mantenance_task_date_tv);
+		mTaskDescriptionTv = (TextView) findViewById(R.id.mission_mantenance_task_description_tv);
+		mDeviceCompanyTv = (TextView) findViewById(R.id.mission_mantenance_device_company_tv);
+		mDeviceTypeTv = (TextView) findViewById(R.id.mission_mantenance_device_type_tv);
+		mDeviceNumTv = (TextView) findViewById(R.id.mission_mantenance_device_num_tv);
+		mCardNumTv = (TextView) findViewById(R.id.mission_mantenance_car_num_tv);
+		mDistributeDescriptionTv = (TextView) findViewById(R.id.mission_mantenance_distribute_description_tv);
 		
-		mBackLl = (LinearLayout) findViewById(R.id.task_detail_back_ll);
+		mPrintLl = (LinearLayout) findViewById(R.id.task_mantenance_print_ll);
 	}
 
-	private class QueryMissionDetailTask extends AsyncTask<String, Integer, BaseResult> {
+	private class QueryMissionDetailTask extends
+			AsyncTask<String, Integer, BaseResult> {
 
-		
-		
 		@Override
 		protected void onPreExecute() {
-			mProgress = ProgressDialog.show(MissionDetail.this,
-					"正在查询任务列表", "请稍候...", true, false);
+			mProgress = ProgressDialog.show(MissionMantenance.this,"正在查询任务列表", "请稍候...", true, false);
 			super.onPreExecute();
 		}
 
 		@Override
 		protected BaseResult doInBackground(String... params) {
-			
-			return SlaughterWs.getMissionInfo(mMissionGuid, App.UserCode);
+			 return SlaughterWs.getMissionInfo(mMissionGuid, App.UserCode);
 		}
 
 		@Override
 		protected void onPostExecute(BaseResult result) {
-			mProgress.dismiss();
-			super.onPostExecute(result);
-			if(result == null) {
-				Toast.makeText(MissionDetail.this, "查询失败", Toast.LENGTH_SHORT).show();
+			 mProgress.dismiss();
+			 super.onPostExecute(result);
+			if (result == null) {
+				Toast.makeText(MissionMantenance.this, "查询失败", Toast.LENGTH_SHORT)
+						.show();
 				return;
 			}
 			mMissionInfoList = result.getMISSIONINFO();
-			if(mMissionInfoList.size() != 0) {
-				
-				if(mMissionInfoList.get(0).getMISSIONTYPE().equals("收费")) {
-					mContentRow1Ll.setVisibility(View.GONE);
-					mContentRow2Ll.setVisibility(View.GONE);
-				}
-				
+			if (mMissionInfoList.size() != 0) {
 				mTaskNumTv.setText(mMissionInfoList.get(0).getGUID());
 				mCarNumTv.setText(mMissionInfoList.get(0).getPLATENO());
 				mWorkTypeTv.setText(mMissionInfoList.get(0).getBUSINESSTYPE());
@@ -142,18 +126,44 @@ public class MissionDetail extends Activity implements OnClickListener {
 				mDeviceNumTv.setText(mMissionInfoList.get(0).getDEVICENUMBER());
 				mCardNumTv.setText(mMissionInfoList.get(0).getCOMMUNICTIONCARD());
 				mDistributeDescriptionTv.setText(mMissionInfoList.get(0).getALLOCATENOTE());
-				
+
 			}
+		}
+
+	}
+
+	private class PrintMantenanceTask extends AsyncTask<String, Integer, String> {
+		@Override
+		protected void onPreExecute() {
+			mProgress = ProgressDialog.show(MissionMantenance.this,
+					"正在提交打印请求", "请稍候...", true, false);
+			super.onPreExecute();
 		}
 		
 		
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			return SlaughterWs.printMissionInfoByAdd(mMissionGuid, App.UserCode);
+		}
+		@Override
+		protected void onPostExecute(String result) {
+			mProgress.dismiss();
+			super.onPostExecute(result);
+			if(result.equals("SUCCESS")) {
+				Toast.makeText(MissionMantenance.this, "打印请求返回成功", Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(MissionMantenance.this, "打印请求提交失败", Toast.LENGTH_LONG).show();
+			}
+		}
+		
 	}
-
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.task_detail_back_ll:
-			finish();
+		case R.id.task_mantenance_print_ll:
+			new PrintMantenanceTask().execute("");
 			break;
 
 		default:
@@ -161,5 +171,4 @@ public class MissionDetail extends Activity implements OnClickListener {
 		}
 		
 	}
-	
 }

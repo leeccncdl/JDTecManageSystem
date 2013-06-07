@@ -1,15 +1,22 @@
 package com.allrun.jdtecmanagesystem.ui;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.allrun.jdtecmanagesystem.R;
+import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
 
 public class ModifyPassword extends Activity implements OnClickListener {
+	
+	private ProgressDialog mProgress;
 
 	private EditText mUsernameEdt;
 	private EditText mOldpassEdt;
@@ -45,7 +52,7 @@ public class ModifyPassword extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.modify_pass_confirm_btn:
 			if(checkModifyPassInput()) {
-				//TODO 
+				new ModifyPassTask().execute(mUsernameEdt.getText().toString().trim(),mOldpassEdt.getText().toString().trim(),mNewpassEdt.getText().toString().trim());
 			}
 			break;
 		case R.id.modify_pass_cancel_btn:
@@ -66,6 +73,48 @@ public class ModifyPassword extends Activity implements OnClickListener {
 	* @throws 
 	*/
 	private boolean checkModifyPassInput() {
-		return false;
+		if(mUsernameEdt.getText().toString().trim() == null || mUsernameEdt.getText().toString().trim().equals("")) {
+			Toast.makeText(ModifyPassword.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		if(mOldpassEdt.getText().toString().trim() == null || mOldpassEdt.getText().toString().trim().equals("")) {
+			Toast.makeText(ModifyPassword.this, "请输入旧密码", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		if(mNewpassEdt.getText().toString().trim() == null || mNewpassEdt.getText().toString().trim().equals("")) {
+			Toast.makeText(ModifyPassword.this, "请输入新密码", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		if(!mNewpassEdt.getText().toString().trim().equals(mConfirmpassEdt.getText().toString().trim())) {
+			Toast.makeText(ModifyPassword.this, "两次输入密码不一致", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		return true;
+	}
+	
+	private class ModifyPassTask extends AsyncTask<String, Integer, String> {
+		
+		@Override
+		protected void onPreExecute() {
+			mProgress = ProgressDialog.show(ModifyPassword.this,
+					"修改密码", "请稍候...", true, false);
+			super.onPreExecute();
+		}
+		@Override
+		protected String doInBackground(String... params) {
+			return SlaughterWs.updateUserPassword(params[0], params[1], params[2]);
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			mProgress.dismiss();
+			super.onPostExecute(result);
+			if(result.equals("SUCCESS")) {
+				Toast.makeText(ModifyPassword.this, "修改密码成功", Toast.LENGTH_LONG).show();
+				finish();
+			} else {
+				Toast.makeText(ModifyPassword.this, "修改密码失败", Toast.LENGTH_LONG).show();
+			}
+		}
 	}
 }

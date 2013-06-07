@@ -37,6 +37,27 @@
             android:screenOrientation="nosensor">
             
         </activity>
+        <activity 
+            android:name=".ui.MissionCharge"
+            android:screenOrientation="nosensor">
+            
+        </activity>
+        <activity 
+            android:name=".ui.MissionFixing"
+            android:screenOrientation="nosensor">
+            
+        </activity>
+        <activity 
+            android:name=".ui.MissionMantenance"
+            android:screenOrientation="nosensor">
+            
+        </activity>
+        <activity 
+            android:name=".ui.ServerList"
+            android:theme="@android:style/Theme.Dialog"
+            android:screenOrientation="nosensor">
+            
+        </activity>
     </application>
 
 </manifest>

@@ -12,10 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,11 +25,13 @@ import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.Mission;
 
-public class MissionList extends Activity {
+public class MissionList extends Activity implements OnClickListener {
 	
 	private ListView mMissionLv;
 	private List<Mission> mMissionList = new ArrayList<Mission>(); 
 	private ProgressDialog mProgress;
+	
+	private ImageView mQuitIv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +47,11 @@ public class MissionList extends Activity {
 	
 	 private void findViewById() {
 		 mMissionLv = (ListView) findViewById(R.id.task_listview_lv);
+		 mQuitIv = (ImageView) findViewById(R.id.task_list_header_quit_iv);
 	}
 
 	private void addListener() {
-		// TODO Auto-generated method stub
+		mQuitIv.setOnClickListener(this);
 		
 	}
 
@@ -112,6 +114,25 @@ public class MissionList extends Activity {
 					
 				}
 			});
+			vh.printBtn.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO 根据类型不同跳转到不同的页面
+					Intent intent = new Intent();
+					if(mMissionList.get(position).getMISSIONTYPECODE().equals("2")) {
+						intent.setClass(MissionList.this, MissionCharge.class);
+					} else if(mMissionList.get(position).getMISSIONTYPECODE().equals("0")) {
+						intent.setClass(MissionList.this, MissionMantenance.class);
+					} else if(mMissionList.get(position).getMISSIONTYPECODE().equals("1")) {
+						intent.setClass(MissionList.this, MissionFixing.class);
+					} else {
+						System.out.println("类型判断不正确！");
+					}
+					intent.putExtra(MissionDetail.MISSIONGUID, mMissionList.get(position).getGUID());
+					startActivity(intent);
+				}
+			});
 			return convertView;
 		}
 		
@@ -150,7 +171,7 @@ public class MissionList extends Activity {
 		@Override
 		protected BaseResult doInBackground(String... params) {
 			
-			return SlaughterWs.getMissionList("74df9594c76f4245b918ffa9b97c1188");
+			return SlaughterWs.getMissionList(App.UserCode);
 		}
 
 		@Override
@@ -165,20 +186,23 @@ public class MissionList extends Activity {
 			mMissionList = result.getMISSIONLIST();
 			MissionListAdapter listAdapter = new MissionListAdapter(mMissionList);
 			mMissionLv.setAdapter(listAdapter);
-//			mMissionLv.setOnItemClickListener(new OnItemClickListener() {
-//
-//				@Override
-//				public void onItemClick(AdapterView<?> arg0, View arg1,
-//						int arg2, long arg3) {
-//					Intent intent = new Intent(MissionList.this,MissionDetail.class);
-//					intent.putExtra(MissionDetail.MISSIONGUID, mMissionList.get(arg2).getGUID());
-//					startActivity(intent);
-//				}
-//			});
 			
 		}
 		
 		
+		
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.task_list_header_quit_iv:
+			finish();
+			break;
+
+		default:
+			break;
+		}
 		
 	}
 }

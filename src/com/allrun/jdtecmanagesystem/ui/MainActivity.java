@@ -1,25 +1,24 @@
 package com.allrun.jdtecmanagesystem.ui;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.allrun.jdtecmanagesystem.AppLogger;
+import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
-import com.allrun.jdtecmanagesystem.model.Mission;
 
 public class MainActivity extends Activity implements OnClickListener {
 	
@@ -34,53 +33,38 @@ public class MainActivity extends Activity implements OnClickListener {
 	private CheckBox mSaveUsernameCb;
 	private CheckBox mSavePasswordCb;
 	
-	private Spinner mServerSp;
+	private TextView mServerAdTv;
+	
+	private boolean mIsUserNameSave;
+	private boolean mIsPasswordSave;
+	
+	private int loginServerAddIndex;
+	
+	private String mUsername;
+	private String mPassword;
+	
+	private String ServerAddress;
+	
+//	private Spinner mServerSp;
 
-	private List<Mission> mCompanies;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 		
-		
 		findViewById();
 		addlistener();
+		getSharePrefer();
 		initView();
-		
-		//For test
-//			float scale = MainActivity.this.getResources().getDisplayMetrics().density;
-//			int p = (int) (48 * scale + 0.5f);
-//			System.out.println("pppppppppppppp:" +p); 72px
-		//测试输出手机的屏幕信息
-/*		DisplayMetrics dm = new DisplayMetrics();  
-		dm = getResources().getDisplayMetrics();  
-		float density  = dm.density;        // 屏幕密度（像素比例：0.75/1.0/1.5/2.0）  
-		int densityDPI = dm.densityDpi;     // 屏幕密度（每寸像素：120/160/240/320）  
-		float xdpi = dm.xdpi;             
-		float ydpi = dm.ydpi;  
-		int screenWidth  = dm.widthPixels;      // 屏幕宽（像素，如：480px）  
-		int screenHeight = dm.heightPixels;     // 屏幕高（像素，如：800px）  
-		if(log.isDebugEnabled()) {
-			
-			log.debug("xdpi=" + xdpi + "; ydpi=" + ydpi);  
-			log.debug("density=" + density + "; densityDPI=" + densityDPI);  
-			log.debug("screenWidth=" + screenWidth + "; screenHeight=" + screenHeight);
-		}*/
-//		new Thread(new Runnable() {
-//			
-//			@Override
-//			public void run() {
-//				// {"USERCODE":"74df9594c76f4245b918ffa9b97c1188", "LOGIN":"SUCCESS"}
-////				SlaughterWs.checkLogin("abc", "123");
-////				SlaughterWs.updateUserPassword("admin", "123456", "654321");
-//				BaseResult result = SlaughterWs.getMissionList("74df9594c76f4245b918ffa9b97c1188");
-////				SlaughterWs.getMissionInfo("sfs", "sfaf");
-////				SlaughterWs.printMissionInfoByAdd("safsa", "sfasf");
-//				mCompanies = result.getMISSIONLIST();
-//			}
-//		}).start();
-		
 		  
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(resultCode == RESULT_OK) {
+			getSharePrefer();
+			initView();
+		}
 	}
 
 	private void findViewById() {
@@ -88,14 +72,19 @@ public class MainActivity extends Activity implements OnClickListener {
 		mUsernameEdt = (EditText) findViewById(R.id.login_username_edt);
 		mPasswordEdt = (EditText) findViewById(R.id.login_password_edt);
 		mModifyPassword = (TextView) findViewById(R.id.login_modify_password_tv);
+		String strLink = "<a href="+""+">"+"修改密码"+"</a>";
+		mModifyPassword.setText(Html.fromHtml(strLink));
+		
 		mSaveUsernameCb = (CheckBox) findViewById(R.id.login_save_username_cb);
 		mSavePasswordCb = (CheckBox) findViewById(R.id.login_save_password_cb);
-//		mServerSp = (Spinner) findViewById(R.id.login_server_sp);
+		
+		mServerAdTv = (TextView) findViewById(R.id.login_server_drop_down_tv);
 	}
 
 	private void addlistener() {
 		mLoginBtn.setOnClickListener(this);
 		mModifyPassword.setOnClickListener(this);
+		mServerAdTv.setOnClickListener(this);
 	}
 
 
@@ -105,13 +94,17 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		case R.id.login_login_btn:
 			if(checkLoginInput()) {
-				new LoginTask().execute("");
+				new LoginTask().execute(mUsernameEdt.getText().toString().trim(),mPasswordEdt.getText().toString().trim());
 			}
 			break;
 		//TODO 跳转到修改密码页面
 		case R.id.login_modify_password_tv:
 			Intent intent = new Intent(MainActivity.this,ModifyPassword.class);
 			startActivity(intent);
+			break;
+		case R.id.login_server_drop_down_tv:
+			Intent intent2 = new Intent(MainActivity.this,ServerList.class);
+			startActivityForResult(intent2, 1);
 			break;
 
 		default:
@@ -127,11 +120,11 @@ public class MainActivity extends Activity implements OnClickListener {
 	* @throws 
 	*/
 	private boolean checkLoginInput(){
-		if(mUsernameEdt.getText().toString() == null || mUsernameEdt.getText().toString().equals("")) {
+		if(mUsernameEdt.getText().toString().trim() == null || mUsernameEdt.getText().toString().trim().equals("")) {
 			Toast.makeText(MainActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
 			return false;
 		} 
-		if(mPasswordEdt.getText().toString() == null || mPasswordEdt.getText().toString().equals("")) {
+		if(mPasswordEdt.getText().toString().trim() == null || mPasswordEdt.getText().toString().trim().equals("")) {
 			Toast.makeText(MainActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
 			return false;
 		}
@@ -139,23 +132,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		return true;
 	}
 	
-	/** 
-	* @Title: saveLoginInformation 
-	* @Description: 保存用户名和密码（如果用户选择记住）
-	* @param     设定文件 
-	* @return void    返回类型 
-	* @throws 
-	*/
-	private void saveLoginInformation() {
-		if(mSaveUsernameCb.isChecked()) {
-			//保存用户名
-		}
-		if(mSavePasswordCb.isChecked()) {
-			//保存密码
-		}
-		
-		
-	}
 	
 	/** 
 	* @Title: initView 
@@ -165,7 +141,24 @@ public class MainActivity extends Activity implements OnClickListener {
 	* @throws 
 	*/
 	private void initView() {
-		
+		if(mIsUserNameSave) {
+			mSaveUsernameCb.setChecked(true);
+			mUsernameEdt.setText(mUsername);
+		}
+		if(mIsPasswordSave) {
+			mSavePasswordCb.setChecked(true);
+			mPasswordEdt.setText(mPassword);
+		}
+		if(ServerAddress.equals("")) {
+			ServerAddress = getResources().getString(R.string.default_server);
+			mServerAdTv.setText(ServerAddress);
+			App.BASE_DOMAIN = ServerAddress;
+			App.SERVER_URL = App.BASE_DOMAIN +App.BASE_URL;
+		} else {
+			mServerAdTv.setText(ServerAddress);
+			App.BASE_DOMAIN = ServerAddress;
+			App.SERVER_URL = App.BASE_DOMAIN +App.BASE_URL;
+		}
 	}
 	
 	private class LoginTask extends AsyncTask<String, Integer, String> {
@@ -179,7 +172,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		@Override
 		protected String doInBackground(String... params) {
-			return SlaughterWs.checkLogin("abc", "123");
+			return SlaughterWs.checkLogin(params[0], params[1]);
 		}
 
 		@Override
@@ -188,6 +181,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			super.onPostExecute(result);
 			if(result.equals("SUCCESS")) {
 				Intent intent = new Intent(MainActivity.this,MissionList.class);
+				saveSharePreference();
 				finish();
 				startActivity(intent);
 			} else {
@@ -196,4 +190,54 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 	}
 	
+	private void getSharePrefer() {
+		SharedPreferences loginPrefer = App.app.getSharedPreferences("JDTecManage", MODE_PRIVATE);
+		
+		mIsUserNameSave = loginPrefer.getBoolean("isUserNameSave", false);
+		mIsPasswordSave = loginPrefer.getBoolean("isPassWordSave", false);
+		loginServerAddIndex = loginPrefer.getInt("loginAddressIndex", 0);
+		
+		switch (loginServerAddIndex) {
+		case 0:
+			ServerAddress = loginPrefer.getString("add0", "");
+			break;
+		case 1:
+			ServerAddress = loginPrefer.getString("add1", "");
+			break;
+		case 2:
+			ServerAddress = loginPrefer.getString("add2", "");
+			break;
+		case 3:
+			ServerAddress = loginPrefer.getString("add3", "");
+			break;
+
+		default:
+			break;
+		}
+		
+		mUsername = loginPrefer.getString("UserName", "");
+		mPassword = loginPrefer.getString("Password", "");
+		
+	}
+	
+	private void saveSharePreference() {
+		SharedPreferences loginPrefer = App.app.getSharedPreferences("JDTecManage", MODE_PRIVATE);
+		Editor editor = loginPrefer.edit();
+		if(mSaveUsernameCb.isChecked()) {
+			editor.putBoolean("isUserNameSave", true);
+			editor.putString("UserName", mUsernameEdt.getText().toString().trim());
+		} else {
+			editor.putBoolean("isUserNameSave", false);
+			editor.putString("UserName", "");
+			
+		}
+		if(mSavePasswordCb.isChecked()) {
+			editor.putBoolean("isPassWordSave", true);
+			editor.putString("Password", mPasswordEdt.getText().toString().trim());
+		} else {
+			editor.putBoolean("isPassWordSave", false);
+			editor.putString("Password", "");
+		}
+		editor.commit();
+	}
 }

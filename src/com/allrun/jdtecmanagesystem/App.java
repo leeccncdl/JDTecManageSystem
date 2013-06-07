@@ -19,7 +19,7 @@ public class App extends Application {
 	
 	public static String BASE_NAMESPACE = "http://www.allrun.com.cn/"; 
 
-	public static String BASE_DOMAIN = "http://192.168.102.10:812"; //服务器域名加端口号
+	public static String BASE_DOMAIN; //服务器域名加端口号
 	public static String BASE_URL = "/webservice/WebService.asmx"; //服务器地址
 	
 	public static String SERVER_URL = BASE_DOMAIN + BASE_URL; //服务器地址////////////////

@@ -8,6 +8,7 @@ public class MissionInfo {
 	private String MISSIONDATE;//任务日期				String
 	private String EXPRATIONDATE;//到期日期				String
 	private String DIRVER;//驾驶员姓名				String
+	private String DIRVERPHONE;//驾驶员电话
 	private String PLATENO;//车牌号					String
 	private String DEVICEMANUFACTURE;//设备厂家			String
 	private String DEVICETYPE;//设备型号				String
@@ -141,7 +142,10 @@ public class MissionInfo {
 	public void setVEHICLECOMMUNICTIONCARD(String vEHICLECOMMUNICTIONCARD) {
 		VEHICLECOMMUNICTIONCARD = vEHICLECOMMUNICTIONCARD;
 	}
-	
-	
-
+	public String getDIRVERPHONE() {
+		return DIRVERPHONE;
+	}
+	public void setDIRVERPHONE(String dIRVERPHONE) {
+		DIRVERPHONE = dIRVERPHONE;
+	}
 }

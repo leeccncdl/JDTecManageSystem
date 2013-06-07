@@ -2,7 +2,220 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EEEEEE"
     android:orientation="vertical" >
-    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/header" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/task_list_tag"
+                android:text="@string/mission_task_num" />
+
+            <TextView
+                android:id="@+id/mission_fixing_task_num_tv"
+                style="@style/task_list_content" />
+
+            <TextView
+                style="@style/task_list_tag"
+                android:text="@string/mission_car_num" />
+
+            <TextView
+                android:id="@+id/mission_fixing_car_num_tv"
+                style="@style/task_list_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/task_list_tag"
+                android:text="@string/mission_work_type" />
+
+            <TextView
+                android:id="@+id/mission_fixing_work_type_tv"
+                style="@style/task_list_content" />
+
+            <TextView
+                style="@style/task_list_tag"
+                android:text="@string/mission_driver_name" />
+
+            <TextView
+                android:id="@+id/mission_fixing_driver_name_tv"
+                style="@style/task_list_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/task_list_tag"
+                android:text="@string/mission_task_type" />
+
+            <TextView
+                android:id="@+id/mission_fixing_task_type_tv"
+                style="@style/task_list_content" />
+
+            <TextView
+                style="@style/task_list_tag"
+                android:text="@string/mission_driver_telephone" />
+
+            <TextView
+                android:id="@+id/mission_fixing_driver_telephone_tv"
+                style="@style/task_list_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/task_list_tag"
+                android:text="@string/mission_car_device_num" />
+
+            <TextView
+                android:id="@+id/mission_fixing_car_device_num_tv"
+                style="@style/task_list_content" />
+
+            <TextView
+                style="@style/task_list_tag"
+                android:text="@string/mission_car_card_num" />
+
+            <TextView
+                android:id="@+id/mission_fixing_car_card_num_tv"
+                style="@style/task_list_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/list_bar_back"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/mission_device_company"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mission_fixing_device_company_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="40dp"
+                android:hint="输入设备厂家" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/mission_device_type"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mission_fixing_device_type_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="40dp"
+                android:hint="输入设备型号" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/mission_device_num"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mission_fixing_devece_num_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="40dp"
+                android:hint="输入设备编号" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/mission_card_num"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mission_fixing_card_num_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="40dp"
+                android:hint="输入通信卡号" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+			<Button 
+			    android:id="@+id/mission_fixing_print_btn"
+			    android:layout_width="100dp"
+			    android:layout_height="40dp"
+			    android:background="@drawable/btnblue_sel"
+			    android:textColor="#FFFFFF"
+			    android:text="@string/list_print"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

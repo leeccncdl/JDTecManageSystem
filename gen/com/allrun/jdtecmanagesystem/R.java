@@ -20,68 +20,132 @@ public final class R {
         public static final int checkbox_off=0x7f020006;
         public static final int checkbox_on=0x7f020007;
         public static final int checkbox_sel=0x7f020008;
-        public static final int edittextback=0x7f020009;
-        public static final int header=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
-        public static final int list_bar_back=0x7f02000c;
-        public static final int login=0x7f02000d;
-        public static final int logininputframe=0x7f02000e;
+        public static final int drop_down=0x7f020009;
+        public static final int edittextback=0x7f02000a;
+        public static final int header=0x7f02000b;
+        public static final int ic_launcher=0x7f02000c;
+        public static final int list_bar_back=0x7f02000d;
+        public static final int login=0x7f02000e;
+        public static final int logininputframe=0x7f02000f;
+        public static final int quit_focus=0x7f020010;
+        public static final int quit_normal=0x7f020011;
+        public static final int quit_sel=0x7f020012;
     }
     public static final class id {
-        public static final int login_login_btn=0x7f060005;
-        public static final int login_modify_password_tv=0x7f060004;
+        public static final int login_login_btn=0x7f060006;
+        public static final int login_modify_password_tv=0x7f060005;
         public static final int login_password_edt=0x7f060001;
-        public static final int login_save_password_cb=0x7f060003;
-        public static final int login_save_username_cb=0x7f060002;
+        public static final int login_save_password_cb=0x7f060004;
+        public static final int login_save_username_cb=0x7f060003;
+        public static final int login_server_drop_down_tv=0x7f060002;
         public static final int login_username_edt=0x7f060000;
-        public static final int miss_task_num_tv=0x7f06000c;
-        public static final int mission_car_card_num_tv=0x7f060013;
-        public static final int mission_car_device_num_tv=0x7f060012;
-        public static final int mission_car_num_tv=0x7f06000d;
-        public static final int mission_card_num_tv=0x7f06001c;
-        public static final int mission_device_company_tv=0x7f060018;
-        public static final int mission_device_num_tv=0x7f06001b;
-        public static final int mission_device_type_tv=0x7f060019;
-        public static final int mission_distribute_description_tv=0x7f06001d;
-        public static final int mission_driver_name_tv=0x7f06000f;
-        public static final int mission_driver_telephone_tv=0x7f060011;
-        public static final int mission_end_date_tv=0x7f060014;
-        public static final int mission_row_1_ll=0x7f060017;
-        public static final int mission_row_2_ll=0x7f06001a;
-        public static final int mission_task_date_tv=0x7f060015;
-        public static final int mission_task_description_tv=0x7f060016;
-        public static final int mission_task_type_tv=0x7f060010;
-        public static final int mission_work_type_tv=0x7f06000e;
-        public static final int modify_pass_cancel_btn=0x7f06000b;
-        public static final int modify_pass_confirm_btn=0x7f06000a;
-        public static final int modify_pass_confirm_pass_edt=0x7f060009;
-        public static final int modify_pass_new_pass_edt=0x7f060008;
-        public static final int modify_pass_old_pass_edt=0x7f060007;
-        public static final int modify_pass_username_edt=0x7f060006;
-        public static final int task_detail_back_ll=0x7f06001e;
-        public static final int task_list_car_number_tv=0x7f060020;
-        public static final int task_list_detial_btn=0x7f060025;
-        public static final int task_list_device_number_tv=0x7f060022;
-        public static final int task_list_mission_number_tv=0x7f06001f;
-        public static final int task_list_print_btn=0x7f060026;
-        public static final int task_list_print_date_tv=0x7f060024;
-        public static final int task_list_task_date_tv=0x7f060023;
-        public static final int task_list_task_type_tv=0x7f060021;
-        public static final int task_listview_lv=0x7f060027;
+        public static final int mission_car_card_num_tv=0x7f060028;
+        public static final int mission_car_device_num_tv=0x7f060027;
+        public static final int mission_car_num_tv=0x7f060022;
+        public static final int mission_card_num_tv=0x7f060031;
+        public static final int mission_charge_car_card_num_tv=0x7f06001c;
+        public static final int mission_charge_car_device_num_tv=0x7f06001b;
+        public static final int mission_charge_car_num_tv=0x7f060016;
+        public static final int mission_charge_cost_edt=0x7f06001f;
+        public static final int mission_charge_driver_name_tv=0x7f060018;
+        public static final int mission_charge_driver_telephone_tv=0x7f06001a;
+        public static final int mission_charge_end_date_edt=0x7f06001d;
+        public static final int mission_charge_pick_date_btn=0x7f06001e;
+        public static final int mission_charge_print_btn=0x7f060020;
+        public static final int mission_charge_task_num_tv=0x7f060015;
+        public static final int mission_charge_task_type_tv=0x7f060019;
+        public static final int mission_charge_work_type_tv=0x7f060017;
+        public static final int mission_device_company_tv=0x7f06002d;
+        public static final int mission_device_num_tv=0x7f060030;
+        public static final int mission_device_type_tv=0x7f06002e;
+        public static final int mission_distribute_description_tv=0x7f060032;
+        public static final int mission_driver_name_tv=0x7f060024;
+        public static final int mission_driver_telephone_tv=0x7f060026;
+        public static final int mission_end_date_tv=0x7f060029;
+        public static final int mission_fixing_car_card_num_tv=0x7f06003b;
+        public static final int mission_fixing_car_device_num_tv=0x7f06003a;
+        public static final int mission_fixing_car_num_tv=0x7f060035;
+        public static final int mission_fixing_card_num_edt=0x7f06003f;
+        public static final int mission_fixing_devece_num_edt=0x7f06003e;
+        public static final int mission_fixing_device_company_edt=0x7f06003c;
+        public static final int mission_fixing_device_type_edt=0x7f06003d;
+        public static final int mission_fixing_driver_name_tv=0x7f060037;
+        public static final int mission_fixing_driver_telephone_tv=0x7f060039;
+        public static final int mission_fixing_print_btn=0x7f060040;
+        public static final int mission_fixing_task_num_tv=0x7f060034;
+        public static final int mission_fixing_task_type_tv=0x7f060038;
+        public static final int mission_fixing_work_type_tv=0x7f060036;
+        public static final int mission_mantenance_car_card_num_tv=0x7f060052;
+        public static final int mission_mantenance_car_device_num_tv=0x7f060051;
+        public static final int mission_mantenance_car_num_tv=0x7f06004c;
+        public static final int mission_mantenance_card_num_tv=0x7f060059;
+        public static final int mission_mantenance_device_company_tv=0x7f060056;
+        public static final int mission_mantenance_device_num_tv=0x7f060058;
+        public static final int mission_mantenance_device_type_tv=0x7f060057;
+        public static final int mission_mantenance_distribute_description_tv=0x7f06005a;
+        public static final int mission_mantenance_driver_name_tv=0x7f06004e;
+        public static final int mission_mantenance_driver_telephone_tv=0x7f060050;
+        public static final int mission_mantenance_end_date_tv=0x7f060053;
+        public static final int mission_mantenance_task_date_tv=0x7f060054;
+        public static final int mission_mantenance_task_description_tv=0x7f060055;
+        public static final int mission_mantenance_task_num_tv=0x7f06004b;
+        public static final int mission_mantenance_task_type_tv=0x7f06004f;
+        public static final int mission_mantenance_work_type_tv=0x7f06004d;
+        public static final int mission_row_1_ll=0x7f06002c;
+        public static final int mission_row_2_ll=0x7f06002f;
+        public static final int mission_task_date_tv=0x7f06002a;
+        public static final int mission_task_description_tv=0x7f06002b;
+        public static final int mission_task_num_tv=0x7f060021;
+        public static final int mission_task_type_tv=0x7f060025;
+        public static final int mission_work_type_tv=0x7f060023;
+        public static final int modify_pass_cancel_btn=0x7f06000c;
+        public static final int modify_pass_confirm_btn=0x7f06000b;
+        public static final int modify_pass_confirm_pass_edt=0x7f06000a;
+        public static final int modify_pass_new_pass_edt=0x7f060009;
+        public static final int modify_pass_old_pass_edt=0x7f060008;
+        public static final int modify_pass_username_edt=0x7f060007;
+        public static final int server_list_1_btn=0x7f06000e;
+        public static final int server_list_1_edt=0x7f06000d;
+        public static final int server_list_2_btn=0x7f060010;
+        public static final int server_list_2_edt=0x7f06000f;
+        public static final int server_list_3_btn=0x7f060012;
+        public static final int server_list_3_edt=0x7f060011;
+        public static final int server_list_4_btn=0x7f060014;
+        public static final int server_list_4_edt=0x7f060013;
+        public static final int task_detail_back_ll=0x7f060033;
+        public static final int task_list_car_number_tv=0x7f060042;
+        public static final int task_list_detial_btn=0x7f060047;
+        public static final int task_list_device_number_tv=0x7f060044;
+        public static final int task_list_header_quit_iv=0x7f060049;
+        public static final int task_list_mission_number_tv=0x7f060041;
+        public static final int task_list_print_btn=0x7f060048;
+        public static final int task_list_print_date_tv=0x7f060046;
+        public static final int task_list_task_date_tv=0x7f060045;
+        public static final int task_list_task_type_tv=0x7f060043;
+        public static final int task_listview_lv=0x7f06004a;
+        public static final int task_mantenance_print_ll=0x7f06005b;
     }
     public static final class layout {
         public static final int login=0x7f030000;
         public static final int modify_pasword=0x7f030001;
-        public static final int task_charge=0x7f030002;
-        public static final int task_detail=0x7f030003;
-        public static final int task_fixing=0x7f030004;
-        public static final int task_list_item=0x7f030005;
-        public static final int task_listview=0x7f030006;
-        public static final int task_maintenance=0x7f030007;
+        public static final int server_list=0x7f030002;
+        public static final int task_charge=0x7f030003;
+        public static final int task_detail=0x7f030004;
+        public static final int task_fixing=0x7f030005;
+        public static final int task_list_item=0x7f030006;
+        public static final int task_listview=0x7f030007;
+        public static final int task_mantenance=0x7f030008;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int back=0x7f040028;
+        /** 缴费
+         */
+        public static final int cost=0x7f040029;
+        /** server add
+         */
+        public static final int default_server=0x7f04002b;
+        public static final int input_server_hint=0x7f04002c;
         public static final int list_car_number=0x7f040013;
         /** mission list
          */
@@ -93,13 +157,12 @@ public final class R {
         public static final int list_task_date=0x7f040016;
         public static final int list_task_type=0x7f040014;
         public static final int login=0x7f040009;
-        public static final int login_password=0x7f040004;
+        public static final int login_password=0x7f040003;
         public static final int login_password_hint=0x7f040005;
         /** login 
          */
-        public static final int login_system_name=0x7f040001;
-        public static final int login_user_name=0x7f040002;
-        public static final int login_user_name_hint=0x7f040003;
+        public static final int login_user_name=0x7f040001;
+        public static final int login_user_name_hint=0x7f040002;
         public static final int mission_car_card_num=0x7f04001f;
         public static final int mission_car_device_num=0x7f04001e;
         public static final int mission_car_num=0x7f040019;
@@ -127,8 +190,11 @@ public final class R {
         /** modify password
          */
         public static final int modifypass_user_name=0x7f04000a;
+        public static final int pick_server=0x7f04002d;
         public static final int save_password=0x7f040007;
         public static final int save_username=0x7f040006;
+        public static final int server_address=0x7f040004;
+        public static final int yuan=0x7f04002a;
     }
     public static final class style {
         /** 

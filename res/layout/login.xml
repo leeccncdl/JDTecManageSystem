@@ -39,6 +39,20 @@
         	android:background="@drawable/edittextback"
         	android:inputType="textPassword"
         	android:hint="@string/login_password_hint"/>
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:text="@string/server_address"/>
+        <TextView 
+            android:id="@+id/login_server_drop_down_tv"
+            android:background="@drawable/drop_down"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:textColor="#000000"
+        	android:gravity="center_vertical"
+        	android:text="@string/default_server"/>
         <LinearLayout 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,17 +87,21 @@
                 android:gravity="right"
                 android:textSize="14sp"
                 android:text="@string/modify_password"/>
+
         </LinearLayout>
+
         <!-- 
         <Spinner 
             android:id="@+id/login_server_sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         -->
+        
         <Button 
             android:id="@+id/login_login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@drawable/btndarkblue_sel"
             android:text="@string/login"/>
     </LinearLayout>

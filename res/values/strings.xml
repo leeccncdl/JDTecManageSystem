@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-    <string name="app_name">JDTecManageSystem</string>
+    <string name="app_name">交达科技</string>
     <!--login -->
-    <string name="login_system_name">大连交达科技管理系统</string>
     <string name="login_user_name">用户名：</string>
     <string name="login_user_name_hint">请输入您的用户名</string>
     <string name="login_password">密   码：</string>
+    <string name="server_address">服务器地址：</string>
     <string name="login_password_hint">请输入您的密码</string>
     <string name="save_username">记住用户名</string>
     <string name="save_password">记住密码</string>
@@ -44,7 +44,12 @@
     <string name="mission_device_num">设备编号：</string>
     <string name="mission_card_num">通信卡号：</string>
     <string name="mission_distribute_description">分配说明：</string>
-
-
     <string name="back">返回</string>
+    <!--缴费-->
+    <string name="cost">费用：</string>
+    <string name="yuan">元</string>
+    <!--server add-->
+    <string name="default_server">http://192.168.102.10:812</string>
+    <string name="input_server_hint">输入要连接的服务器地址</string>
+    <string name="pick_server">选定</string>
 </resources>
