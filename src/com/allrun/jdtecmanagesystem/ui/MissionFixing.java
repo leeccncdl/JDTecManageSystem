@@ -84,13 +84,13 @@ public class MissionFixing extends Activity implements OnClickListener {
 
 		@Override
 		protected void onPreExecute() {
-			mProgress = ProgressDialog.show(MissionFixing.this,"正在查询任务列表", "请稍候...", true, false);
+			mProgress = ProgressDialog.show(MissionFixing.this,"正在查询打印任务信息", "请稍候...", true, false);
 			super.onPreExecute();
 		}
 
 		@Override
 		protected BaseResult doInBackground(String... params) {
-			 return SlaughterWs.getMissionInfo(mMissionGuid, App.UserCode);
+			 return SlaughterWs.getMissionInfo(mMissionGuid, App.appLoginUserCode);
 		}
 
 		@Override
@@ -98,13 +98,12 @@ public class MissionFixing extends Activity implements OnClickListener {
 			 mProgress.dismiss();
 			 super.onPostExecute(result);
 			if (result == null) {
-				Toast.makeText(MissionFixing.this, "查询失败", Toast.LENGTH_SHORT)
+				Toast.makeText(MissionFixing.this, "查询打印任务信息失败", Toast.LENGTH_SHORT)
 						.show();
 				return;
 			}
 			mMissionInfoList = result.getMISSIONINFO();
 			if (mMissionInfoList.size() != 0) {
-				//TODO
 
 				mTaskNumTv.setText(mMissionInfoList.get(0).getGUID());
 				mCarNumTv.setText(mMissionInfoList.get(0).getPLATENO());
@@ -145,8 +144,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 		
 		@Override
 		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			return SlaughterWs.printMissionInfoByModify(mMissionGuid, App.UserCode, params[0], params[1], params[2], params[3]);
+			return SlaughterWs.printMissionInfoByModify(mMissionGuid, App.appLoginUserCode, params[0], params[1], params[2], params[3]);
 		}
 		@Override
 		protected void onPostExecute(String result) {

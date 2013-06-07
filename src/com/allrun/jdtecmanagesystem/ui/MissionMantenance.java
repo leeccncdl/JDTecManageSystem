@@ -90,13 +90,13 @@ public class MissionMantenance extends Activity implements OnClickListener {
 
 		@Override
 		protected void onPreExecute() {
-			mProgress = ProgressDialog.show(MissionMantenance.this,"正在查询任务列表", "请稍候...", true, false);
+			mProgress = ProgressDialog.show(MissionMantenance.this,"正在查询打印任务信息", "请稍候...", true, false);
 			super.onPreExecute();
 		}
 
 		@Override
 		protected BaseResult doInBackground(String... params) {
-			 return SlaughterWs.getMissionInfo(mMissionGuid, App.UserCode);
+			 return SlaughterWs.getMissionInfo(mMissionGuid, App.appLoginUserCode);
 		}
 
 		@Override
@@ -104,7 +104,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 			 mProgress.dismiss();
 			 super.onPostExecute(result);
 			if (result == null) {
-				Toast.makeText(MissionMantenance.this, "查询失败", Toast.LENGTH_SHORT)
+				Toast.makeText(MissionMantenance.this, "查询打印任务信息失败", Toast.LENGTH_SHORT)
 						.show();
 				return;
 			}
@@ -143,8 +143,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 		
 		@Override
 		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			return SlaughterWs.printMissionInfoByAdd(mMissionGuid, App.UserCode);
+			return SlaughterWs.printMissionInfoByAdd(mMissionGuid, App.appLoginUserCode);
 		}
 		@Override
 		protected void onPostExecute(String result) {

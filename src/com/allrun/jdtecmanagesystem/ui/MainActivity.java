@@ -17,12 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.allrun.jdtecmanagesystem.App;
+import com.allrun.jdtecmanagesystem.AppLogger;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
 
 public class MainActivity extends Activity implements OnClickListener {
 	
-//	private AppLogger log = AppLogger.getLogger(MainActivity.class);
+	private AppLogger log = AppLogger.getLogger(MainActivity.class);
 	
 	private ProgressDialog mProgress;
 	
@@ -37,26 +38,44 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	private boolean mIsUserNameSave;
 	private boolean mIsPasswordSave;
-	
 	private int loginServerAddIndex;
-	
 	private String mUsername;
 	private String mPassword;
-	
 	private String ServerAddress;
 	
-//	private Spinner mServerSp;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
-		
+		//TODO 检查网络状态
 		findViewById();
 		addlistener();
 		getSharePrefer();
 		initView();
 		  
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+
+		case R.id.login_login_btn:
+			if(checkLoginInput()) {
+				new LoginTask().execute(mUsernameEdt.getText().toString().trim(),mPasswordEdt.getText().toString().trim());
+			}
+			break;
+		case R.id.login_modify_password_tv:
+			Intent intent = new Intent(MainActivity.this,ModifyPassword.class);
+			startActivity(intent);
+			break;
+		case R.id.login_server_drop_down_tv:
+			Intent intent2 = new Intent(MainActivity.this,ServerList.class);
+			startActivityForResult(intent2, 1);
+			break;
+
+		default:
+			break;
+		}
 	}
 	
 	@Override
@@ -87,52 +106,41 @@ public class MainActivity extends Activity implements OnClickListener {
 		mServerAdTv.setOnClickListener(this);
 	}
 
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-
-		case R.id.login_login_btn:
-			if(checkLoginInput()) {
-				new LoginTask().execute(mUsernameEdt.getText().toString().trim(),mPasswordEdt.getText().toString().trim());
-			}
+	private void getSharePrefer() {
+		SharedPreferences loginPrefer = App.JDTecApp.getSharedPreferences(App.PREFER_NAME, MODE_PRIVATE);
+		
+		mIsUserNameSave = loginPrefer.getBoolean(App.PREFER_ISSAVEUSERNAME, false);
+		mIsPasswordSave = loginPrefer.getBoolean(App.PREFER_ISSAVEPASSWORD, false);
+		loginServerAddIndex = loginPrefer.getInt(App.PREFER_SAVEDSERVERADDRESSINDEX, 0);
+		
+		switch (loginServerAddIndex) {
+		case 0:
+			ServerAddress = loginPrefer.getString(App.PREFER_SERVERADDRESS1, "");
 			break;
-		//TODO 跳转到修改密码页面
-		case R.id.login_modify_password_tv:
-			Intent intent = new Intent(MainActivity.this,ModifyPassword.class);
-			startActivity(intent);
+		case 1:
+			ServerAddress = loginPrefer.getString(App.PREFER_SERVERADDRESS2, "");
 			break;
-		case R.id.login_server_drop_down_tv:
-			Intent intent2 = new Intent(MainActivity.this,ServerList.class);
-			startActivityForResult(intent2, 1);
+		case 2:
+			ServerAddress = loginPrefer.getString(App.PREFER_SERVERADDRESS3, "");
+			break;
+		case 3:
+			ServerAddress = loginPrefer.getString(App.PREFER_SERVERADDRESS4, "");
 			break;
 
 		default:
 			break;
 		}
-	}
-
-	/** 
-	* @Title: checkInput 
-	* @Description: 检查输入的用户名和密码 
-	* @param @return    设定文件 
-	* @return boolean    返回类型 
-	* @throws 
-	*/
-	private boolean checkLoginInput(){
-		if(mUsernameEdt.getText().toString().trim() == null || mUsernameEdt.getText().toString().trim().equals("")) {
-			Toast.makeText(MainActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
-			return false;
-		} 
-		if(mPasswordEdt.getText().toString().trim() == null || mPasswordEdt.getText().toString().trim().equals("")) {
-			Toast.makeText(MainActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
-			return false;
+		
+		mUsername = loginPrefer.getString(App.PREFER_USERNAME, "");
+		mPassword = loginPrefer.getString(App.PREFER_PASSWORD, "");
+		
+		if(log.isDebugEnabled()) {
+			log.debug("显示之前保存的服务器地址，索引为：" +loginServerAddIndex);
+			log.debug("服务器地址为：" +ServerAddress);
 		}
 		
-		return true;
 	}
-	
-	
+
 	/** 
 	* @Title: initView 
 	* @Description: 初始化页面显示，是否保存用户名密码，是否有已经保存的Ip地址
@@ -160,7 +168,34 @@ public class MainActivity extends Activity implements OnClickListener {
 			App.SERVER_URL = App.BASE_DOMAIN +App.BASE_URL;
 		}
 	}
+
+	/** 
+	* @Title: checkInput 
+	* @Description: 检查输入的用户名和密码 
+	* @return boolean    检查是否通过 
+	* @throws 
+	*/
+	private boolean checkLoginInput(){
+		if(mUsernameEdt.getText().toString().trim() == null || mUsernameEdt.getText().toString().trim().equals("")) {
+			Toast.makeText(MainActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+			return false;
+		} 
+		if(mPasswordEdt.getText().toString().trim() == null || mPasswordEdt.getText().toString().trim().equals("")) {
+			Toast.makeText(MainActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		
+		return true;
+	}
 	
+	
+	
+	/** 
+	* @ClassName: LoginTask 
+	* @Description: 异步的登陆任务
+	* @author 香格李拉   limingdl@yeah.net
+	* @date 2013-6-7 下午11:30:05  
+	*/
 	private class LoginTask extends AsyncTask<String, Integer, String> {
 		
 		@Override
@@ -190,53 +225,25 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 	}
 	
-	private void getSharePrefer() {
-		SharedPreferences loginPrefer = App.app.getSharedPreferences("JDTecManage", MODE_PRIVATE);
-		
-		mIsUserNameSave = loginPrefer.getBoolean("isUserNameSave", false);
-		mIsPasswordSave = loginPrefer.getBoolean("isPassWordSave", false);
-		loginServerAddIndex = loginPrefer.getInt("loginAddressIndex", 0);
-		
-		switch (loginServerAddIndex) {
-		case 0:
-			ServerAddress = loginPrefer.getString("add0", "");
-			break;
-		case 1:
-			ServerAddress = loginPrefer.getString("add1", "");
-			break;
-		case 2:
-			ServerAddress = loginPrefer.getString("add2", "");
-			break;
-		case 3:
-			ServerAddress = loginPrefer.getString("add3", "");
-			break;
 
-		default:
-			break;
-		}
-		
-		mUsername = loginPrefer.getString("UserName", "");
-		mPassword = loginPrefer.getString("Password", "");
-		
-	}
 	
 	private void saveSharePreference() {
-		SharedPreferences loginPrefer = App.app.getSharedPreferences("JDTecManage", MODE_PRIVATE);
+		SharedPreferences loginPrefer = App.JDTecApp.getSharedPreferences(App.PREFER_NAME, MODE_PRIVATE);
 		Editor editor = loginPrefer.edit();
 		if(mSaveUsernameCb.isChecked()) {
-			editor.putBoolean("isUserNameSave", true);
-			editor.putString("UserName", mUsernameEdt.getText().toString().trim());
+			editor.putBoolean(App.PREFER_ISSAVEUSERNAME, true);
+			editor.putString(App.PREFER_USERNAME, mUsernameEdt.getText().toString().trim());
 		} else {
-			editor.putBoolean("isUserNameSave", false);
-			editor.putString("UserName", "");
+			editor.putBoolean(App.PREFER_ISSAVEUSERNAME, false);
+			editor.putString(App.PREFER_USERNAME, "");
 			
 		}
 		if(mSavePasswordCb.isChecked()) {
-			editor.putBoolean("isPassWordSave", true);
-			editor.putString("Password", mPasswordEdt.getText().toString().trim());
+			editor.putBoolean(App.PREFER_ISSAVEPASSWORD, true);
+			editor.putString(App.PREFER_PASSWORD, mPasswordEdt.getText().toString().trim());
 		} else {
-			editor.putBoolean("isPassWordSave", false);
-			editor.putString("Password", "");
+			editor.putBoolean(App.PREFER_ISSAVEPASSWORD, false);
+			editor.putString(App.PREFER_PASSWORD, "");
 		}
 		editor.commit();
 	}

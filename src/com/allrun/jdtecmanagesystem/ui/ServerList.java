@@ -9,12 +9,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.R;
 
 public class ServerList extends Activity implements OnClickListener {
-	private String[] s = new String[4];
+	private String[] mServerAddressList = new String[4];
 	
 	private EditText mAddress1Edt;
 	private EditText mAddress2Edt;
@@ -34,9 +33,14 @@ public class ServerList extends Activity implements OnClickListener {
 		
 		findViewById();
 		addListener();
-
-		
-		
+	}
+	
+	private void getServerAddressSharePrefer() {
+		SharedPreferences serverPrefer = App.JDTecApp.getSharedPreferences(App.PREFER_NAME, MODE_PRIVATE);
+		mServerAddressList[0] = new String(serverPrefer.getString(App.PREFER_SERVERADDRESS1, ""));
+		mServerAddressList[1] = new String(serverPrefer.getString(App.PREFER_SERVERADDRESS2, ""));
+		mServerAddressList[2] = new String(serverPrefer.getString(App.PREFER_SERVERADDRESS3, ""));
+		mServerAddressList[3] = new String(serverPrefer.getString(App.PREFER_SERVERADDRESS4, ""));
 	}
 	
 	private void findViewById() {
@@ -50,10 +54,10 @@ public class ServerList extends Activity implements OnClickListener {
 		mConfirm3Btn = (Button) findViewById(R.id.server_list_3_btn);
 		mConfirm4Btn = (Button) findViewById(R.id.server_list_4_btn);
 		
-		mAddress1Edt.setText(s[0]);
-		mAddress2Edt.setText(s[1]);
-		mAddress3Edt.setText(s[2]);
-		mAddress4Edt.setText(s[3]);
+		mAddress1Edt.setText(mServerAddressList[0]);
+		mAddress2Edt.setText(mServerAddressList[1]);
+		mAddress3Edt.setText(mServerAddressList[2]);
+		mAddress4Edt.setText(mServerAddressList[3]);
 		
 	}
 	private void addListener() {
@@ -64,26 +68,29 @@ public class ServerList extends Activity implements OnClickListener {
 	}
 
 
+	/** 
+	* @Title: saveServerAddress 
+	* @Description: 点击选定后，保存服务器地址
+	* @param @param key
+	* @param @param address
+	* @param @param loginAddressIndex    
+	* @return void    返回类型 
+	* @throws 
+	*/
 	private void saveServerAddress(String key,String address,int loginAddressIndex) {
 		if(address == null || address.equals("")) {
 			Toast.makeText(ServerList.this, "服务器地址不能为空！", Toast.LENGTH_LONG).show();
 		} else {
 			
-			SharedPreferences serverPrefer = App.app.getSharedPreferences("JDTecManage", MODE_PRIVATE);
+			SharedPreferences serverPrefer = App.JDTecApp.getSharedPreferences(App.PREFER_NAME, MODE_PRIVATE);
 			Editor edit = serverPrefer.edit();
 			edit.putString(key, address);
-			edit.putInt("loginAddressIndex", loginAddressIndex);
+			edit.putInt(App.PREFER_SAVEDSERVERADDRESSINDEX, loginAddressIndex);
 			edit.commit();
 		}
 	}
 
-	private void getServerAddressSharePrefer() {
-		SharedPreferences serverPrefer = App.app.getSharedPreferences("JDTecManage", MODE_PRIVATE);
-		s[0] = new String(serverPrefer.getString("add0", ""));
-		s[1] = new String(serverPrefer.getString("add1", ""));
-		s[2] = new String(serverPrefer.getString("add2", ""));
-		s[3] = new String(serverPrefer.getString("add3", ""));
-	}
+
 
 	@Override
 	public void onClick(View v) {
@@ -92,23 +99,23 @@ public class ServerList extends Activity implements OnClickListener {
 		int firstAddress = 0;
 		switch (v.getId()) {
 		case R.id.server_list_1_btn:
-			key = "add0";
+			key = App.PREFER_SERVERADDRESS1;
 			value = mAddress1Edt.getText().toString().trim();
 			firstAddress = 0;
 			break;
 		case R.id.server_list_2_btn:
-			key = "add1";
+			key = App.PREFER_SERVERADDRESS2;
 			value = mAddress2Edt.getText().toString().trim();
 			firstAddress = 1;
 			
 			break;
 		case R.id.server_list_3_btn:
-			key = "add2";
+			key = App.PREFER_SERVERADDRESS3;
 			value = mAddress3Edt.getText().toString().trim();
 			firstAddress = 2;
 			break;
 		case R.id.server_list_4_btn:
-			key = "add3";
+			key = App.PREFER_SERVERADDRESS4;
 			value = mAddress4Edt.getText().toString().trim();
 			firstAddress = 3;
 			

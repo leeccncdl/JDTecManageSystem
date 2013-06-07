@@ -82,13 +82,13 @@ public class MissionCharge extends Activity implements OnClickListener {
 
 		@Override
 		protected void onPreExecute() {
-			mProgress = ProgressDialog.show(MissionCharge.this,"正在查询任务列表", "请稍候...", true, false);
+			mProgress = ProgressDialog.show(MissionCharge.this,"正在查询打印任务信息", "请稍候...", true, false);
 			super.onPreExecute();
 		}
 
 		@Override
 		protected BaseResult doInBackground(String... params) {
-			 return SlaughterWs.getMissionInfo(mMissionGuid, App.UserCode);
+			 return SlaughterWs.getMissionInfo(mMissionGuid, App.appLoginUserCode);
 		}
 
 		@Override
@@ -96,7 +96,7 @@ public class MissionCharge extends Activity implements OnClickListener {
 			mProgress.dismiss();
 			super.onPostExecute(result);
 			if (result == null) {
-				Toast.makeText(MissionCharge.this, "查询失败", Toast.LENGTH_SHORT)
+				Toast.makeText(MissionCharge.this, "查询打印任务信息失败", Toast.LENGTH_SHORT)
 						.show();
 				return;
 			}
@@ -137,15 +137,13 @@ public class MissionCharge extends Activity implements OnClickListener {
 		
 		@Override
 		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			return SlaughterWs.printMissionInfoByCharge(mMissionGuid, App.UserCode, params[0], params[1]);
+			return SlaughterWs.printMissionInfoByCharge(mMissionGuid, App.appLoginUserCode, params[0], params[1]);
 		}
 		@Override
 		protected void onPostExecute(String result) {
 			mProgress.dismiss();
 			super.onPostExecute(result);
 			if(result.equals("SUCCESS")) {
-				//TODO
 				Toast.makeText(MissionCharge.this, "打印请求提交成功", Toast.LENGTH_LONG).show();
 			} else {
 				Toast.makeText(MissionCharge.this, "打印请求提交失败", Toast.LENGTH_LONG).show();

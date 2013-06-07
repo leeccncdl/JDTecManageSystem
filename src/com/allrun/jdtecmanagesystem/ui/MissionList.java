@@ -2,7 +2,6 @@ package com.allrun.jdtecmanagesystem.ui;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,8 +17,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.allrun.jdtecmanagesystem.App;
+import com.allrun.jdtecmanagesystem.AppLogger;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
@@ -27,10 +26,11 @@ import com.allrun.jdtecmanagesystem.model.Mission;
 
 public class MissionList extends Activity implements OnClickListener {
 	
+	private AppLogger log = AppLogger.getLogger(this.getClass());
+	
 	private ListView mMissionLv;
 	private List<Mission> mMissionList = new ArrayList<Mission>(); 
 	private ProgressDialog mProgress;
-	
 	private ImageView mQuitIv;
 
 	@Override
@@ -42,7 +42,6 @@ public class MissionList extends Activity implements OnClickListener {
 		addListener();
 		
 		new QueryMissionListTask().execute("");
-		
 	}
 	
 	 private void findViewById() {
@@ -52,13 +51,10 @@ public class MissionList extends Activity implements OnClickListener {
 
 	private void addListener() {
 		mQuitIv.setOnClickListener(this);
-		
 	}
 
 	private class MissionListAdapter extends BaseAdapter {
-
 		 private List<Mission> missionList = new ArrayList<Mission>();
-		 
 		 public MissionListAdapter(List<Mission> data) {
 			 missionList = data;
 		 }
@@ -83,7 +79,7 @@ public class MissionList extends Activity implements OnClickListener {
 			ViewHolder vh = null;
 			if(convertView == null) {
 				vh = new ViewHolder();
-				convertView = LayoutInflater.from(App.app.getApplicationContext()).inflate(R.layout.task_list_item, null);
+				convertView = LayoutInflater.from(App.JDTecApp.getApplicationContext()).inflate(R.layout.task_list_item, null);
 				vh.missionNumTv = (TextView) convertView.findViewById(R.id.task_list_mission_number_tv);
 				vh.carNumTv = (TextView) convertView.findViewById(R.id.task_list_car_number_tv);
 				vh.taskTypeTv = (TextView) convertView.findViewById(R.id.task_list_task_type_tv);
@@ -118,7 +114,6 @@ public class MissionList extends Activity implements OnClickListener {
 				
 				@Override
 				public void onClick(View v) {
-					// TODO 根据类型不同跳转到不同的页面
 					Intent intent = new Intent();
 					if(mMissionList.get(position).getMISSIONTYPECODE().equals("2")) {
 						intent.setClass(MissionList.this, MissionCharge.class);
@@ -127,7 +122,10 @@ public class MissionList extends Activity implements OnClickListener {
 					} else if(mMissionList.get(position).getMISSIONTYPECODE().equals("1")) {
 						intent.setClass(MissionList.this, MissionFixing.class);
 					} else {
-						System.out.println("类型判断不正确！");
+						if(log.isDebugEnabled()) {
+							log.debug("任务类型Code返回不正确，不能跳转到详细页面");
+							return;
+						}
 					}
 					intent.putExtra(MissionDetail.MISSIONGUID, mMissionList.get(position).getGUID());
 					startActivity(intent);
@@ -171,7 +169,7 @@ public class MissionList extends Activity implements OnClickListener {
 		@Override
 		protected BaseResult doInBackground(String... params) {
 			
-			return SlaughterWs.getMissionList(App.UserCode);
+			return SlaughterWs.getMissionList(App.appLoginUserCode);
 		}
 
 		@Override
@@ -186,7 +184,6 @@ public class MissionList extends Activity implements OnClickListener {
 			mMissionList = result.getMISSIONLIST();
 			MissionListAdapter listAdapter = new MissionListAdapter(mMissionList);
 			mMissionLv.setAdapter(listAdapter);
-			
 		}
 		
 		
@@ -199,7 +196,6 @@ public class MissionList extends Activity implements OnClickListener {
 		case R.id.task_list_header_quit_iv:
 			finish();
 			break;
-
 		default:
 			break;
 		}

@@ -1,6 +1,7 @@
 package com.allrun.jdtecmanagesystem.model;
 
 public class MissionInfo {
+	
 	private String GUID;//任务GUID						String
 	private String MISSIONTYPE;//任务类型				String
 	private String MISSIONTYPECODE;//任务类型Code		String
@@ -22,6 +23,7 @@ public class MissionInfo {
 	private String COST;//费用					String
 	private String VEHICLEDEVICENUMBER;//原车设备编号		String
 	private String VEHICLECOMMUNICTIONCARD;//原车通信卡号		String
+	
 	public String getGUID() {
 		return GUID;
 	}

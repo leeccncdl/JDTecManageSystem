@@ -1,6 +1,7 @@
 package com.allrun.jdtecmanagesystem.dao;
 
 import com.allrun.jdtecmanagesystem.App;
+import com.allrun.jdtecmanagesystem.AppLogger;
 import com.allrun.jdtecmanagesystem.dao.DataAccessSoap.PropertyType;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.utils.EasyLogger;
@@ -12,6 +13,8 @@ import com.allrun.jdtecmanagesystem.utils.EasyLogger;
 * @date 2013-6-5 上午09:04:17  
 */
 public class SlaughterWs extends BaseWs {
+	
+	private static AppLogger log = AppLogger.getLogger(SlaughterWs.class);
 
 	/**
 	 * @description 登录校验
@@ -30,16 +33,18 @@ public class SlaughterWs extends BaseWs {
 		String result = "";
 		try {
 			result = ksoap2.request();
-			EasyLogger.e("CheckLoginUser", result);
+			if(log.isDebugEnabled()) {
+				log.debug("CheckLoginUser请求返回结果:" +result);
+			}
 			
 			BaseResult loginResult = gson.fromJson(result, BaseResult.class);
 			
-//			if(!validateUser(loginResult)){
-//				return App.USER_VALIDITY_ACCOUNT_ERROR;
-//			}
+			if(!validateUser(loginResult)){
+				return App.USER_VALIDITY_FAILURE;
+			}
 
 			result = loginResult.getLOGIN();
-			App.UserCode = loginResult.getUSERCODE();
+			App.appLoginUserCode = loginResult.getUSERCODE();
 			
 		} catch (Exception e) {
 			EasyLogger.e("CheckLoginUser", "exception", e);
@@ -73,7 +78,9 @@ public class SlaughterWs extends BaseWs {
 		
 		try {
 			result = ksoap2.request();
-			EasyLogger.e("UpdateUserPassword", result);
+			if(log.isDebugEnabled()) {
+				log.debug("UpdateUserPassword请求返回结果:" +result);
+			}
 			
 			BaseResult updateResult = gson.fromJson(result, BaseResult.class);
 			result = updateResult.getUPDATEPASSWORD();

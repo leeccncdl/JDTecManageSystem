@@ -2,40 +2,33 @@ package com.allrun.jdtecmanagesystem;
 
 import android.app.Application;
 
-import com.allrun.jdtecmanagesystem.model.User;
-
 public class App extends Application {
 	
-	
-	public static final String DEBUG_TAG = "JDTec"; 
-	public static final String USER_VALIDITY_SUCCESS = "SUCCESS"; 
 	public static final String USER_VALIDITY_FAILURE = "FAILURE"; 
-	public static final String USER_VALIDITY_ACCOUNT_ERROR = "ACCOUNT_ERROR";
 	
-	public static final String PREF_SETTING = "app_setting";
-	public static final String PREF_USER_CODE = "user_code";
-	public static final String PREF_PASSWORD = "password";
-	public static final String PREF_SERVER_DOMAIN = "server_domain";
+	public static final String PREFER_NAME = "JDTecManage";
+	public static final String PREFER_ISSAVEUSERNAME = "isUserNameSave";
+	public static final String PREFER_ISSAVEPASSWORD = "isPassWordSave";
+	public static final String PREFER_SAVEDSERVERADDRESSINDEX = "loginAddressIndex";
+	public static final String PREFER_SERVERADDRESS1 = "add0";
+	public static final String PREFER_SERVERADDRESS2 = "add1";
+	public static final String PREFER_SERVERADDRESS3 = "add2";
+	public static final String PREFER_SERVERADDRESS4 = "add3";
+	public static final String PREFER_USERNAME = "UserName";
+	public static final String PREFER_PASSWORD = "Password";
 	
-	public static String BASE_NAMESPACE = "http://www.allrun.com.cn/"; 
-
+	public static String BASE_NAMESPACE = "http://www.allrun.com.cn/"; //webservice namespace
 	public static String BASE_DOMAIN; //服务器域名加端口号
-	public static String BASE_URL = "/webservice/WebService.asmx"; //服务器地址
+	public static String BASE_URL = "/webservice/WebService.asmx"; //服务地址
+	public static String SERVER_URL = BASE_DOMAIN + BASE_URL; //服务地址全路径
 	
-	public static String SERVER_URL = BASE_DOMAIN + BASE_URL; //服务器地址////////////////
+	public static App JDTecApp;
 	
-//	public static final String HTTP_PREFIX = "http://";
-//	public static final String HTTPS_PREFIX = "https://";
-	
-	public static User CURR_USER = null;
-	
-	public static App app;
-	
-	public static String UserCode = "";
+	public static String appLoginUserCode = "";
 
 	@Override
 	public void onCreate() {
-		app = this;
+		JDTecApp = this;
 		super.onCreate();
 		AppLogger.config(getApplicationContext());
 	}

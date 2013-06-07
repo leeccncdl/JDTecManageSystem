@@ -2,7 +2,6 @@ package com.allrun.jdtecmanagesystem.ui;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -12,7 +11,6 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
@@ -94,20 +92,17 @@ public class MissionDetail extends Activity implements OnClickListener {
 	}
 
 	private class QueryMissionDetailTask extends AsyncTask<String, Integer, BaseResult> {
-
-		
 		
 		@Override
 		protected void onPreExecute() {
 			mProgress = ProgressDialog.show(MissionDetail.this,
-					"正在查询任务列表", "请稍候...", true, false);
+					"正在查询任务信息", "请稍候...", true, false);
 			super.onPreExecute();
 		}
 
 		@Override
 		protected BaseResult doInBackground(String... params) {
-			
-			return SlaughterWs.getMissionInfo(mMissionGuid, App.UserCode);
+			return SlaughterWs.getMissionInfo(mMissionGuid, App.appLoginUserCode);
 		}
 
 		@Override
@@ -115,13 +110,13 @@ public class MissionDetail extends Activity implements OnClickListener {
 			mProgress.dismiss();
 			super.onPostExecute(result);
 			if(result == null) {
-				Toast.makeText(MissionDetail.this, "查询失败", Toast.LENGTH_SHORT).show();
+				Toast.makeText(MissionDetail.this, "任务信息查询失败", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			mMissionInfoList = result.getMISSIONINFO();
 			if(mMissionInfoList.size() != 0) {
 				
-				if(mMissionInfoList.get(0).getMISSIONTYPE().equals("收费")) {
+				if(mMissionInfoList.get(0).getMISSIONTYPECODE().equals("2")) {
 					mContentRow1Ll.setVisibility(View.GONE);
 					mContentRow2Ll.setVisibility(View.GONE);
 				}

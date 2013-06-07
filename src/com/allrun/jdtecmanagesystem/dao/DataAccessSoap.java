@@ -12,7 +12,6 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
-import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.utils.Base64;
 import com.allrun.jdtecmanagesystem.utils.EasyLogger;
 
@@ -93,7 +92,7 @@ public class DataAccessSoap {
 		androidHttpTransport.call(mSoapAction, envelope);
 
 		if (envelope.bodyIn instanceof SoapFault) {
-			EasyLogger.e(App.DEBUG_TAG + "DataAccessSoap:requestBytes()",
+			EasyLogger.e( "DataAccessSoap:requestBytes()",
 					envelope.bodyIn.toString());
 		}
 
