@@ -48,7 +48,7 @@ public class SlaughterWs extends BaseWs {
 			
 		} catch (Exception e) {
 			EasyLogger.e("CheckLoginUser", "exception", e);
-			result = App.USER_VALIDITY_FAILURE;
+			result = App.SERVEREXCEPTION;
 		}
 		
 		return result;
@@ -84,9 +84,12 @@ public class SlaughterWs extends BaseWs {
 			
 			BaseResult updateResult = gson.fromJson(result, BaseResult.class);
 			result = updateResult.getUPDATEPASSWORD();
+			if(result.equals("FAILURE")) {
+				result = updateResult.getMESSAGE();
+			}
 		} catch (Exception e) {
 			EasyLogger.e("UpdateUserPassword", "exception", e);
-			result = App.USER_VALIDITY_FAILURE;
+			result = App.SERVEREXCEPTION;
 		}
 		return result;
 	}
@@ -171,9 +174,12 @@ public class SlaughterWs extends BaseWs {
 			
 			BaseResult missionInfoByAdd = gson.fromJson(result, BaseResult.class);
 			result = missionInfoByAdd.getPRINTBYADD();
+			if(result.equals("FAILURE")) {
+				result = missionInfoByAdd.getMESSAGE();
+			}
 		} catch (Exception e) {
 			EasyLogger.e("printMissionInfoByAdd", "exception", e);
-			result = App.USER_VALIDITY_FAILURE;
+			result = App.SERVEREXCEPTION;
 		}
 		return result;
 	}
@@ -205,9 +211,12 @@ public class SlaughterWs extends BaseWs {
 			
 			BaseResult missionInfoByCharge = gson.fromJson(result, BaseResult.class);
 			result = missionInfoByCharge.getPRINTBYCHARGE();
+			if(result.equals("FAILURE")) {
+				result = missionInfoByCharge.getMESSAGE();
+			}
 		} catch (Exception e) {
 			EasyLogger.e("printMissionInfoByCharge", "exception", e);
-			result = App.USER_VALIDITY_FAILURE;
+			result = App.SERVEREXCEPTION;
 		}
 		return result;
 	}
@@ -244,9 +253,12 @@ public class SlaughterWs extends BaseWs {
 			
 			BaseResult missionInfoByModify = gson.fromJson(result, BaseResult.class);
 			result = missionInfoByModify.getPRINTBYMODIFY();
+			if(result.equals("FAILURE")) {
+				result = missionInfoByModify.getMESSAGE();
+			}
 		} catch (Exception e) {
 			EasyLogger.e("printMissionInfoByModify", "exception", e);
-			result = App.USER_VALIDITY_FAILURE;
+			result = App.SERVEREXCEPTION;
 		}
 		return result;
 	}

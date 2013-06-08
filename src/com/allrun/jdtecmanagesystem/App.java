@@ -4,7 +4,11 @@ import android.app.Application;
 
 public class App extends Application {
 	
+	public static final int HTTPTIMEOUT = 1000*30;
+	
 	public static final String USER_VALIDITY_FAILURE = "FAILURE"; 
+	
+	public static final String SERVEREXCEPTION = "访问服务器异常"; 
 	
 	public static final String PREFER_NAME = "JDTecManage";
 	public static final String PREFER_ISSAVEUSERNAME = "isUserNameSave";

@@ -12,6 +12,8 @@ public class BaseResult {
 	private String PRINTBYMODIFY; 
 	private String PRINTBYCHARGE; 
 	
+	private String MESSAGE;
+	
 	private List<Mission> MISSIONLIST; //任务列表
 	private List<MissionInfo> MISSIONINFO;
 	public String getLOGIN() {
@@ -61,6 +63,12 @@ public class BaseResult {
 	}
 	public void setUSERCODE(String uSERCODE) {
 		USERCODE = uSERCODE;
+	}
+	public String getMESSAGE() {
+		return MESSAGE;
+	}
+	public void setMESSAGE(String mESSAGE) {
+		MESSAGE = mESSAGE;
 	}
 	
 	

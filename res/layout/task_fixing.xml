@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEEEEE"
+    android:background="@color/act_default_backcolor"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -10,49 +10,62 @@
         android:layout_height="48dp"
         android:background="@drawable/header" >
     </LinearLayout>
-
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal" >
+        <LinearLayout style="@style/task_list_item_linear_tag" >
 
             <TextView
-                style="@style/task_list_tag"
+                style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_task_num" />
 
             <TextView
                 android:id="@+id/mission_fixing_task_num_tv"
                 style="@style/task_list_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/task_list_item_linear_tag" >
 
             <TextView
-                style="@style/task_list_tag"
-                android:text="@string/mission_car_num" />
+                style="@style/task_detail_singleline_tag"
+                android:text="@string/mission_task_type" />
 
             <TextView
-                android:id="@+id/mission_fixing_car_num_tv"
+                android:id="@+id/mission_fixing_task_type_tv"
                 style="@style/task_list_content" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal" >
+        <LinearLayout style="@style/task_list_item_linear_tag" >
 
             <TextView
-                style="@style/task_list_tag"
-                android:text="@string/mission_work_type" />
+                style="@style/task_detail_singleline_tag"
+                android:text="@string/belong_region" />
 
             <TextView
-                android:id="@+id/mission_fixing_work_type_tv"
+                android:id="@+id/mission_fixing_area_tv"
                 style="@style/task_list_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/task_list_item_linear_tag" >
 
             <TextView
-                style="@style/task_list_tag"
+                style="@style/task_detail_singleline_tag"
+                android:text="@string/belong_company" />
+
+            <TextView
+                android:id="@+id/mission_fixing_company_tv"
+                style="@style/task_list_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/task_list_item_linear_tag" >
+
+            <TextView
+                style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_driver_name" />
 
             <TextView
@@ -60,21 +73,10 @@
                 style="@style/task_list_content" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal" >
+        <LinearLayout style="@style/task_list_item_linear_tag" >
 
             <TextView
-                style="@style/task_list_tag"
-                android:text="@string/mission_task_type" />
-
-            <TextView
-                android:id="@+id/mission_fixing_task_type_tv"
-                style="@style/task_list_content" />
-
-            <TextView
-                style="@style/task_list_tag"
+                style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_driver_telephone" />
 
             <TextView
@@ -82,21 +84,52 @@
                 style="@style/task_list_content" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal" >
+        <LinearLayout style="@style/task_list_item_linear_tag" >
 
             <TextView
-                style="@style/task_list_tag"
+                style="@style/task_detail_singleline_tag"
+                android:text="@string/mission_car_num" />
+
+            <TextView
+                android:id="@+id/mission_fixing_car_num_tv"
+                style="@style/task_list_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/task_list_item_linear_tag" >
+
+            <TextView
+                style="@style/task_detail_singleline_tag"
+                android:text="@string/car_device_company" />
+
+            <TextView
+                android:id="@+id/mission_fixing_car_device_company_tv"
+                style="@style/task_list_content" />
+        </LinearLayout>
+        <LinearLayout style="@style/task_list_item_linear_tag" >
+
+            <TextView
+                style="@style/task_detail_singleline_tag"
+                android:text="@string/car_device_type" />
+
+            <TextView
+                android:id="@+id/mission_fixing_car_device_typenum_tv"
+                style="@style/task_list_content" />
+        </LinearLayout>
+        <LinearLayout style="@style/task_list_item_linear_tag" >
+
+            <TextView
+                style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_car_device_num" />
 
             <TextView
                 android:id="@+id/mission_fixing_car_device_num_tv"
                 style="@style/task_list_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/task_list_item_linear_tag" >
 
             <TextView
-                style="@style/task_list_tag"
+                style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_car_card_num" />
 
             <TextView
@@ -114,16 +147,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textSize="@dimen/small_text_size"
                 android:text="@string/mission_device_company"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <EditText
@@ -132,21 +166,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="40dp"
-                android:hint="输入设备厂家" />
+                android:background="@drawable/edittextback"
+                android:hint="@string/input_device_company" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textSize="@dimen/small_text_size"
                 android:text="@string/mission_device_type"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <EditText
@@ -155,21 +191,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="40dp"
-                android:hint="输入设备型号" />
+                android:background="@drawable/edittextback"
+                android:hint="@string/input_device_type" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textSize="@dimen/small_text_size"
                 android:text="@string/mission_device_num"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <EditText
@@ -178,21 +216,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="40dp"
-                android:hint="输入设备编号" />
+                android:background="@drawable/edittextback"
+                android:hint="@string/input_device_num" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textSize="@dimen/small_text_size"
                 android:text="@string/mission_card_num"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <EditText
@@ -201,21 +241,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="40dp"
-                android:hint="输入通信卡号" />
+                android:background="@drawable/edittextback"
+                android:hint="@string/input_card_num" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal" >
-			<Button 
-			    android:id="@+id/mission_fixing_print_btn"
-			    android:layout_width="100dp"
-			    android:layout_height="40dp"
-			    android:background="@drawable/btnblue_sel"
-			    android:textColor="#FFFFFF"
-			    android:text="@string/list_print"/>
+
+            <Button
+                android:id="@+id/mission_fixing_print_btn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+				android:textSize="@dimen/medium_text_size"
+                android:background="@drawable/btnblue_sel"
+                android:text="@string/list_print"
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
-
+</ScrollView>
 </LinearLayout>

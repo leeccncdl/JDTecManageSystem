@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEEEEE"
+    android:background="@color/act_default_backcolor"
     android:orientation="vertical" >
 	<LinearLayout 
 	    android:layout_width="match_parent"
@@ -13,20 +13,11 @@
 	    android:orientation="horizontal">
 	    <EditText 
 	        android:id="@+id/server_list_1_edt"
-	        android:layout_width="220dp"
-	        android:text="@string/default_server"
-	        android:layout_height="wrap_content"
-	        android:hint="@string/input_server_hint"
-	        android:background="@drawable/edittextback"
+			style="@style/server_list_input_content"
 	        />
 	    <Button 
 	        android:id="@+id/server_list_1_btn"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:layout_marginLeft="8dp"
-	        android:textColor="#FFFFFF"
-	        android:text="@string/pick_server"
-	        android:background="@drawable/btndarkblue_sel"/>
+			style="@style/server_list_input_btn"/>
 	</LinearLayout>
 	<LinearLayout 
 	    android:layout_width="match_parent"
@@ -37,19 +28,11 @@
 	    android:orientation="horizontal">
 	    <EditText 
 	        android:id="@+id/server_list_2_edt"
-	        android:layout_width="220dp"
-	        android:hint="@string/input_server_hint"
-	        android:background="@drawable/edittextback"
-	        android:layout_height="wrap_content"
+			style="@style/server_list_input_content"
 	        />
 	    <Button 
 	        android:id="@+id/server_list_2_btn"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:layout_marginLeft="8dp"
-	        android:textColor="#FFFFFF"
-	        android:text="@string/pick_server"
-	        android:background="@drawable/btndarkblue_sel"/>
+			style="@style/server_list_input_btn"/>
 	</LinearLayout>
 	<LinearLayout 
 	    android:layout_width="match_parent"
@@ -60,18 +43,10 @@
 	    android:orientation="horizontal">
 	    <EditText 
 	        android:id="@+id/server_list_3_edt"
-	        android:background="@drawable/edittextback"
-	        android:hint="@string/input_server_hint"
-	        android:layout_width="220dp"
-	        android:layout_height="wrap_content"/>
+			style="@style/server_list_input_content"/>
 	    <Button 
 	        android:id="@+id/server_list_3_btn"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:layout_marginLeft="8dp"
-	        android:textColor="#FFFFFF"
-	        android:text="@string/pick_server"
-	        android:background="@drawable/btndarkblue_sel"/>
+	        style="@style/server_list_input_btn"/>
 	</LinearLayout>
 	<LinearLayout 
 	    android:layout_width="match_parent"
@@ -83,19 +58,11 @@
 	    android:orientation="horizontal">
 	    <EditText 
 	        android:id="@+id/server_list_4_edt"
-	        android:layout_width="220dp"
-	        android:hint="@string/input_server_hint"
-	        android:background="@drawable/edittextback"
-	        android:layout_height="wrap_content"
+			style="@style/server_list_input_content"
 	        />
 	    <Button 
 	        android:id="@+id/server_list_4_btn"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:layout_marginLeft="8dp"
-	        android:textColor="#FFFFFF"
-	        android:text="@string/pick_server"
-	        android:background="@drawable/btndarkblue_sel"/>
+	        style="@style/server_list_input_btn"/>
 	</LinearLayout>
 
 </LinearLayout>

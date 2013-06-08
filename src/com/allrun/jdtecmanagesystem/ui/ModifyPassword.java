@@ -112,7 +112,7 @@ public class ModifyPassword extends Activity implements OnClickListener {
 				Toast.makeText(ModifyPassword.this, "修改密码成功", Toast.LENGTH_LONG).show();
 				finish();
 			} else {
-				Toast.makeText(ModifyPassword.this, "修改密码失败", Toast.LENGTH_LONG).show();
+				Toast.makeText(ModifyPassword.this, result, Toast.LENGTH_LONG).show();
 			}
 		}
 	}

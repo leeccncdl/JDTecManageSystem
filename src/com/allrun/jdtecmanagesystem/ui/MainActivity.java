@@ -1,7 +1,10 @@
 package com.allrun.jdtecmanagesystem.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -20,6 +23,7 @@ import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.AppLogger;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
+import com.allrun.jdtecmanagesystem.utils.Utility;
 
 public class MainActivity extends Activity implements OnClickListener {
 	
@@ -47,7 +51,23 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
-		//TODO 检查网络状态
+		
+		if(!Utility.checkNetworkConnect(this)) {
+			AlertDialog.Builder builder = new Builder(this);
+			builder.setMessage("是否重新设置网络");
+			builder.setTitle("网络未连接");
+			builder.setPositiveButton("设置",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
+						}
+
+					});
+
+			builder.setNegativeButton("取消", null);
+			builder.create().show();
+		}
 		findViewById();
 		addlistener();
 		getSharePrefer();

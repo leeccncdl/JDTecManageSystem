@@ -17,51 +17,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"
+            android:textSize="@dimen/medium_text_size"
+            android:textStyle="bold"
             android:text="@string/modifypass_user_name"/>
         <EditText
             android:id="@+id/modify_pass_username_edt"
-            android:background="@drawable/edittextback"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+			style="@style/login_input_content"
             android:hint=""/>
         <TextView 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
+			style="@style/login_input_tag"
+            android:textSize="@dimen/medium_text_size"
+            android:textStyle="bold"
             android:text="@string/modifypass_old_password"/>
         <EditText
             android:id="@+id/modify_pass_old_pass_edt"
-            android:background="@drawable/edittextback"
+			style="@style/login_input_content"
             android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:hint=""/>
         <TextView 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
+			style="@style/login_input_tag"
+            android:textSize="@dimen/medium_text_size"
+            android:textStyle="bold"
             android:text="@string/modifypass_new_password"/>
         <EditText
             android:id="@+id/modify_pass_new_pass_edt"
-            android:background="@drawable/edittextback"
+			style="@style/login_input_content"
             android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:hint=""/>
         <TextView 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
+			style="@style/login_input_tag"
+            android:textSize="@dimen/medium_text_size"
+            android:textStyle="bold"
             android:text="@string/modifypass_confirm_password"/>
         <EditText
             android:id="@+id/modify_pass_confirm_pass_edt"
-            android:background="@drawable/edittextback"
             android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/login_input_content"
             android:hint=""/>
         <LinearLayout 
             android:layout_width="match_parent"
@@ -72,6 +63,7 @@
                 android:id="@+id/modify_pass_confirm_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
                 android:layout_marginRight="4dp"
                 android:background="@drawable/btndarkblue_sel"
                 android:text="@string/modifypass_confirm"/>
@@ -80,6 +72,7 @@
                 android:background="@drawable/btnblue_sel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
                 android:layout_marginRight="4dp"
                 android:text="@string/modifypass_cancel"/>
         </LinearLayout>

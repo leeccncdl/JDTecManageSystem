@@ -12,6 +12,7 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
+import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.utils.Base64;
 import com.allrun.jdtecmanagesystem.utils.EasyLogger;
 
@@ -50,7 +51,8 @@ public class DataAccessSoap {
 	public String request() throws IOException, XmlPullParserException,
 			RuntimeException, SocketTimeoutException {
 
-		HttpTransportSE androidHttpTransport = new HttpTransportSE(mUrl, 90000);
+		HttpTransportSE androidHttpTransport = new HttpTransportSE(mUrl, App.HTTPTIMEOUT);
+		
 
 		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
 				SoapEnvelope.VER11);
@@ -78,7 +80,7 @@ public class DataAccessSoap {
 	public byte[] requestBytes() throws IOException, XmlPullParserException,
 			RuntimeException, SocketTimeoutException {
 
-		HttpTransportSE androidHttpTransport = new HttpTransportSE(mUrl, 90000);
+		HttpTransportSE androidHttpTransport = new HttpTransportSE(mUrl, App.HTTPTIMEOUT);
 
 		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
 				SoapEnvelope.VER11);

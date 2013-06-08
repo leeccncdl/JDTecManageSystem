@@ -23,6 +23,10 @@ public class MissionInfo {
 	private String COST;//费用					String
 	private String VEHICLEDEVICENUMBER;//原车设备编号		String
 	private String VEHICLECOMMUNICTIONCARD;//原车通信卡号		String
+	private String VEHICLECODEVICEMANUFACTURE;///原车设备厂家		String
+	private String VEHICLECODEVICETYPE;//原车设备型号		String
+	private String REGION;//所属区所（所属区域）			String
+	private String AFFILIATION;//所属单位（单位名称）		String
 	
 	public String getGUID() {
 		return GUID;
@@ -150,4 +154,31 @@ public class MissionInfo {
 	public void setDIRVERPHONE(String dIRVERPHONE) {
 		DIRVERPHONE = dIRVERPHONE;
 	}
+	public String getVEHICLECODEVICEMANUFACTURE() {
+		return VEHICLECODEVICEMANUFACTURE;
+	}
+	public void setVEHICLECODEVICEMANUFACTURE(String vEHICLECODEVICEMANUFACTURE) {
+		VEHICLECODEVICEMANUFACTURE = vEHICLECODEVICEMANUFACTURE;
+	}
+	public String getVEHICLECODEVICETYPE() {
+		return VEHICLECODEVICETYPE;
+	}
+	public void setVEHICLECODEVICETYPE(String vEHICLECODEVICETYPE) {
+		VEHICLECODEVICETYPE = vEHICLECODEVICETYPE;
+	}
+	public String getREGION() {
+		return REGION;
+	}
+	public void setREGION(String rEGION) {
+		REGION = rEGION;
+	}
+	public String getAFFILIATION() {
+		return AFFILIATION;
+	}
+	public void setAFFILIATION(String aFFILIATION) {
+		AFFILIATION = aFFILIATION;
+	}
+	
+	
+	
 }

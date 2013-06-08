@@ -26,7 +26,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 	
 	private TextView mTaskNumTv;
 	private TextView mCarNumTv;
-	private TextView mWorkTypeTv;
+//	private TextView mWorkTypeTv;
 	private TextView mDriverNameTv;
 	private TextView mTaskTypeTv;
 	private TextView mDriverTelephoneTv;
@@ -37,6 +37,11 @@ public class MissionFixing extends Activity implements OnClickListener {
 	private EditText mDeviceTypeEdt;
 	private EditText mDeviceNumEdt;
 	private EditText mCardNumEdt;
+	
+	private TextView mAreaTv;
+	private TextView mCompanyTv;
+	private TextView mCarDeviceCompanyTv;
+	private TextView mCarDeviceTypeNumTv;
 	
 	private Button mPrintBtn;
 	
@@ -65,7 +70,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 	private void findViewById() {
 		mTaskNumTv = (TextView) findViewById(R.id.mission_fixing_task_num_tv);
 		mCarNumTv = (TextView) findViewById(R.id.mission_fixing_car_num_tv);
-		mWorkTypeTv = (TextView) findViewById(R.id.mission_fixing_work_type_tv);
+//		mWorkTypeTv = (TextView) findViewById(R.id.mission_fixing_work_type_tv);
 		mDriverNameTv = (TextView) findViewById(R.id.mission_fixing_driver_name_tv);
 		mTaskTypeTv = (TextView) findViewById(R.id.mission_fixing_task_type_tv);
 		mDriverTelephoneTv = (TextView) findViewById(R.id.mission_fixing_driver_telephone_tv);
@@ -77,6 +82,12 @@ public class MissionFixing extends Activity implements OnClickListener {
 		mDeviceNumEdt = (EditText) findViewById(R.id.mission_fixing_devece_num_edt);
 		mCardNumEdt = (EditText) findViewById(R.id.mission_fixing_card_num_edt);
 		mPrintBtn = (Button) findViewById(R.id.mission_fixing_print_btn);
+		
+		mAreaTv = (TextView) findViewById(R.id.mission_fixing_area_tv);
+		mCompanyTv = (TextView) findViewById(R.id.mission_fixing_company_tv);
+		mCarDeviceCompanyTv = (TextView) findViewById(R.id.mission_fixing_company_tv);
+		mCarDeviceTypeNumTv = (TextView) findViewById(R.id.mission_fixing_car_device_typenum_tv);
+	
 	}
 
 	private class QueryMissionDetailTask extends
@@ -105,9 +116,9 @@ public class MissionFixing extends Activity implements OnClickListener {
 			mMissionInfoList = result.getMISSIONINFO();
 			if (mMissionInfoList.size() != 0) {
 
-				mTaskNumTv.setText(mMissionInfoList.get(0).getGUID());
+				mTaskNumTv.setText(mMissionInfoList.get(0).getMISSIONNO());
 				mCarNumTv.setText(mMissionInfoList.get(0).getPLATENO());
-				mWorkTypeTv.setText(mMissionInfoList.get(0).getBUSINESSTYPE());
+//				mWorkTypeTv.setText(mMissionInfoList.get(0).getBUSINESSTYPE());
 				mDriverNameTv.setText(mMissionInfoList.get(0).getDIRVER());
 				mTaskTypeTv.setText(mMissionInfoList.get(0).getMISSIONTYPE());
 				mDriverTelephoneTv.setText(mMissionInfoList.get(0).getDIRVERPHONE());
@@ -115,6 +126,11 @@ public class MissionFixing extends Activity implements OnClickListener {
 						.getVEHICLEDEVICENUMBER());
 				mCarCardNumTv.setText(mMissionInfoList.get(0)
 						.getVEHICLECOMMUNICTIONCARD());
+				
+				mAreaTv.setText(mMissionInfoList.get(0).getREGION());
+				mCompanyTv.setText(mMissionInfoList.get(0).getAFFILIATION());
+				mCarDeviceCompanyTv.setText(mMissionInfoList.get(0).getVEHICLECODEVICEMANUFACTURE());
+				mCarDeviceTypeNumTv.setText(mMissionInfoList.get(0).getVEHICLECODEVICETYPE());
 				
 				if(mMissionInfoList.get(0).getDEVICEMANUFACTURE()!=null && !mMissionInfoList.get(0).getDEVICEMANUFACTURE().equals("")) {
 					mDeviceCompanyEdt.setText(mMissionInfoList.get(0).getDEVICEMANUFACTURE());
@@ -153,7 +169,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 			if(result.equals("SUCCESS")) {
 				Toast.makeText(MissionFixing.this, "打印请求返回成功", Toast.LENGTH_LONG).show();
 			} else {
-				Toast.makeText(MissionFixing.this, "打印请求提交失败", Toast.LENGTH_LONG).show();
+				Toast.makeText(MissionFixing.this, result, Toast.LENGTH_LONG).show();
 			}
 		}
 		
@@ -163,15 +179,27 @@ public class MissionFixing extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.mission_fixing_print_btn:
-			new PrintFixingTask().execute(mDeviceCompanyEdt.getText().toString().trim(),
-											mDeviceTypeEdt.getText().toString().trim(),
-											mDeviceNumEdt.getText().toString().trim(),
-											mCardNumEdt.getText().toString().trim());
+			if(checkInput()) {
+				new PrintFixingTask().execute(mDeviceCompanyEdt.getText().toString().trim(),
+						mDeviceTypeEdt.getText().toString().trim(),
+						mDeviceNumEdt.getText().toString().trim(),
+						mCardNumEdt.getText().toString().trim());
+			}
 			break;
 
 		default:
 			break;
 		}
 		
+	}
+	
+	private boolean checkInput() {
+		if(mDeviceCompanyEdt.getText().toString().equals("") || 
+				mDeviceTypeEdt.getText().toString().equals("")||
+				mCarDeviceCompanyTv.getText().toString().equals("")||
+				mCarDeviceTypeNumTv.getText().toString().equals("")) {
+			Toast.makeText(MissionFixing.this, "输入不能为空", Toast.LENGTH_LONG).show();
+		}
+		return true;
 	}
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 显示项标签字大小 -->
+    <dimen name="small_text_size">14sp</dimen>
+    <!-- 按钮及其他字大小 -->
+    <dimen name="medium_text_size">16sp</dimen>
+</resources>

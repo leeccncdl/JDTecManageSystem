@@ -47,9 +47,23 @@
     <string name="back">返回</string>
     <!--缴费-->
     <string name="cost">费用：</string>
+    <string name="pick_end_date">选择到期日期</string>
+    <string name="pick_date">选择日期</string>
     <string name="yuan">元</string>
+    <string name="input_charge">输入费用</string>
     <!--server add-->
     <string name="default_server">http://192.168.102.10:812</string>
     <string name="input_server_hint">输入要连接的服务器地址</string>
     <string name="pick_server">选定</string>
+    <!--维修-->
+    <string name="input_device_company">输入设备厂家</string>
+    <string name="input_device_type">输入设备型号</string>
+    <string name="input_device_num">输入设备编号</string>
+    <string name="input_card_num">输入通信卡号</string>
+    
+    
+    <string name="belong_company">所属单位：</string>
+    <string name="belong_region">所属区所：</string>
+    <string name="car_device_type">原车设备型号：</string>
+    <string name="car_device_company">原车设备厂家：</string>
 </resources>

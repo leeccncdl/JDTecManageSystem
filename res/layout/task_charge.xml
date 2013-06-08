@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEEEEE"
+    android:background="@color/act_default_backcolor"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -17,20 +17,36 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal" >
+			style="@style/task_list_item_linear_tag">
 
             <TextView
-                style="@style/task_list_tag"
+				style="@style/task_list_singleline_tag"
                 android:text="@string/mission_task_num" />
 
             <TextView
                 android:id="@+id/mission_charge_task_num_tv"
                 style="@style/task_list_content" />
 
+        </LinearLayout>
+
+                <LinearLayout
+			style="@style/task_list_item_linear_tag">
+
             <TextView
-                style="@style/task_list_tag"
+                style="@style/task_list_singleline_tag"
+                android:text="@string/mission_task_type" />
+
+            <TextView
+                android:id="@+id/mission_charge_task_type_tv"
+                style="@style/task_list_content" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+			style="@style/task_list_item_linear_tag" >
+            <TextView
+				style="@style/task_list_singleline_tag"
+				android:layout_marginLeft="32dp"
                 android:text="@string/mission_car_num" />
 
             <TextView
@@ -38,71 +54,21 @@
                 style="@style/task_list_content" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal" >
 
-            <TextView
-                style="@style/task_list_tag"
-                android:text="@string/mission_work_type" />
-
-            <TextView
-                android:id="@+id/mission_charge_work_type_tv"
-                style="@style/task_list_content" />
-
-            <TextView
-                style="@style/task_list_tag"
-                android:text="@string/mission_driver_name" />
-
-            <TextView
-                android:id="@+id/mission_charge_driver_name_tv"
-                style="@style/task_list_content" />
-        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal" >
+			style="@style/task_list_item_linear_tag" >
 
             <TextView
-                style="@style/task_list_tag"
-                android:text="@string/mission_task_type" />
+                style="@style/task_list_singleline_tag"
+                android:text="@string/belong_company" />
 
             <TextView
-                android:id="@+id/mission_charge_task_type_tv"
+                android:id="@+id/mission_charge_company_tv"
                 style="@style/task_list_content" />
 
-            <TextView
-                style="@style/task_list_tag"
-                android:text="@string/mission_driver_telephone" />
-
-            <TextView
-                android:id="@+id/mission_charge_driver_telephone_tv"
-                style="@style/task_list_content" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal" >
-
-            <TextView
-                style="@style/task_list_tag"
-                android:text="@string/mission_car_device_num" />
-
-            <TextView
-                android:id="@+id/mission_charge_car_device_num_tv"
-                style="@style/task_list_content" />
-
-            <TextView
-                style="@style/task_list_tag"
-                android:text="@string/mission_car_card_num" />
-
-            <TextView
-                android:id="@+id/mission_charge_car_card_num_tv"
-                style="@style/task_list_content" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,22 +89,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="@string/mission_end_date"
-                android:textColor="#000000"
+                android:textColor="@color/black"
+				android:textSize="@dimen/small_text_size"	
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/mission_charge_end_date_edt"
-                android:editable="false"
+                android:id="@+id/mission_charge_end_dstring_edt"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:hint="输入到期日期" />
+                android:background="@drawable/edittextback"
+                android:hint="@string/pick_end_date" />
             <Button 
                 android:id="@+id/mission_charge_pick_date_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="选择日期"/>
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+				android:textSize="@dimen/small_text_size"	
+                android:background="@drawable/btndarkblue_sel"
+                android:text="@string/pick_date"/>
         </LinearLayout>
 
         <LinearLayout
@@ -150,27 +120,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="34dp"
                 android:text="@string/cost"
-                android:textColor="#000000"
+				android:textSize="@dimen/small_text_size"	
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/mission_charge_cost_edt"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/edittextback"
+                android:hint="@string/input_charge"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+				android:textSize="@dimen/small_text_size"	
                 android:text="@string/yuan"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
-
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,8 +154,9 @@
 			    android:id="@+id/mission_charge_print_btn"
 			    android:layout_width="100dp"
 			    android:layout_height="40dp"
+				android:textSize="@dimen/medium_text_size"	
 			    android:background="@drawable/btnblue_sel"
-			    android:textColor="#FFFFFF"
+			    android:textColor="@color/white"
 			    android:text="@string/list_print"/>
         </LinearLayout>
     </LinearLayout>

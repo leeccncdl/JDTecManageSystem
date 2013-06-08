@@ -42,6 +42,8 @@ public class MissionDetail extends Activity implements OnClickListener {
 	
 	private LinearLayout mContentRow1Ll;
 	private LinearLayout mContentRow2Ll;
+	private LinearLayout mContentRow3Ll;
+	private LinearLayout mContentRow4Ll;
 	
 	private LinearLayout mBackLl;
 	
@@ -87,6 +89,8 @@ public class MissionDetail extends Activity implements OnClickListener {
 		mDistributeDescriptionTv = (TextView) findViewById(R.id.mission_distribute_description_tv);
 		mContentRow1Ll = (LinearLayout) findViewById(R.id.mission_row_1_ll);
 		mContentRow2Ll = (LinearLayout) findViewById(R.id.mission_row_2_ll);
+		mContentRow3Ll = (LinearLayout) findViewById(R.id.mission_row_3_ll);
+		mContentRow4Ll = (LinearLayout) findViewById(R.id.mission_row_4_ll);
 		
 		mBackLl = (LinearLayout) findViewById(R.id.task_detail_back_ll);
 	}
@@ -119,9 +123,11 @@ public class MissionDetail extends Activity implements OnClickListener {
 				if(mMissionInfoList.get(0).getMISSIONTYPECODE().equals("2")) {
 					mContentRow1Ll.setVisibility(View.GONE);
 					mContentRow2Ll.setVisibility(View.GONE);
+					mContentRow3Ll.setVisibility(View.GONE);
+					mContentRow4Ll.setVisibility(View.GONE);
 				}
 				
-				mTaskNumTv.setText(mMissionInfoList.get(0).getGUID());
+				mTaskNumTv.setText(mMissionInfoList.get(0).getMISSIONNO());
 				mCarNumTv.setText(mMissionInfoList.get(0).getPLATENO());
 				mWorkTypeTv.setText(mMissionInfoList.get(0).getBUSINESSTYPE());
 				mDriverNameTv.setText(mMissionInfoList.get(0).getDIRVER());
@@ -129,8 +135,19 @@ public class MissionDetail extends Activity implements OnClickListener {
 				mDriverTelephoneTv.setText(mMissionInfoList.get(0).getDIRVERPHONE());
 				mCarDevideNumTv.setText(mMissionInfoList.get(0).getVEHICLEDEVICENUMBER());
 				mCarCardNumTv.setText(mMissionInfoList.get(0).getVEHICLECOMMUNICTIONCARD());
-				mEndDateTv.setText(mMissionInfoList.get(0).getEXPRATIONDATE());
-				mTaskDateTv.setText(mMissionInfoList.get(0).getMISSIONDATE());
+				
+				if(mMissionInfoList.get(0).getEXPRATIONDATE() == null||mMissionInfoList.get(0).getEXPRATIONDATE().equals("null")) {
+					mEndDateTv.setText("");
+				} else {
+					
+					mEndDateTv.setText(mMissionInfoList.get(0).getEXPRATIONDATE());
+				}
+				if(mMissionInfoList.get(0).getMISSIONDATE()==null||mMissionInfoList.get(0).getMISSIONDATE().equals("null")) {
+					
+					mTaskDateTv.setText("");
+				} else {
+					mTaskDateTv.setText(mMissionInfoList.get(0).getMISSIONDATE());
+				}
 				mTaskDescriptionTv.setText(mMissionInfoList.get(0).getMISSIONNOTE());
 				mDeviceCompanyTv.setText(mMissionInfoList.get(0).getDEVICEMANUFACTURE());
 				mDeviceTypeTv.setText(mMissionInfoList.get(0).getDEVICETYPE());

@@ -98,8 +98,17 @@ public class MissionList extends Activity implements OnClickListener {
 			vh.carNumTv.setText(missionList.get(position).getPLATENO());
 			vh.taskTypeTv.setText(missionList.get(position).getMISSIONTYPE());
 			vh.deviceNumTv.setText(missionList.get(position).getGUID());
-			vh.taskDateTv.setText(missionList.get(position).getMISSIONDATE());
-			vh.printDateTv.setText(missionList.get(position).getPRINTDATE());
+			if(missionList.get(position).getMISSIONDATE() == null || missionList.get(position).getMISSIONDATE().equals("")||missionList.get(position).getMISSIONDATE().equals("null")) {
+				vh.taskDateTv.setText("");
+			} else {
+				vh.taskDateTv.setText(missionList.get(position).getMISSIONDATE());
+			}
+			
+			if(missionList.get(position).getPRINTDATE() == null || missionList.get(position).getPRINTDATE().equals("")||missionList.get(position).getPRINTDATE().equals("null")) {
+				vh.printDateTv.setText("");
+			} else {
+				vh.printDateTv.setText(missionList.get(position).getPRINTDATE());
+			}
 			vh.detailBtn.setOnClickListener(new OnClickListener() {
 				
 				@Override
