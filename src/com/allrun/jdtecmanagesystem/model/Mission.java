@@ -11,6 +11,8 @@ public class Mission {
 	private String GUID;//任务GUID						
 	private String MISSIONDATE;//任务日期					
 	private String PRINTDATE;//打印日期		
+	private String VEHICLEDEVICENUMBER;//设备编号
+
 	public String getVEHICLEGUID() {
 		return VEHICLEGUID;
 	}
@@ -58,6 +60,12 @@ public class Mission {
 	}
 	public void setPRINTDATE(String pRINTDATE) {
 		PRINTDATE = pRINTDATE;
+	}
+	public String getVEHICLEDEVICENUMBER() {
+		return VEHICLEDEVICENUMBER;
+	}
+	public void setVEHICLEDEVICENUMBER(String vEHICLEDEVICENUMBER) {
+		VEHICLEDEVICENUMBER = vEHICLEDEVICENUMBER;
 	}
 	
 	

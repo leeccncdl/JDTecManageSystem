@@ -170,6 +170,7 @@ public class MissionCharge extends Activity implements OnClickListener {
 		case R.id.mission_charge_print_btn:
 			if(checkInput()) {
 				new PrintChargeTask().execute(mChargeEndDateEdt.getText().toString().trim(),mCostEdt.getText().toString().trim());
+				//TODO 打印按钮响应
 			}
 			break;
 		case R.id.mission_charge_pick_date_btn:

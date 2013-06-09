@@ -13,6 +13,8 @@ public class BaseResult {
 	private String PRINTBYCHARGE; 
 	
 	private String MESSAGE;
+
+	private String GETMISSIONLIST;
 	
 	private List<Mission> MISSIONLIST; //任务列表
 	private List<MissionInfo> MISSIONINFO;
@@ -69,6 +71,12 @@ public class BaseResult {
 	}
 	public void setMESSAGE(String mESSAGE) {
 		MESSAGE = mESSAGE;
+	}
+	public String getGETMISSIONLIST() {
+		return GETMISSIONLIST;
+	}
+	public void setGETMISSIONLIST(String gETMISSIONLIST) {
+		GETMISSIONLIST = gETMISSIONLIST;
 	}
 	
 	

@@ -5,6 +5,7 @@ import com.allrun.jdtecmanagesystem.AppLogger;
 import com.allrun.jdtecmanagesystem.dao.DataAccessSoap.PropertyType;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.utils.EasyLogger;
+import com.google.gson.JsonParseException;
 
 /** 
 * @ClassName: SlaughterWs 
@@ -24,7 +25,7 @@ public class SlaughterWs extends BaseWs {
 	 */
 	public static String checkLogin(String strUserName, String strPassWord){
 		buildGsonInstance();
-		
+		System.out.println(App.BASE_NAMESPACE+":" +App.SERVER_URL+":"+"CheckLoginUser");
 		DataAccessSoap ksoap2 = new DataAccessSoap(App.BASE_NAMESPACE, App.SERVER_URL, "CheckLoginUser");
 		
 		ksoap2.setProperty("strUserName", strUserName, PropertyType.TYPE_STRING);
@@ -116,7 +117,12 @@ public class SlaughterWs extends BaseWs {
 			EasyLogger.e("getMissionList result:", result);
 			
 			missionListResult = gson.fromJson(result, BaseResult.class);
-		} catch (Exception e) {
+			
+		} catch (JsonParseException e) {
+			return new BaseResult();
+		}
+		
+		catch (Exception e) {
 			EasyLogger.e("getMissionList", "exception", e);
 			missionListResult = null;
 		}

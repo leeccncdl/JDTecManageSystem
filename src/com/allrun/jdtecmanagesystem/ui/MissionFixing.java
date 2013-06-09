@@ -184,6 +184,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 						mDeviceTypeEdt.getText().toString().trim(),
 						mDeviceNumEdt.getText().toString().trim(),
 						mCardNumEdt.getText().toString().trim());
+				//TODO 打印按钮响应
 			}
 			break;
 
@@ -194,11 +195,12 @@ public class MissionFixing extends Activity implements OnClickListener {
 	}
 	
 	private boolean checkInput() {
-		if(mDeviceCompanyEdt.getText().toString().equals("") || 
-				mDeviceTypeEdt.getText().toString().equals("")||
-				mCarDeviceCompanyTv.getText().toString().equals("")||
-				mCarDeviceTypeNumTv.getText().toString().equals("")) {
+		if(mDeviceCompanyEdt.getText().toString().trim().equals("") || 
+				mDeviceTypeEdt.getText().toString().trim().equals("")||
+				mDeviceNumEdt.getText().toString().trim().equals("")||
+				mCardNumEdt.getText().toString().trim().equals("")) {
 			Toast.makeText(MissionFixing.this, "输入不能为空", Toast.LENGTH_LONG).show();
+			return false;
 		}
 		return true;
 	}

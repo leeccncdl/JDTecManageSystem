@@ -51,14 +51,17 @@
                 style="@style/task_list_content" />
         </LinearLayout>
 
-        <LinearLayout style="@style/task_list_item_linear_tag" >
+        <LinearLayout style="@style/task_list_item_linear_tag"
+            android:layout_height="wrap_content" >
 
             <TextView
                 style="@style/task_detail_singleline_tag"
+                android:gravity="top|right"
                 android:text="@string/belong_company" />
 
             <TextView
                 android:id="@+id/mission_fixing_company_tv"
+                android:layout_marginRight="10dp"
                 style="@style/task_list_content" />
         </LinearLayout>
 

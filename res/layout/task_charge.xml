@@ -46,7 +46,7 @@
 			style="@style/task_list_item_linear_tag" >
             <TextView
 				style="@style/task_list_singleline_tag"
-				android:layout_marginLeft="32dp"
+				android:layout_marginLeft="24dp"
                 android:text="@string/mission_car_num" />
 
             <TextView
@@ -57,10 +57,12 @@
 
 
         <LinearLayout
-			style="@style/task_list_item_linear_tag" >
+			style="@style/task_list_item_linear_tag"
+			android:layout_height="wrap_content" >
 
             <TextView
                 style="@style/task_list_singleline_tag"
+                android:gravity="top"
                 android:text="@string/belong_company" />
 
             <TextView
@@ -120,7 +122,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="34dp"
+                android:layout_marginLeft="38dp"
                 android:text="@string/cost"
 				android:textSize="@dimen/small_text_size"	
                 android:textColor="@color/black"
@@ -131,6 +133,7 @@
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:inputType="number"
                 android:background="@drawable/edittextback"
                 android:hint="@string/input_charge"/>
             <TextView

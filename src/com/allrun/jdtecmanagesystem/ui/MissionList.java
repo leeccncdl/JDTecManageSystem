@@ -97,7 +97,7 @@ public class MissionList extends Activity implements OnClickListener {
 			vh.missionNumTv.setText(missionList.get(position).getMISSIONNO());
 			vh.carNumTv.setText(missionList.get(position).getPLATENO());
 			vh.taskTypeTv.setText(missionList.get(position).getMISSIONTYPE());
-			vh.deviceNumTv.setText(missionList.get(position).getGUID());
+			vh.deviceNumTv.setText(missionList.get(position).getVEHICLEDEVICENUMBER());
 			if(missionList.get(position).getMISSIONDATE() == null || missionList.get(position).getMISSIONDATE().equals("")||missionList.get(position).getMISSIONDATE().equals("null")) {
 				vh.taskDateTv.setText("");
 			} else {
@@ -191,8 +191,13 @@ public class MissionList extends Activity implements OnClickListener {
 				return;
 			}
 			mMissionList = result.getMISSIONLIST();
-			MissionListAdapter listAdapter = new MissionListAdapter(mMissionList);
-			mMissionLv.setAdapter(listAdapter);
+			if(mMissionList == null) {
+				Toast.makeText(MissionList.this, "当前任务列表没有任务", Toast.LENGTH_SHORT).show();
+			} else {
+				
+				MissionListAdapter listAdapter = new MissionListAdapter(mMissionList);
+				mMissionLv.setAdapter(listAdapter);
+			}
 		}
 		
 		

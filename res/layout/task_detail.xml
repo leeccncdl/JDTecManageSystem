@@ -1,201 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/act_default_backcolor"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/header">
-        
-    </LinearLayout>
-    <ScrollView 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout 
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-				style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_task_num"/>
-            <TextView 
-                android:id="@+id/mission_task_num_tv"
-                style="@style/task_list_content"/>
-        </LinearLayout>
-                <LinearLayout 
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-				style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_task_type"/>
-            <TextView 
-                android:id="@+id/mission_task_type_tv"
-                style="@style/task_list_content"/>            
-           
-        </LinearLayout>
-        <LinearLayout 
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-				style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_car_num"/>
-            <TextView 
-                android:id="@+id/mission_car_num_tv"
-                style="@style/task_list_content"/>
-        </LinearLayout>
-        <LinearLayout 
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-			style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_work_type"/>
-            <TextView 
-                android:id="@+id/mission_work_type_tv"
-                style="@style/task_list_content"/>
-
-        </LinearLayout>
-        <LinearLayout 
-			style="@style/task_list_item_linear_tag">
-
-            <TextView 
-				style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_driver_name"/>
-            <TextView 
-                android:id="@+id/mission_driver_name_tv"
-                style="@style/task_list_content"/>
-        </LinearLayout>
-
-        <LinearLayout 
-			style="@style/task_list_item_linear_tag">
-         
-            <TextView 
-				style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_driver_telephone"/>
-            <TextView 
-                android:id="@+id/mission_driver_telephone_tv"
-                style="@style/task_list_content"/>            
-        </LinearLayout>
-        <LinearLayout
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-				style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_car_device_num"/>
-            <TextView 
-                android:id="@+id/mission_car_device_num_tv"
-                style="@style/task_list_content"/>            
-        </LinearLayout>
-        <LinearLayout
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-			style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_car_card_num"/>
-            <TextView 
-                android:id="@+id/mission_car_card_num_tv"
-                style="@style/task_list_content"/>            
-        </LinearLayout>
-        <LinearLayout
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-				style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_end_date"/>
-            <TextView 
-                android:id="@+id/mission_end_date_tv"
-                style="@style/task_list_content"/>            
-        </LinearLayout>
-        <LinearLayout
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-                style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_task_date"/>
-            <TextView 
-                android:id="@+id/mission_task_date_tv"
-                style="@style/task_list_content"/>            
-        </LinearLayout>
-        <LinearLayout
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-				style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_task_description"/>
-            <TextView 
-                android:id="@+id/mission_task_description_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:textColor="@color/black"/>
-		</LinearLayout>
-		<LinearLayout
-		    android:id="@+id/mission_row_1_ll"
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-			style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_device_company"/>
-            <TextView 
-                android:id="@+id/mission_device_company_tv"
-                style="@style/task_list_content"/>            
-        </LinearLayout>
-		<LinearLayout
-		    android:id="@+id/mission_row_3_ll"
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-			style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_device_type"/>
-            <TextView 
-                android:id="@+id/mission_device_type_tv"
-                style="@style/task_list_content"/>            
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/mission_row_2_ll"
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-			style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_device_num"/>
-            <TextView 
-                android:id="@+id/mission_device_num_tv"
-                style="@style/task_list_content"/>            
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/mission_row_4_ll"
-			style="@style/task_list_item_linear_tag">
-            <TextView 
-			style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_card_num"/>
-            <TextView 
-                android:id="@+id/mission_card_num_tv"
-                style="@style/task_list_content"/>            
-        </LinearLayout>
-        <LinearLayout
-			style="@style/task_list_item_linear_tag"
-            android:layout_marginBottom="50dp">
-            <TextView 
-				style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_distribute_description"/>
-            <TextView 
-                android:id="@+id/mission_distribute_description_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginRight="10dp"/>
-		</LinearLayout>
-    </LinearLayout>
-</ScrollView>
-</LinearLayout>
-<LinearLayout 
-    android:id="@+id/task_detail_back_ll"
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:background="@drawable/bottom_linear_sel"
-    android:layout_gravity="bottom">
-    <TextView 
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/medium_text_size"
-        android:text="@string/back"/>
-</LinearLayout>
+        android:background="@color/act_default_backcolor"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/header" >
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_task_num" />
+
+                    <TextView
+                        android:id="@+id/mission_task_num_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_task_type" />
+
+                    <TextView
+                        android:id="@+id/mission_task_type_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_car_num" />
+
+                    <TextView
+                        android:id="@+id/mission_car_num_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag" 
+                    			android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:gravity="top|right"
+                        android:text="@string/mission_work_type" />
+
+                    <TextView
+                        android:id="@+id/mission_work_type_tv"
+                        android:layout_marginRight="10dp"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_driver_name" />
+
+                    <TextView
+                        android:id="@+id/mission_driver_name_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_driver_telephone" />
+
+                    <TextView
+                        android:id="@+id/mission_driver_telephone_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_car_device_num" />
+
+                    <TextView
+                        android:id="@+id/mission_car_device_num_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_car_card_num" />
+
+                    <TextView
+                        android:id="@+id/mission_car_card_num_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_end_date" />
+
+                    <TextView
+                        android:id="@+id/mission_end_date_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_task_date" />
+
+                    <TextView
+                        android:id="@+id/mission_task_date_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/task_list_item_linear_tag"
+                              android:layout_height="wrap_content" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+						android:gravity="top|right"
+                        android:text="@string/mission_task_description" />
+
+                    <TextView
+                        android:id="@+id/mission_task_description_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/black" >
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mission_row_1_ll"
+                    style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_device_company" />
+
+                    <TextView
+                        android:id="@+id/mission_device_company_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mission_row_3_ll"
+                    style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_device_type" />
+
+                    <TextView
+                        android:id="@+id/mission_device_type_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mission_row_2_ll"
+                    style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_device_num" />
+
+                    <TextView
+                        android:id="@+id/mission_device_num_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mission_row_4_ll"
+                    style="@style/task_list_item_linear_tag" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:text="@string/mission_card_num" />
+
+                    <TextView
+                        android:id="@+id/mission_card_num_tv"
+                        style="@style/task_list_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/task_list_item_linear_tag"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp" >
+
+                    <TextView
+                        style="@style/task_detail_singleline_tag"
+                        android:gravity="top|right"
+                        android:text="@string/mission_distribute_description" />
+
+                    <TextView
+                        android:id="@+id/mission_distribute_description_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/task_detail_back_ll"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom_linear_sel" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/back"
+            android:textColor="@color/black"
+            
+            android:textSize="@dimen/medium_text_size" />
+    </LinearLayout>
+
 </FrameLayout>

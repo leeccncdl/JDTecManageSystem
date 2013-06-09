@@ -82,7 +82,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 		mDeviceCompanyTv = (TextView) findViewById(R.id.mission_mantenance_device_company_tv);
 		mDeviceTypeTv = (TextView) findViewById(R.id.mission_mantenance_device_type_tv);
 		mDeviceNumTv = (TextView) findViewById(R.id.mission_mantenance_device_num_tv);
-		mCardNumTv = (TextView) findViewById(R.id.mission_mantenance_car_num_tv);
+		mCardNumTv = (TextView) findViewById(R.id.mission_mantenance_card_num_tv);
 //		mDistributeDescriptionTv = (TextView) findViewById(R.id.mission_mantenance_distribute_description_tv);
 		
 		mPrintBtn = (Button) findViewById(R.id.mission_mantenance_print_btn);
@@ -118,6 +118,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 			if (mMissionInfoList.size() != 0) {
 				mTaskNumTv.setText(mMissionInfoList.get(0).getMISSIONNO());
 				mCarNumTv.setText(mMissionInfoList.get(0).getPLATENO());
+				System.out.println(mMissionInfoList.get(0).getPLATENO());
 //				mWorkTypeTv.setText(mMissionInfoList.get(0).getBUSINESSTYPE());
 				mDriverNameTv.setText(mMissionInfoList.get(0).getDIRVER());
 				mTaskTypeTv.setText(mMissionInfoList.get(0).getMISSIONTYPE());
@@ -131,6 +132,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 				mDeviceTypeTv.setText(mMissionInfoList.get(0).getDEVICETYPE());
 				mDeviceNumTv.setText(mMissionInfoList.get(0).getDEVICENUMBER());
 				mCardNumTv.setText(mMissionInfoList.get(0).getCOMMUNICTIONCARD());
+				System.out.println(mMissionInfoList.get(0).getCOMMUNICTIONCARD());
 //				mDistributeDescriptionTv.setText(mMissionInfoList.get(0).getALLOCATENOTE());
 				mAreaTv.setText(mMissionInfoList.get(0).getREGION());
 				mCompanyTv.setText(mMissionInfoList.get(0).getAFFILIATION());
@@ -170,6 +172,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.mission_mantenance_print_btn:
 			new PrintMantenanceTask().execute("");
+			//TODO 打印按钮响应
 			break;
 
 		default:

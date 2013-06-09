@@ -17,7 +17,11 @@ public final class R {
         public static final int white=0x7f040000;
     }
     public static final class dimen {
+        /**  按钮及其他字大小 
+         */
         public static final int medium_text_size=0x7f050001;
+        /**  显示项标签字大小 
+         */
         public static final int small_text_size=0x7f050000;
     }
     public static final class drawable {
@@ -148,24 +152,23 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f060000;
         public static final int back=0x7f060028;
-        public static final int belong_company=0x7f060035;
-        public static final int belong_region=0x7f060036;
-        public static final int car_device_company=0x7f060038;
-        public static final int car_device_type=0x7f060037;
+        public static final int belong_company=0x7f060034;
+        public static final int belong_region=0x7f060035;
+        public static final int car_device_company=0x7f060037;
+        public static final int car_device_type=0x7f060036;
         /** 缴费
          */
         public static final int cost=0x7f060029;
-        /** server add
-         */
-        public static final int default_server=0x7f06002e;
-        public static final int input_card_num=0x7f060034;
+        public static final int input_card_num=0x7f060033;
         public static final int input_charge=0x7f06002d;
         /** 维修
          */
-        public static final int input_device_company=0x7f060031;
-        public static final int input_device_num=0x7f060033;
-        public static final int input_device_type=0x7f060032;
-        public static final int input_server_hint=0x7f06002f;
+        public static final int input_device_company=0x7f060030;
+        public static final int input_device_num=0x7f060032;
+        public static final int input_device_type=0x7f060031;
+        /** server add
+         */
+        public static final int input_server_hint=0x7f06002e;
         public static final int list_car_number=0x7f060013;
         /** mission list
          */
@@ -212,7 +215,7 @@ public final class R {
         public static final int modifypass_user_name=0x7f06000a;
         public static final int pick_date=0x7f06002b;
         public static final int pick_end_date=0x7f06002a;
-        public static final int pick_server=0x7f060030;
+        public static final int pick_server=0x7f06002f;
         public static final int save_password=0x7f060007;
         public static final int save_username=0x7f060006;
         public static final int server_address=0x7f060004;

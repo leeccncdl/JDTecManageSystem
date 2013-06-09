@@ -85,7 +85,7 @@ public class MissionDetail extends Activity implements OnClickListener {
 		mDeviceCompanyTv = (TextView) findViewById(R.id.mission_device_company_tv);
 		mDeviceTypeTv = (TextView) findViewById(R.id.mission_device_type_tv);
 		mDeviceNumTv = (TextView) findViewById(R.id.mission_device_num_tv);
-		mCardNumTv = (TextView) findViewById(R.id.mission_car_num_tv);
+		mCardNumTv = (TextView) findViewById(R.id.mission_card_num_tv);
 		mDistributeDescriptionTv = (TextView) findViewById(R.id.mission_distribute_description_tv);
 		mContentRow1Ll = (LinearLayout) findViewById(R.id.mission_row_1_ll);
 		mContentRow2Ll = (LinearLayout) findViewById(R.id.mission_row_2_ll);
