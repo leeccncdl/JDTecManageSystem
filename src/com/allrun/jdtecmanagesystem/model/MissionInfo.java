@@ -3,11 +3,12 @@ package com.allrun.jdtecmanagesystem.model;
 public class MissionInfo {
 	
 	private String GUID;//任务GUID						String
-	private String MISSIONTYPE;//任务类型				String
-	private String MISSIONTYPECODE;//任务类型Code		String
+	private String MISSIONTYPE;//任务类型				String    
+	private String MISSIONTYPECODE;//任务类型Code		String	0:安装     1:维修       2:收费
 	private String BUSINESSTYPE;//经营类型				String
 	private String MISSIONDATE;//任务日期				String
 	private String EXPRATIONDATE;//到期日期				String
+	private String EXPRATIONDATE_NEW;//到期日期（新的到期）				String
 	private String DIRVER;//驾驶员姓名				String
 	private String DIRVERPHONE;//驾驶员电话
 	private String PLATENO;//车牌号					String
@@ -27,6 +28,8 @@ public class MissionInfo {
 	private String VEHICLECODEVICETYPE;//原车设备型号		String
 	private String REGION;//所属区所（所属区域）			String
 	private String AFFILIATION;//所属单位（单位名称）		String
+	private String PHONE;//联系电话			String
+	private String FAX;//传真		String
 	
 	public String getGUID() {
 		return GUID;
@@ -63,6 +66,12 @@ public class MissionInfo {
 	}
 	public void setEXPRATIONDATE(String eXPRATIONDATE) {
 		EXPRATIONDATE = eXPRATIONDATE;
+	}
+	public String getEXPRATIONDATE_NEW() {
+		return EXPRATIONDATE_NEW;
+	}
+	public void setEXPRATIONDATE_NEW(String eXPRATIONDATE_NEW) {
+		EXPRATIONDATE_NEW = eXPRATIONDATE_NEW;
 	}
 	public String getDIRVER() {
 		return DIRVER;
@@ -178,7 +187,16 @@ public class MissionInfo {
 	public void setAFFILIATION(String aFFILIATION) {
 		AFFILIATION = aFFILIATION;
 	}
-	
-	
-	
+	public String getPHONE() {
+		return PHONE;
+	}
+	public void setPHONE(String aPHONE) {
+		PHONE = aPHONE;
+	}
+	public String getFAX() {
+		return FAX;
+	}
+	public void setFAX(String aFAX) {
+		FAX = aFAX;
+	}
 }

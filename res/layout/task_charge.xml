@@ -133,7 +133,8 @@
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:inputType="number"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
                 android:background="@drawable/edittextback"
                 android:hint="@string/input_charge"/>
             <TextView

@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -23,11 +24,13 @@ import android.widget.Toast;
 import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
+import com.allrun.jdtecmanagesystem.listener.BtnBluetoothPrintClickListener;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.MissionInfo;
+import com.allrun.jdtecmanagesystem.utils.Utils;
 
 public class MissionCharge extends Activity implements OnClickListener {
-
+	//TODO 打印流程确定修改，先发送请求，返回成功后重新查询数据，再传入数据打印。打印完成后关闭当店打印页面，回到列表页并刷新列表。
 	private String mMissionGuid;
 	
 	private TextView mTaskNumTv;
@@ -49,6 +52,10 @@ public class MissionCharge extends Activity implements OnClickListener {
 	private ProgressDialog mProgress;
 	
 	private List<MissionInfo> mMissionInfoList = new ArrayList<MissionInfo>();
+	
+	//打印相关
+	private MissionInfo mMissionInfo = null;
+	BtnBluetoothPrintClickListener mBluetoothPrint = new BtnBluetoothPrintClickListener(this);
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +117,7 @@ public class MissionCharge extends Activity implements OnClickListener {
 			}
 			mMissionInfoList = result.getMISSIONINFO();
 			if (mMissionInfoList.size() != 0) {
-
+				mMissionInfo = mMissionInfoList.get(0);
 				mTaskNumTv.setText(mMissionInfoList.get(0).getMISSIONNO());
 				mCarNumTv.setText(mMissionInfoList.get(0).getPLATENO());
 //				mWorkTypeTv.setText(mMissionInfoList.get(0).getBUSINESSTYPE());
@@ -125,13 +132,13 @@ public class MissionCharge extends Activity implements OnClickListener {
 				if(mMissionInfoList.get(0).getEXPRATIONDATE()!=null && !mMissionInfoList.get(0).getEXPRATIONDATE().equals("")&& !mMissionInfoList.get(0).getEXPRATIONDATE().equals("null")) {
 					mChargeEndDateEdt.setText(mMissionInfoList.get(0).getEXPRATIONDATE());
 				} else {
-					mChargeEndDateEdt.setText("");
+					mMissionInfoList.get(0).setEXPRATIONDATE(Utils.GetNowDate());
+					mChargeEndDateEdt.setText(mMissionInfoList.get(0).getEXPRATIONDATE());
 				}
-				if(mMissionInfoList.get(0).getCOST()!=null && !mMissionInfoList.get(0).getCOST().equals("")) {
+				if(mMissionInfoList.get(0).getCOST()!=null && !mMissionInfoList.get(0).getCOST().equals("") && !mMissionInfoList.get(0).getCOST().equals("0.00")) {
 					mCostEdt.setText(mMissionInfoList.get(0).getCOST());
 				}
-
-
+				System.out.println("@@@@@@@@@@@@@@@@@@@@@"+mMissionInfoList.get(0).getVEHICLEDEVICENUMBER());
 			}
 		}
 
@@ -155,12 +162,46 @@ public class MissionCharge extends Activity implements OnClickListener {
 			mProgress.dismiss();
 			super.onPostExecute(result);
 			if(result.equals("SUCCESS")) {
-				Toast.makeText(MissionCharge.this, "打印请求提交成功", Toast.LENGTH_LONG).show();
+//				Toast.makeText(MissionCharge.this, "打印请求提交成功", Toast.LENGTH_LONG).show();
+				mBluetoothPrint.onClick(null);
 			} else {
 				Toast.makeText(MissionCharge.this, result, Toast.LENGTH_LONG).show();
 			}
 		}
 		
+	}
+
+    @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == App.REQUEST_ENABLE) {
+			// 请求为 "打开蓝牙"
+			if (resultCode == RESULT_OK) {
+				// 打开蓝牙成功
+				if(null != mMissionInfo){
+					mBluetoothPrint.beginPrint(mMissionInfo);
+				}
+				else{
+					Toast.makeText(MissionCharge.this, "数据错误！", Toast.LENGTH_LONG).show();
+				}
+			} else {
+				// 打开蓝牙失败
+				Toast.makeText(MissionCharge.this, "打开蓝牙失败！", Toast.LENGTH_LONG).show();
+			}
+		}else if(requestCode == App.REQUEST_PRINT){
+			if(null != mMissionInfo){
+				mBluetoothPrint.beginPrint(mMissionInfo);
+			}
+			else{
+				Toast.makeText(MissionCharge.this, "数据错误！", Toast.LENGTH_LONG).show();
+			}
+		}else if(requestCode == App.REQUEST_RESULT_PRINT){
+			if(resultCode == -1){//打印完成返回-1.直接按返回键，返回为0
+//				new PrintChargeTask().execute(mChargeEndDateEdt.getText().toString().trim(),mCostEdt.getText().toString().trim());
+			//TODO 打印完成 
+				setResult(RESULT_OK);
+				finish();
+			}
+		}
 	}
 
 	@SuppressLint("SimpleDateFormat")
@@ -169,8 +210,9 @@ public class MissionCharge extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.mission_charge_print_btn:
 			if(checkInput()) {
+				//TODO 打印按钮响应  先发送请求 ，请求返回成功后在打印
 				new PrintChargeTask().execute(mChargeEndDateEdt.getText().toString().trim(),mCostEdt.getText().toString().trim());
-				//TODO 打印按钮响应
+//				mBluetoothPrint.onClick(v);
 			}
 			break;
 		case R.id.mission_charge_pick_date_btn:
@@ -203,13 +245,15 @@ public class MissionCharge extends Activity implements OnClickListener {
 	
 	private boolean checkInput() {
 		if(mChargeEndDateEdt.getText().toString().equals("")) {
-			Toast.makeText(MissionCharge.this, "请选择日期", Toast.LENGTH_LONG).show();
+			Toast.makeText(MissionCharge.this, "请选择到期日期", Toast.LENGTH_LONG).show();
 			return false;
 		}
 		if(mCostEdt.getText().toString().equals("") || mCostEdt.getText().toString().equals("0.00")) {
-			Toast.makeText(MissionCharge.this, "请输入金额", Toast.LENGTH_LONG).show();
+			Toast.makeText(MissionCharge.this, "请输入费用", Toast.LENGTH_LONG).show();
 			return false;
 		}
+		//TODO cost???
+		mMissionInfo.setEXPRATIONDATE_NEW(mChargeEndDateEdt.getText().toString());
 		return true;
 	}
 }

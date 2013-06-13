@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
+import com.allrun.jdtecmanagesystem.listener.BtnBluetoothPrintClickListener;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.MissionInfo;
 
@@ -49,6 +51,10 @@ public class MissionMantenance extends Activity implements OnClickListener {
 	private ProgressDialog mProgress;
 	
 	private List<MissionInfo> mMissionInfoList = new ArrayList<MissionInfo>();
+	
+	//打印相关
+	private MissionInfo mMissionInfo = null;
+	BtnBluetoothPrintClickListener mBluetoothPrint = new BtnBluetoothPrintClickListener(this);
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +122,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 			}
 			mMissionInfoList = result.getMISSIONINFO();
 			if (mMissionInfoList.size() != 0) {
+				mMissionInfo = mMissionInfoList.get(0);
 				mTaskNumTv.setText(mMissionInfoList.get(0).getMISSIONNO());
 				mCarNumTv.setText(mMissionInfoList.get(0).getPLATENO());
 				System.out.println(mMissionInfoList.get(0).getPLATENO());
@@ -159,20 +166,55 @@ public class MissionMantenance extends Activity implements OnClickListener {
 			mProgress.dismiss();
 			super.onPostExecute(result);
 			if(result.equals("SUCCESS")) {
-				Toast.makeText(MissionMantenance.this, "打印请求返回成功", Toast.LENGTH_LONG).show();
+//				Toast.makeText(MissionMantenance.this, "打印请求返回成功", Toast.LENGTH_LONG).show();
+				mBluetoothPrint.onClick(null);
 			} else {
 				Toast.makeText(MissionMantenance.this, result, Toast.LENGTH_LONG).show();
 			}
 		}
 		
 	}
+
+    @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == App.REQUEST_ENABLE) {
+			// 请求为 "打开蓝牙"
+			if (resultCode == RESULT_OK) {
+				// 打开蓝牙成功
+				if(null != mMissionInfo){
+					mBluetoothPrint.beginPrint(mMissionInfo);
+				}
+				else{
+					Toast.makeText(MissionMantenance.this, "数据错误！", Toast.LENGTH_LONG).show();
+				}
+			} else {
+				// 打开蓝牙失败
+				Toast.makeText(MissionMantenance.this, "打开蓝牙失败！", Toast.LENGTH_LONG).show();
+			}
+		}else if(requestCode == App.REQUEST_PRINT){
+			if(null != mMissionInfo){
+				mBluetoothPrint.beginPrint(mMissionInfo);
+			}
+			else{
+				Toast.makeText(MissionMantenance.this, "数据错误！", Toast.LENGTH_LONG).show();
+			}
+		}else if(requestCode == App.REQUEST_RESULT_PRINT){
+			if(resultCode == -1){//打印完成返回-1.直接按返回键，返回为0
+				//TODO 打印完成
+//				new PrintMantenanceTask().execute("");
+				setResult(RESULT_OK);
+				finish();
+			}
+		}
+	}
 	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.mission_mantenance_print_btn:
-			new PrintMantenanceTask().execute("");
 			//TODO 打印按钮响应
+			new PrintMantenanceTask().execute("");
+//			mBluetoothPrint.onClick(v);
 			break;
 
 		default:

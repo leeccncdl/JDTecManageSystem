@@ -93,26 +93,32 @@
                         style="@style/task_list_content" />
                 </LinearLayout>
 
-                <LinearLayout style="@style/task_list_item_linear_tag" >
+                <LinearLayout style="@style/task_list_item_linear_tag"
+                    android:layout_height="wrap_content" >
 
                     <TextView
                         style="@style/task_detail_singleline_tag"
-                        android:text="@string/mission_car_device_num" />
+                        android:text="@string/mission_car_device_num"
+                        android:gravity="top|right" />
 
                     <TextView
                         android:id="@+id/mission_car_device_num_tv"
-                        style="@style/task_list_content" />
+                        style="@style/task_list_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
-                <LinearLayout style="@style/task_list_item_linear_tag" >
+                <LinearLayout style="@style/task_list_item_linear_tag"
+                    android:layout_height="wrap_content" >
 
                     <TextView
                         style="@style/task_detail_singleline_tag"
-                        android:text="@string/mission_car_card_num" />
+                        android:text="@string/mission_car_card_num"
+                        android:gravity="top|right" />
 
                     <TextView
                         android:id="@+id/mission_car_card_num_tv"
-                        style="@style/task_list_content" />
+                        style="@style/task_list_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout style="@style/task_list_item_linear_tag" >
@@ -162,54 +168,69 @@
 
                 <LinearLayout
                     android:id="@+id/mission_row_1_ll"
-                    style="@style/task_list_item_linear_tag" >
+                    style="@style/task_list_item_linear_tag"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         style="@style/task_detail_singleline_tag"
-                        android:text="@string/mission_device_company" />
+                        android:text="@string/mission_device_company"
+                        android:gravity="top|right" />
 
                     <TextView
                         android:id="@+id/mission_device_company_tv"
-                        style="@style/task_list_content" />
+                        style="@style/task_list_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:maxLines="2"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/mission_row_3_ll"
-                    style="@style/task_list_item_linear_tag" >
+                    style="@style/task_list_item_linear_tag"
+                    android:layout_height="wrap_content" >
 
                     <TextView
                         style="@style/task_detail_singleline_tag"
-                        android:text="@string/mission_device_type" />
+                        android:text="@string/mission_device_type"
+                        android:gravity="top|right" />
 
                     <TextView
                         android:id="@+id/mission_device_type_tv"
-                        style="@style/task_list_content" />
+                        style="@style/task_list_content" 
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/mission_row_2_ll"
-                    style="@style/task_list_item_linear_tag" >
+                    style="@style/task_list_item_linear_tag"
+                    android:layout_height="wrap_content" >
 
                     <TextView
                         style="@style/task_detail_singleline_tag"
-                        android:text="@string/mission_device_num" />
+                        android:text="@string/mission_device_num"
+                        android:gravity="top|right" />
 
                     <TextView
                         android:id="@+id/mission_device_num_tv"
-                        style="@style/task_list_content" />
+                        style="@style/task_list_content"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/mission_row_4_ll"
-                    style="@style/task_list_item_linear_tag" >
+                    style="@style/task_list_item_linear_tag"
+                    android:layout_height="wrap_content" >
 
                     <TextView
                         style="@style/task_detail_singleline_tag"
-                        android:text="@string/mission_card_num" />
+                        android:text="@string/mission_card_num"
+                        android:gravity="top|right" />
 
                     <TextView
                         android:id="@+id/mission_card_num_tv"
-                        style="@style/task_list_content" />
+                        style="@style/task_list_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout

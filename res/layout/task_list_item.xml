@@ -38,15 +38,20 @@
     </LinearLayout>
 
     <LinearLayout
-		style="@style/task_list_item_linear_tag">
+		style="@style/task_list_item_linear_tag"
+		android:layout_height="wrap_content">
 
         <TextView
 			style="@style/task_list_singleline_tag"
+			android:gravity="top"
             android:text="@string/list_device_number" />
 
         <TextView
             android:id="@+id/task_list_device_number_tv"
-            style="@style/task_list_content" />
+            style="@style/task_list_content"
+            android:maxLines="2"
+            android:layout_height="wrap_content" 
+            android:layout_marginRight="10dp"/>
     </LinearLayout>
 
     <LinearLayout

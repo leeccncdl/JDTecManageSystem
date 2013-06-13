@@ -47,6 +47,7 @@ public final class R {
         public static final int quit_focus=0x7f020013;
         public static final int quit_normal=0x7f020014;
         public static final int quit_sel=0x7f020015;
+        public static final int xlistview_arrow=0x7f020016;
     }
     public static final class id {
         public static final int login_login_btn=0x7f080006;
@@ -137,6 +138,15 @@ public final class R {
         public static final int task_list_task_date_tv=0x7f080046;
         public static final int task_list_task_type_tv=0x7f080043;
         public static final int task_listview_lv=0x7f08004b;
+        public static final int xlistview_footer_content=0x7f080058;
+        public static final int xlistview_footer_hint_textview=0x7f08005a;
+        public static final int xlistview_footer_progressbar=0x7f080059;
+        public static final int xlistview_header_arrow=0x7f08005f;
+        public static final int xlistview_header_content=0x7f08005b;
+        public static final int xlistview_header_hint_textview=0x7f08005d;
+        public static final int xlistview_header_progressbar=0x7f080060;
+        public static final int xlistview_header_text=0x7f08005c;
+        public static final int xlistview_header_time=0x7f08005e;
     }
     public static final class layout {
         public static final int login=0x7f030000;
@@ -148,6 +158,8 @@ public final class R {
         public static final int task_list_item=0x7f030006;
         public static final int task_listview=0x7f030007;
         public static final int task_mantenance=0x7f030008;
+        public static final int xlistview_footer=0x7f030009;
+        public static final int xlistview_header=0x7f03000a;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
@@ -219,6 +231,14 @@ public final class R {
         public static final int save_password=0x7f060007;
         public static final int save_username=0x7f060006;
         public static final int server_address=0x7f060004;
+        public static final int xlistview_footer_hint_normal=0x7f06003c;
+        public static final int xlistview_footer_hint_ready=0x7f06003d;
+        public static final int xlistview_header_hint_loading=0x7f06003a;
+        /** xlistview
+         */
+        public static final int xlistview_header_hint_normal=0x7f060038;
+        public static final int xlistview_header_hint_ready=0x7f060039;
+        public static final int xlistview_header_last_time=0x7f06003b;
         public static final int yuan=0x7f06002c;
     }
     public static final class style {

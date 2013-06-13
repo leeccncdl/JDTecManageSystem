@@ -98,46 +98,58 @@
                 style="@style/task_list_content" />
         </LinearLayout>
 
-        <LinearLayout style="@style/task_list_item_linear_tag" >
+        <LinearLayout style="@style/task_list_item_linear_tag"
+            android:layout_height="wrap_content" >
 
             <TextView
                 style="@style/task_detail_singleline_tag"
-                android:text="@string/car_device_company" />
+                android:text="@string/car_device_company"
+                android:gravity="top|right" />
 
             <TextView
                 android:id="@+id/mission_fixing_car_device_company_tv"
-                style="@style/task_list_content" />
+                style="@style/task_list_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
-        <LinearLayout style="@style/task_list_item_linear_tag" >
+        <LinearLayout style="@style/task_list_item_linear_tag"
+            android:layout_height="wrap_content" >
 
             <TextView
                 style="@style/task_detail_singleline_tag"
-                android:text="@string/car_device_type" />
+                android:text="@string/car_device_type"
+                android:gravity="top|right" />
 
             <TextView
                 android:id="@+id/mission_fixing_car_device_typenum_tv"
-                style="@style/task_list_content" />
+                style="@style/task_list_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
-        <LinearLayout style="@style/task_list_item_linear_tag" >
+        <LinearLayout style="@style/task_list_item_linear_tag"
+            android:layout_height="wrap_content" >
 
             <TextView
                 style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_car_device_num" />
+                android:text="@string/mission_car_device_num"
+                android:gravity="top|right" />
 
             <TextView
                 android:id="@+id/mission_fixing_car_device_num_tv"
-                style="@style/task_list_content" />
+                style="@style/task_list_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <LinearLayout style="@style/task_list_item_linear_tag" >
+        <LinearLayout style="@style/task_list_item_linear_tag"
+            android:layout_height="wrap_content" >
 
             <TextView
                 style="@style/task_detail_singleline_tag"
-                android:text="@string/mission_car_card_num" />
+                android:text="@string/mission_car_card_num"
+                android:gravity="top|right" />
 
             <TextView
                 android:id="@+id/mission_fixing_car_card_num_tv"
-                style="@style/task_list_content" />
+                style="@style/task_list_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -150,7 +162,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
@@ -169,13 +181,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="40dp"
+                android:maxLength="30"
                 android:background="@drawable/edittextback"
                 android:hint="@string/input_device_company" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
@@ -194,13 +207,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="40dp"
+                android:maxLength="30"
                 android:background="@drawable/edittextback"
                 android:hint="@string/input_device_type" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
@@ -219,13 +233,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="40dp"
+                android:maxLength="30"
                 android:background="@drawable/edittextback"
                 android:hint="@string/input_device_num" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
@@ -244,6 +259,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="40dp"
+                android:maxLength="30"
                 android:background="@drawable/edittextback"
                 android:hint="@string/input_card_num" />
         </LinearLayout>

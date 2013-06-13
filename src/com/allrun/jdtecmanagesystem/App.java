@@ -21,6 +21,10 @@ public class App extends Application {
 	public static final String PREFER_USERNAME = "UserName";
 	public static final String PREFER_PASSWORD = "Password";
 	
+	public static final int REQUEST_RESULT_PRINT = 1100;//打印返回
+	public static final int REQUEST_PRINT = 1000; // 请求开始打印
+	public static final int REQUEST_ENABLE = 10000; // 打开蓝牙 请求码
+	
 	public static String HTTP = "http://";
 
 	public static String BASE_NAMESPACE = "http://www.allrun.com.cn/"; //webservice namespace

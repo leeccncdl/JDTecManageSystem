@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
+import com.allrun.jdtecmanagesystem.listener.BtnBluetoothPrintClickListener;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.MissionInfo;
 
@@ -26,7 +28,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 	
 	private TextView mTaskNumTv;
 	private TextView mCarNumTv;
-//	private TextView mWorkTypeTv;
+//	private TextView mWorkTypeTv
 	private TextView mDriverNameTv;
 	private TextView mTaskTypeTv;
 	private TextView mDriverTelephoneTv;
@@ -49,6 +51,10 @@ public class MissionFixing extends Activity implements OnClickListener {
 	private ProgressDialog mProgress;
 	
 	private List<MissionInfo> mMissionInfoList = new ArrayList<MissionInfo>();
+	
+	//打印相关
+	private MissionInfo mMissionInfo = null;
+	BtnBluetoothPrintClickListener mBluetoothPrint = new BtnBluetoothPrintClickListener(this);
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +121,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 			}
 			mMissionInfoList = result.getMISSIONINFO();
 			if (mMissionInfoList.size() != 0) {
-
+				mMissionInfo = mMissionInfoList.get(0);
 				mTaskNumTv.setText(mMissionInfoList.get(0).getMISSIONNO());
 				mCarNumTv.setText(mMissionInfoList.get(0).getPLATENO());
 //				mWorkTypeTv.setText(mMissionInfoList.get(0).getBUSINESSTYPE());
@@ -167,12 +173,44 @@ public class MissionFixing extends Activity implements OnClickListener {
 			mProgress.dismiss();
 			super.onPostExecute(result);
 			if(result.equals("SUCCESS")) {
-				Toast.makeText(MissionFixing.this, "打印请求返回成功", Toast.LENGTH_LONG).show();
+//				Toast.makeText(MissionFixing.this, "打印请求返回成功", Toast.LENGTH_LONG).show();
+				mBluetoothPrint.onClick(null);
 			} else {
 				Toast.makeText(MissionFixing.this, result, Toast.LENGTH_LONG).show();
 			}
 		}
 		
+	}
+	
+    @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == App.REQUEST_ENABLE) {
+			// 请求为 "打开蓝牙"
+			if (resultCode == RESULT_OK) {
+				// 打开蓝牙成功
+				if(null != mMissionInfo){
+					mBluetoothPrint.beginPrint(mMissionInfo);
+				}
+				else{
+					Toast.makeText(MissionFixing.this, "数据错误！", Toast.LENGTH_LONG).show();
+				}
+			} else {
+				// 打开蓝牙失败
+				Toast.makeText(MissionFixing.this, "打开蓝牙失败！", Toast.LENGTH_LONG).show();
+			}
+		}else if(requestCode == App.REQUEST_PRINT){
+			if(null != mMissionInfo){
+				mBluetoothPrint.beginPrint(mMissionInfo);
+			}
+			else{
+				Toast.makeText(MissionFixing.this, "数据错误！", Toast.LENGTH_LONG).show();
+			}
+		}else if(requestCode == App.REQUEST_RESULT_PRINT){
+			if(resultCode == -1){//打印完成返回-1.直接按返回键，返回为0
+				setResult(RESULT_OK);
+				finish();
+			}
+		}
 	}
 
 	@Override
@@ -180,11 +218,12 @@ public class MissionFixing extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.mission_fixing_print_btn:
 			if(checkInput()) {
+				//TODO 打印按钮响应
 				new PrintFixingTask().execute(mDeviceCompanyEdt.getText().toString().trim(),
 						mDeviceTypeEdt.getText().toString().trim(),
 						mDeviceNumEdt.getText().toString().trim(),
 						mCardNumEdt.getText().toString().trim());
-				//TODO 打印按钮响应
+				
 			}
 			break;
 
@@ -202,6 +241,12 @@ public class MissionFixing extends Activity implements OnClickListener {
 			Toast.makeText(MissionFixing.this, "输入不能为空", Toast.LENGTH_LONG).show();
 			return false;
 		}
+		
+		//将最新输入内容更新到model中，便于后面打印
+		mMissionInfo.setDEVICEMANUFACTURE(mDeviceCompanyEdt.getText().toString().trim());
+		mMissionInfo.setDEVICETYPE(mDeviceTypeEdt.getText().toString().trim());
+		mMissionInfo.setDEVICENUMBER(mDeviceNumEdt.getText().toString().trim());
+		mMissionInfo.setCOMMUNICTIONCARD(mCardNumEdt.getText().toString().trim());
 		return true;
 	}
 }

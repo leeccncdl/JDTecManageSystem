@@ -53,6 +53,13 @@ public class MissionList extends Activity implements OnClickListener {
 		mQuitIv.setOnClickListener(this);
 	}
 
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(resultCode == RESULT_OK) {
+			new QueryMissionListTask().execute("");
+		}
+	}
 	private class MissionListAdapter extends BaseAdapter {
 		 private List<Mission> missionList = new ArrayList<Mission>();
 		 public MissionListAdapter(List<Mission> data) {
@@ -132,12 +139,12 @@ public class MissionList extends Activity implements OnClickListener {
 						intent.setClass(MissionList.this, MissionFixing.class);
 					} else {
 						if(log.isDebugEnabled()) {
-							log.debug("任务类型Code返回不正确，不能跳转到详细页面");
+							log.debug("任务类型Code返回不正确，不能跳转页面");
 							return;
 						}
 					}
 					intent.putExtra(MissionDetail.MISSIONGUID, mMissionList.get(position).getGUID());
-					startActivity(intent);
+					startActivityForResult(intent, 0);
 				}
 			});
 			return convertView;
