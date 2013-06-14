@@ -8,6 +8,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,8 +24,9 @@ import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
 import com.allrun.jdtecmanagesystem.listener.BtnBluetoothPrintClickListener;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.MissionInfo;
+import com.allrun.jdtecmanagesystem.view.FriendlyScrollView;
 
-public class MissionFixing extends Activity implements OnClickListener {
+public class MissionFixing extends Activity implements OnClickListener ,OnGestureListener {
 
 	private String mMissionGuid;
 	
@@ -47,7 +51,8 @@ public class MissionFixing extends Activity implements OnClickListener {
 	
 	private Button mPrintBtn;
 	
-	
+	private FriendlyScrollView mSv;
+	private GestureDetector detector;
 	private ProgressDialog mProgress;
 	
 	private List<MissionInfo> mMissionInfoList = new ArrayList<MissionInfo>();
@@ -60,7 +65,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.task_fixing);
-
+		detector = new GestureDetector(this);
 		findViewById();
 		addListener();
 
@@ -71,6 +76,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 
 	private void addListener() {
 		mPrintBtn.setOnClickListener(this);
+		mSv.setGestureDetector(detector);
 	}
 
 	private void findViewById() {
@@ -93,6 +99,7 @@ public class MissionFixing extends Activity implements OnClickListener {
 		mCompanyTv = (TextView) findViewById(R.id.mission_fixing_company_tv);
 		mCarDeviceCompanyTv = (TextView) findViewById(R.id.mission_fixing_company_tv);
 		mCarDeviceTypeNumTv = (TextView) findViewById(R.id.mission_fixing_car_device_typenum_tv);
+		mSv = (FriendlyScrollView) findViewById(R.id.task_fixing_scv);
 	
 	}
 
@@ -248,5 +255,46 @@ public class MissionFixing extends Activity implements OnClickListener {
 		mMissionInfo.setDEVICENUMBER(mDeviceNumEdt.getText().toString().trim());
 		mMissionInfo.setCOMMUNICTIONCARD(mCardNumEdt.getText().toString().trim());
 		return true;
+	}
+
+	@Override
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		if(e1.getX()-e2.getX()<0 && Math.abs(e1.getX()-e2.getX())>100){
+			finish();
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -8,7 +8,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,8 +23,9 @@ import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
 import com.allrun.jdtecmanagesystem.listener.BtnBluetoothPrintClickListener;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.MissionInfo;
+import com.allrun.jdtecmanagesystem.view.FriendlyScrollView;
 
-public class MissionMantenance extends Activity implements OnClickListener {
+public class MissionMantenance extends Activity implements OnClickListener,OnGestureListener {
 
 	private String mMissionGuid;
 	
@@ -50,6 +54,9 @@ public class MissionMantenance extends Activity implements OnClickListener {
 	
 	private ProgressDialog mProgress;
 	
+	private FriendlyScrollView mSv;
+	private GestureDetector detector;
+	
 	private List<MissionInfo> mMissionInfoList = new ArrayList<MissionInfo>();
 	
 	//打印相关
@@ -60,7 +67,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.task_mantenance);
-
+		detector = new GestureDetector(this);
 		findViewById();
 		addListener();
 
@@ -71,6 +78,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 
 	private void addListener() {
 		mPrintBtn.setOnClickListener(this);
+		mSv.setGestureDetector(detector);
 	}
 
 	private void findViewById() {
@@ -95,6 +103,7 @@ public class MissionMantenance extends Activity implements OnClickListener {
 		
 		mAreaTv = (TextView) findViewById(R.id.mission_mantenance_area_tv);
 		mCompanyTv = (TextView) findViewById(R.id.mission_mantenance_company_tv);
+		mSv = (FriendlyScrollView) findViewById(R.id.task_mantenance_sv);
 	}
 
 	private class QueryMissionDetailTask extends
@@ -221,5 +230,46 @@ public class MissionMantenance extends Activity implements OnClickListener {
 			break;
 		}
 		
+	}
+
+	@Override
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		if(e1.getX()-e2.getX()<0 && Math.abs(e1.getX()-e2.getX())>100){
+			finish();
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -10,7 +10,8 @@
         android:layout_height="48dp"
         android:background="@drawable/header" >
     </LinearLayout>
-	<ScrollView 
+	<com.allrun.jdtecmanagesystem.view.FriendlyScrollView 
+	    android:id="@+id/task_fixing_scv"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content">
     <LinearLayout
@@ -282,5 +283,5 @@
                 android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</com.allrun.jdtecmanagesystem.view.FriendlyScrollView>
 </LinearLayout>

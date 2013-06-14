@@ -14,8 +14,8 @@
             android:layout_height="48dp"
             android:background="@drawable/header" >
         </LinearLayout>
-
-        <ScrollView
+        <com.allrun.jdtecmanagesystem.view.FriendlyScrollView
+            android:id="@+id/task_detail_scv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
@@ -252,7 +252,7 @@
                         android:textSize="@dimen/small_text_size" />
                 </LinearLayout>
             </LinearLayout>
-        </ScrollView>
+        </com.allrun.jdtecmanagesystem.view.FriendlyScrollView>
     </LinearLayout>
 
     <LinearLayout

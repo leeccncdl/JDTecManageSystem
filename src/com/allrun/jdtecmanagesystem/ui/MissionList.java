@@ -1,7 +1,10 @@
 package com.allrun.jdtecmanagesystem.ui;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,21 +17,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.AppLogger;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.Mission;
+import com.allrun.jdtecmanagesystem.view.XListView;
+import com.allrun.jdtecmanagesystem.view.XListView.IXListViewListener;
 
-public class MissionList extends Activity implements OnClickListener {
+public class MissionList extends Activity implements OnClickListener,IXListViewListener {
 	
 	private AppLogger log = AppLogger.getLogger(this.getClass());
-	
-	private ListView mMissionLv;
+	private SimpleDateFormat todayFormatter = new SimpleDateFormat("HH:mm");
+	private XListView mMissionLv;
 	private List<Mission> mMissionList = new ArrayList<Mission>(); 
 	private ProgressDialog mProgress;
 	private ImageView mQuitIv;
@@ -45,12 +50,15 @@ public class MissionList extends Activity implements OnClickListener {
 	}
 	
 	 private void findViewById() {
-		 mMissionLv = (ListView) findViewById(R.id.task_listview_lv);
+		 mMissionLv = (XListView) findViewById(R.id.task_listview_lv);
 		 mQuitIv = (ImageView) findViewById(R.id.task_list_header_quit_iv);
+		 
+		 mMissionLv.setPullLoadEnable(false);
 	}
 
 	private void addListener() {
 		mQuitIv.setOnClickListener(this);
+		mMissionLv.setXListViewListener(MissionList.this);
 	}
 
 	
@@ -205,6 +213,7 @@ public class MissionList extends Activity implements OnClickListener {
 				MissionListAdapter listAdapter = new MissionListAdapter(mMissionList);
 				mMissionLv.setAdapter(listAdapter);
 			}
+			onLoad();
 		}
 		
 		
@@ -221,5 +230,23 @@ public class MissionList extends Activity implements OnClickListener {
 			break;
 		}
 		
+	}
+
+	@Override
+	public void onRefresh() {
+		new QueryMissionListTask().execute("");
+	}
+
+	@Override
+	public void onLoadMore() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void onLoad() {
+
+		mMissionLv.stopRefresh();
+		mMissionLv.setRefreshTime(todayFormatter.format(new Date(System
+				.currentTimeMillis())));
 	}
 }

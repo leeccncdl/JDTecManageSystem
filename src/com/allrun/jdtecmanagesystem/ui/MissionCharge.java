@@ -13,7 +13,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -29,10 +32,9 @@ import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.MissionInfo;
 import com.allrun.jdtecmanagesystem.utils.Utils;
 
-public class MissionCharge extends Activity implements OnClickListener {
+public class MissionCharge extends Activity implements OnClickListener ,OnGestureListener{
 	//TODO 打印流程确定修改，先发送请求，返回成功后重新查询数据，再传入数据打印。打印完成后关闭当店打印页面，回到列表页并刷新列表。
 	private String mMissionGuid;
-	
 	private TextView mTaskNumTv;
 	private TextView mCarNumTv;
 //	private TextView mWorkTypeTv;
@@ -56,12 +58,12 @@ public class MissionCharge extends Activity implements OnClickListener {
 	//打印相关
 	private MissionInfo mMissionInfo = null;
 	BtnBluetoothPrintClickListener mBluetoothPrint = new BtnBluetoothPrintClickListener(this);
-	
+	private GestureDetector detector;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.task_charge);
-
+		detector = new GestureDetector(this);
 		findViewById();
 		addListener();
 
@@ -91,6 +93,12 @@ public class MissionCharge extends Activity implements OnClickListener {
 		mChargeDateBtn = (Button) findViewById(R.id.mission_charge_print_btn);
 		mPickDateBtn = (Button) findViewById(R.id.mission_charge_pick_date_btn);
 	}
+	
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+     
+    	return this.detector.onTouchEvent(event); 
+    }
 
 	private class QueryMissionDetailTask extends
 			AsyncTask<String, Integer, BaseResult> {
@@ -138,7 +146,6 @@ public class MissionCharge extends Activity implements OnClickListener {
 				if(mMissionInfoList.get(0).getCOST()!=null && !mMissionInfoList.get(0).getCOST().equals("") && !mMissionInfoList.get(0).getCOST().equals("0.00")) {
 					mCostEdt.setText(mMissionInfoList.get(0).getCOST());
 				}
-				System.out.println("@@@@@@@@@@@@@@@@@@@@@"+mMissionInfoList.get(0).getVEHICLEDEVICENUMBER());
 			}
 		}
 
@@ -216,14 +223,22 @@ public class MissionCharge extends Activity implements OnClickListener {
 			}
 			break;
 		case R.id.mission_charge_pick_date_btn:
-			
-			Calendar cToday = Calendar.getInstance();
-			cToday.setTime(new Date(System.currentTimeMillis()));
-			
-			int y = cToday.get(Calendar.YEAR);
-			int m = cToday.get(Calendar.MONTH);
-			int d = cToday.get(Calendar.DAY_OF_MONTH);
-			
+			int y = 0;
+			int d = 0;
+			int m = 0;
+			if(mChargeEndDateEdt.getText().toString()!=null && !mChargeEndDateEdt.getText().toString().equals("") && !mChargeEndDateEdt.getText().toString().equals("null")) {
+				String[] dsa = mChargeEndDateEdt.getText().toString().split("-");
+				y = Integer.parseInt(dsa[0]);
+				m = Integer.parseInt(dsa[1])-1;
+				d = Integer.parseInt(dsa[2]);
+			} else {
+				Calendar cToday = Calendar.getInstance();
+				cToday.setTime(new Date(System.currentTimeMillis()));
+				y = cToday.get(Calendar.YEAR);
+				m = cToday.get(Calendar.MONTH);
+				d = cToday.get(Calendar.DAY_OF_MONTH);
+			}
+
 			new DatePickerDialog(MissionCharge.this , new DatePickerDialog.OnDateSetListener() {
 				
 				@Override
@@ -255,5 +270,46 @@ public class MissionCharge extends Activity implements OnClickListener {
 		//TODO cost???
 		mMissionInfo.setEXPRATIONDATE_NEW(mChargeEndDateEdt.getText().toString());
 		return true;
+	}
+
+	@Override
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		if(e1.getX()-e2.getX()<0 && Math.abs(e1.getX()-e2.getX())>100){
+			finish();
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

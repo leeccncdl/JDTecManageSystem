@@ -2,22 +2,28 @@ package com.allrun.jdtecmanagesystem.ui;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
 import com.allrun.jdtecmanagesystem.model.BaseResult;
 import com.allrun.jdtecmanagesystem.model.MissionInfo;
+import com.allrun.jdtecmanagesystem.view.FriendlyScrollView;
 
-public class MissionDetail extends Activity implements OnClickListener {
+public class MissionDetail extends Activity implements OnClickListener,OnGestureListener {
 	
 	public static final String MISSIONGUID = "com.allrun.jdtecmanagesystem.missionGuid";
 	
@@ -45,9 +51,13 @@ public class MissionDetail extends Activity implements OnClickListener {
 	private LinearLayout mContentRow3Ll;
 	private LinearLayout mContentRow4Ll;
 	
+	
 	private LinearLayout mBackLl;
 	
 	private ProgressDialog mProgress;
+	private GestureDetector detector;
+	
+	FriendlyScrollView mSv;
 	
 	private List<MissionInfo> mMissionInfoList = new ArrayList<MissionInfo>();
 	
@@ -56,7 +66,7 @@ public class MissionDetail extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.task_detail);
-		
+		detector = new GestureDetector(this);
 		findViewById();
 		addListener();
 		
@@ -68,6 +78,7 @@ public class MissionDetail extends Activity implements OnClickListener {
 	private void addListener() {
 		mBackLl.setOnClickListener(this);
 		
+		mSv.setGestureDetector(detector);
 	}
 
 	private void findViewById() {
@@ -91,9 +102,15 @@ public class MissionDetail extends Activity implements OnClickListener {
 		mContentRow2Ll = (LinearLayout) findViewById(R.id.mission_row_2_ll);
 		mContentRow3Ll = (LinearLayout) findViewById(R.id.mission_row_3_ll);
 		mContentRow4Ll = (LinearLayout) findViewById(R.id.mission_row_4_ll);
-		
+		mSv = (FriendlyScrollView) findViewById(R.id.task_detail_scv);
 		mBackLl = (LinearLayout) findViewById(R.id.task_detail_back_ll);
+		
 	}
+	
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+    	return this.detector.onTouchEvent(event); 
+    }
 
 	private class QueryMissionDetailTask extends AsyncTask<String, Integer, BaseResult> {
 		
@@ -173,5 +190,47 @@ public class MissionDetail extends Activity implements OnClickListener {
 		}
 		
 	}
+
+	@Override
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		if(e1.getX()-e2.getX()<0 && Math.abs(e1.getX()-e2.getX())>100){
+			finish();
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 	
 }

@@ -16,7 +16,8 @@
             android:background="@drawable/header" >
         </LinearLayout>
 
-        <ScrollView
+        <com.allrun.jdtecmanagesystem.view.FriendlyScrollView
+            android:id="@+id/task_mantenance_sv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
@@ -178,7 +179,7 @@
                         android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
-        </ScrollView>
+        </com.allrun.jdtecmanagesystem.view.FriendlyScrollView>
     </LinearLayout>
 
 </FrameLayout>

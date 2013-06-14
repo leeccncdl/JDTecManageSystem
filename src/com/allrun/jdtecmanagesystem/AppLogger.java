@@ -22,7 +22,7 @@ public class AppLogger extends Logger {
 	
 	public static boolean config(Context context){
 		LoggerConfigure.logTag = "JDTECManage";
-		LoggerConfigure.logLevel = LogLevel.DEBUG;
+		LoggerConfigure.logLevel = LogLevel.ERROR;
 		LoggerConfigure.logLocation = Environment.getExternalStorageDirectory()+File.separator+"JDTEC"+File.separator+"Log";
 		
 		//如果需要将log信息写入本地文件，需要做该初始化，否则不需要

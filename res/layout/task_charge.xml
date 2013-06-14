@@ -20,7 +20,7 @@
 			style="@style/task_list_item_linear_tag">
 
             <TextView
-				style="@style/task_list_singleline_tag"
+				style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_task_num" />
 
             <TextView
@@ -33,7 +33,7 @@
 			style="@style/task_list_item_linear_tag">
 
             <TextView
-                style="@style/task_list_singleline_tag"
+                style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_task_type" />
 
             <TextView
@@ -45,8 +45,7 @@
         <LinearLayout
 			style="@style/task_list_item_linear_tag" >
             <TextView
-				style="@style/task_list_singleline_tag"
-				android:layout_marginLeft="24dp"
+				style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_car_num" />
 
             <TextView
@@ -61,8 +60,8 @@
 			android:layout_height="wrap_content" >
 
             <TextView
-                style="@style/task_list_singleline_tag"
-                android:gravity="top"
+                style="@style/task_detail_singleline_tag"
+                android:gravity="top|right"
                 android:text="@string/belong_company" />
 
             <TextView

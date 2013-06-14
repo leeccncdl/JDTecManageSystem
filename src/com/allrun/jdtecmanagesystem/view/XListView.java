@@ -143,7 +143,7 @@ public class XListView extends ListView implements OnScrollListener {
 	public void setPullLoadEnable(boolean enable) {
 		mEnablePullLoad = enable;
 		if (!mEnablePullLoad) {
-			mFooterView.hide();
+			mFooterView.setVisibility(View.GONE);
 			mFooterView.setOnClickListener(null);
 		} else {
 			mPullLoading = false;

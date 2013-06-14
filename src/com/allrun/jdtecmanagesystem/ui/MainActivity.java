@@ -1,8 +1,5 @@
 package com.allrun.jdtecmanagesystem.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -26,9 +23,7 @@ import com.allrun.jdtecmanagesystem.App;
 import com.allrun.jdtecmanagesystem.AppLogger;
 import com.allrun.jdtecmanagesystem.R;
 import com.allrun.jdtecmanagesystem.dao.SlaughterWs;
-import com.allrun.jdtecmanagesystem.model.Mission;
 import com.allrun.jdtecmanagesystem.utils.Utility;
-import com.google.gson.Gson;
 
 public class MainActivity extends Activity implements OnClickListener {
 	
@@ -56,9 +51,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
-		Gson gson = new Gson();
-		List<Mission> MISSIONLIST = new ArrayList<Mission>();
-		System.out.println(gson.toJson(MISSIONLIST));
 		
 		if(!Utility.checkNetworkConnect(this)) {
 			AlertDialog.Builder builder = new Builder(this);
