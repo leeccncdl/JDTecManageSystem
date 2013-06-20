@@ -208,8 +208,10 @@ public class MissionList extends Activity implements OnClickListener,IXListViewL
 			mMissionList = result.getMISSIONLIST();
 			if(mMissionList == null) {
 				Toast.makeText(MissionList.this, "当前任务列表没有任务", Toast.LENGTH_SHORT).show();
+				mMissionList = new ArrayList<Mission>();				 
+				MissionListAdapter listAdapter = new MissionListAdapter(mMissionList);
+				mMissionLv.setAdapter(listAdapter);
 			} else {
-				
 				MissionListAdapter listAdapter = new MissionListAdapter(mMissionList);
 				mMissionLv.setAdapter(listAdapter);
 			}

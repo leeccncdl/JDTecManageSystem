@@ -62,7 +62,7 @@
 
                     <TextView
                         style="@style/task_detail_singleline_tag"
-                        android:gravity="top|right"
+                        
                         android:text="@string/mission_work_type" />
 
                     <TextView
@@ -99,12 +99,12 @@
                     <TextView
                         style="@style/task_detail_singleline_tag"
                         android:text="@string/mission_car_device_num"
-                        android:gravity="top|right" />
+                         />
 
                     <TextView
                         android:id="@+id/mission_car_device_num_tv"
                         style="@style/task_list_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <LinearLayout style="@style/task_list_item_linear_tag"
@@ -113,7 +113,7 @@
                     <TextView
                         style="@style/task_detail_singleline_tag"
                         android:text="@string/mission_car_card_num"
-                        android:gravity="top|right" />
+                         />
 
                     <TextView
                         android:id="@+id/mission_car_card_num_tv"
@@ -148,7 +148,7 @@
 
                     <TextView
                         style="@style/task_detail_singleline_tag"
-						android:gravity="top|right"
+						
                         android:text="@string/mission_task_description" />
 
                     <TextView
@@ -174,7 +174,7 @@
                     <TextView
                         style="@style/task_detail_singleline_tag"
                         android:text="@string/mission_device_company"
-                        android:gravity="top|right" />
+                         />
 
                     <TextView
                         android:id="@+id/mission_device_company_tv"
@@ -192,7 +192,7 @@
                     <TextView
                         style="@style/task_detail_singleline_tag"
                         android:text="@string/mission_device_type"
-                        android:gravity="top|right" />
+                         />
 
                     <TextView
                         android:id="@+id/mission_device_type_tv"
@@ -209,7 +209,7 @@
                     <TextView
                         style="@style/task_detail_singleline_tag"
                         android:text="@string/mission_device_num"
-                        android:gravity="top|right" />
+                         />
 
                     <TextView
                         android:id="@+id/mission_device_num_tv"
@@ -225,7 +225,7 @@
                     <TextView
                         style="@style/task_detail_singleline_tag"
                         android:text="@string/mission_card_num"
-                        android:gravity="top|right" />
+                         />
 
                     <TextView
                         android:id="@+id/mission_card_num_tv"
@@ -240,7 +240,7 @@
 
                     <TextView
                         style="@style/task_detail_singleline_tag"
-                        android:gravity="top|right"
+                        
                         android:text="@string/mission_distribute_description" />
 
                     <TextView

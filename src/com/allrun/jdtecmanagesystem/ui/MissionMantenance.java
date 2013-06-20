@@ -134,7 +134,6 @@ public class MissionMantenance extends Activity implements OnClickListener,OnGes
 				mMissionInfo = mMissionInfoList.get(0);
 				mTaskNumTv.setText(mMissionInfoList.get(0).getMISSIONNO());
 				mCarNumTv.setText(mMissionInfoList.get(0).getPLATENO());
-				System.out.println(mMissionInfoList.get(0).getPLATENO());
 //				mWorkTypeTv.setText(mMissionInfoList.get(0).getBUSINESSTYPE());
 				mDriverNameTv.setText(mMissionInfoList.get(0).getDIRVER());
 				mTaskTypeTv.setText(mMissionInfoList.get(0).getMISSIONTYPE());
@@ -148,7 +147,6 @@ public class MissionMantenance extends Activity implements OnClickListener,OnGes
 				mDeviceTypeTv.setText(mMissionInfoList.get(0).getDEVICETYPE());
 				mDeviceNumTv.setText(mMissionInfoList.get(0).getDEVICENUMBER());
 				mCardNumTv.setText(mMissionInfoList.get(0).getCOMMUNICTIONCARD());
-				System.out.println(mMissionInfoList.get(0).getCOMMUNICTIONCARD());
 //				mDistributeDescriptionTv.setText(mMissionInfoList.get(0).getALLOCATENOTE());
 				mAreaTv.setText(mMissionInfoList.get(0).getREGION());
 				mCompanyTv.setText(mMissionInfoList.get(0).getAFFILIATION());

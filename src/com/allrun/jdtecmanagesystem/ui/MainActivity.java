@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -124,6 +126,17 @@ public class MainActivity extends Activity implements OnClickListener {
 		mLoginBtn.setOnClickListener(this);
 		mModifyPassword.setOnClickListener(this);
 		mServerAdTv.setOnClickListener(this);
+		
+		mSavePasswordCb.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked) {
+					mSaveUsernameCb.setChecked(true);
+				}
+				
+			}
+		});
 	}
 
 	private void getSharePrefer() {

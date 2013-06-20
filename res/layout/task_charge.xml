@@ -61,7 +61,7 @@
 
             <TextView
                 style="@style/task_detail_singleline_tag"
-                android:gravity="top|right"
+                
                 android:text="@string/belong_company" />
 
             <TextView

@@ -25,7 +25,6 @@ public class SlaughterWs extends BaseWs {
 	 */
 	public static String checkLogin(String strUserName, String strPassWord){
 		buildGsonInstance();
-		System.out.println(App.BASE_NAMESPACE+":" +App.SERVER_URL+":"+"CheckLoginUser");
 		DataAccessSoap ksoap2 = new DataAccessSoap(App.BASE_NAMESPACE, App.SERVER_URL, "CheckLoginUser");
 		
 		ksoap2.setProperty("strUserName", strUserName, PropertyType.TYPE_STRING);

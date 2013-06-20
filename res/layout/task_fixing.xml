@@ -57,7 +57,7 @@
 
             <TextView
                 style="@style/task_detail_singleline_tag"
-                android:gravity="top|right"
+                
                 android:text="@string/belong_company" />
 
             <TextView
@@ -105,7 +105,7 @@
             <TextView
                 style="@style/task_detail_singleline_tag"
                 android:text="@string/car_device_company"
-                android:gravity="top|right" />
+                 />
 
             <TextView
                 android:id="@+id/mission_fixing_car_device_company_tv"
@@ -118,7 +118,7 @@
             <TextView
                 style="@style/task_detail_singleline_tag"
                 android:text="@string/car_device_type"
-                android:gravity="top|right" />
+                 />
 
             <TextView
                 android:id="@+id/mission_fixing_car_device_typenum_tv"
@@ -131,7 +131,7 @@
             <TextView
                 style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_car_device_num"
-                android:gravity="top|right" />
+                 />
 
             <TextView
                 android:id="@+id/mission_fixing_car_device_num_tv"
@@ -145,7 +145,7 @@
             <TextView
                 style="@style/task_detail_singleline_tag"
                 android:text="@string/mission_car_card_num"
-                android:gravity="top|right" />
+                 />
 
             <TextView
                 android:id="@+id/mission_fixing_car_card_num_tv"
